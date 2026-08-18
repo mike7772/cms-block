@@ -1,0 +1,1 @@
+{"version":3,"file":"price-list-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/price-list-block.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,cAAc,IAAI,kBAAkB,EAAE,MAAM,aAAa,CAAC;AAExE,MAAM,CAAC,OAAO,UAAU,cAAc,CAAC,EACrC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,kBAAkB,CAAC;CAC3B,+BA+DA"}

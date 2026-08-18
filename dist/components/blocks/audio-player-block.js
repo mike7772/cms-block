@@ -1,0 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function AudioPlayerBlock({ block, }) {
+    return (_jsxs("figure", { className: "mx-auto max-w-xl rounded-3xl border border-sky-dark/20 bg-sky-pale/40 px-6 py-6", children: [block.title ? (_jsx("figcaption", { className: "mb-3 font-semibold text-ink", children: block.title })) : null, block.src ? (_jsx("audio", { controls: true, className: "w-full", preload: "metadata", src: block.src, children: "Your browser does not support the audio element." })) : (_jsx("div", { className: "rounded-2xl border border-dashed border-sky-dark/30 bg-white px-4 py-8 text-center text-sm text-ink/50", children: "Add an audio source URL" })), block.caption ? (_jsx("p", { className: "mt-3 text-sm text-ink/60", children: block.caption })) : null] }));
+}

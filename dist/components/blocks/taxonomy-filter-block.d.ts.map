@@ -1,0 +1,1 @@
+{"version":3,"file":"taxonomy-filter-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/taxonomy-filter-block.tsx"],"names":[],"mappings":"AAQA,OAAO,KAAK,EAAE,mBAAmB,IAAI,uBAAuB,EAAE,MAAM,aAAa,CAAC;AAsBlF,MAAM,CAAC,OAAO,UAAU,mBAAmB,CAAC,EAC1C,KAAK,GACN,EAAE;IACD,KAAK,EAAE,uBAAuB,CAAC;CAChC,+BA+MA"}

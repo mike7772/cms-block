@@ -1,0 +1,1 @@
+{"version":3,"file":"news-ticker-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/news-ticker-block.tsx"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,eAAe,IAAI,mBAAmB,EAAE,MAAM,aAAa,CAAC;AAS1E,MAAM,CAAC,OAAO,UAAU,eAAe,CAAC,EACtC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,mBAAmB,CAAC;CAC5B,+BA2DA"}

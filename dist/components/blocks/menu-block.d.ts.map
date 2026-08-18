@@ -1,0 +1,1 @@
+{"version":3,"file":"menu-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/menu-block.tsx"],"names":[],"mappings":"AAuCA,OAAO,KAAK,EACV,SAAS,IAAI,aAAa,EAI3B,MAAM,aAAa,CAAC;AA4gBrB,MAAM,CAAC,OAAO,UAAU,SAAS,CAAC,EAChC,KAAK,EACL,SAAiB,GAClB,EAAE;IACD,KAAK,EAAE,aAAa,CAAC;IACrB,SAAS,CAAC,EAAE,OAAO,CAAC;CACrB,+BAkDA"}

@@ -1,0 +1,5 @@
+import type { AccordionBlock as AccordionBlockType } from "@/lib/types";
+export default function AccordionBlock({ block, }: {
+    block: AccordionBlockType;
+}): import("react").JSX.Element;
+//# sourceMappingURL=accordion-block.d.ts.map

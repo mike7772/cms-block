@@ -1,0 +1,1 @@
+{"version":3,"file":"post-timeline-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/post-timeline-block.tsx"],"names":[],"mappings":"AAOA,OAAO,KAAK,EAAE,iBAAiB,IAAI,qBAAqB,EAAE,MAAM,aAAa,CAAC;AAY9E,MAAM,CAAC,OAAO,UAAU,iBAAiB,CAAC,EACxC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,qBAAqB,CAAC;CAC9B,+BA4EA"}

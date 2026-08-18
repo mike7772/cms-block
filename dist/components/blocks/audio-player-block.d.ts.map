@@ -1,0 +1,1 @@
+{"version":3,"file":"audio-player-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/audio-player-block.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,gBAAgB,IAAI,oBAAoB,EAAE,MAAM,aAAa,CAAC;AAE5E,MAAM,CAAC,OAAO,UAAU,gBAAgB,CAAC,EACvC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,oBAAoB,CAAC;CAC7B,+BAsBA"}

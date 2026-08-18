@@ -1,0 +1,1 @@
+{"version":3,"file":"video-embed-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/video-embed-block.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,eAAe,IAAI,mBAAmB,EAAE,MAAM,aAAa,CAAC;AA0C1E,MAAM,CAAC,OAAO,UAAU,eAAe,CAAC,EACtC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,mBAAmB,CAAC;CAC5B,+BAiDA"}

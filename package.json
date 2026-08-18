@@ -1,0 +1,58 @@
+{
+  "name": "@occms/cms-blocks",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Shared Puck/Strapi page-builder block library — single source of truth for the block registry consumed by OCCMS_FRONTED_V1 (editor) and PUBLIC_PORTAL (renderer). Ported from portal-frontend (reference implementation).",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@lexical/code": "^0.48.0",
+    "@lexical/html": "^0.48.0",
+    "@lexical/link": "^0.48.0",
+    "@lexical/list": "^0.48.0",
+    "@lexical/markdown": "^0.48.0",
+    "@lexical/react": "^0.48.0",
+    "@lexical/rich-text": "^0.48.0",
+    "@lexical/selection": "^0.48.0",
+    "@lexical/table": "^0.48.0",
+    "@lexical/utils": "^0.48.0",
+    "clsx": "^2.1.1",
+    "lexical": "^0.48.0",
+    "lucide-react": "^1.26.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "peerDependencies": {
+    "@puckeditor/core": "^0.22.2",
+    "next": ">=15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@puckeditor/core": "^0.22.2",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "next": "^16.2.9",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5"
+  }
+}

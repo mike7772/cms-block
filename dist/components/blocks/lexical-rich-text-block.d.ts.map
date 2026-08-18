@@ -1,0 +1,1 @@
+{"version":3,"file":"lexical-rich-text-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/lexical-rich-text-block.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,oBAAoB,IAAI,wBAAwB,EAAE,MAAM,aAAa,CAAC;AAEpF,MAAM,CAAC,OAAO,UAAU,oBAAoB,CAAC,EAC3C,KAAK,GACN,EAAE;IACD,KAAK,EAAE,wBAAwB,CAAC;CACjC,sCASA"}

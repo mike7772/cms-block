@@ -1,0 +1,1 @@
+{"version":3,"file":"strapi-to-puck.d.ts","sourceRoot":"","sources":["../../src/puck/strapi-to-puck.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,YAAY,EAAE,MAAM,aAAa,CAAC;AAChD,OAAO,KAAK,EAAE,IAAI,EAAiB,MAAM,kBAAkB,CAAC;AAS5D,wBAAgB,sBAAsB,CACpC,MAAM,EAAE,YAAY,EAAE,GAAG,SAAS,GAAG,IAAI,GACxC,IAAI,CAsBN"}

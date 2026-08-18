@@ -1,0 +1,1 @@
+{"version":3,"file":"accordion-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/accordion-block.tsx"],"names":[],"mappings":"AAGA,OAAO,KAAK,EAAE,cAAc,IAAI,kBAAkB,EAAE,MAAM,aAAa,CAAC;AAExE,MAAM,CAAC,OAAO,UAAU,cAAc,CAAC,EACrC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,kBAAkB,CAAC;CAC3B,+BA2DA"}

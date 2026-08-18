@@ -1,0 +1,1 @@
+{"version":3,"file":"dual-button-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/dual-button-block.tsx"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,eAAe,IAAI,mBAAmB,EAAE,MAAM,aAAa,CAAC;AAQ1E,MAAM,CAAC,OAAO,UAAU,eAAe,CAAC,EACtC,KAAK,GACN,EAAE;IACD,KAAK,EAAE,mBAAmB,CAAC;CAC5B,+BAwBA"}

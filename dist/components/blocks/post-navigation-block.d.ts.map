@@ -1,0 +1,1 @@
+{"version":3,"file":"post-navigation-block.d.ts","sourceRoot":"","sources":["../../../src/components/blocks/post-navigation-block.tsx"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,mBAAmB,IAAI,uBAAuB,EAAE,MAAM,aAAa,CAAC;AAElF,MAAM,CAAC,OAAO,UAAU,mBAAmB,CAAC,EAC1C,KAAK,GACN,EAAE;IACD,KAAK,EAAE,uBAAuB,CAAC;CAChC,+BAiDA"}
