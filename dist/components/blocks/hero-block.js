@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 export default function HeroBlock({ block }) {
     const image = getPreferredImage(block.image);
     const centered = block.align !== "left";

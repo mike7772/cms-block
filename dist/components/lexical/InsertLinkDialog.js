@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useId, useRef, useState } from "react";
 import { Link as LinkIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils.js";
 export function InsertLinkDialog({ onInsert, active = false, initialUrl = "https://", title = "Insert link (⌘K)", }) {
     const [open, setOpen] = useState(false);
     const [url, setUrl] = useState(initialUrl);

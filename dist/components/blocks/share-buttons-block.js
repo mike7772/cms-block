@@ -1,6 +1,6 @@
 "use client";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { initialLetter } from "@/puck/registry/helpers";
+import { initialLetter } from "../../puck/registry/helpers.js";
 const platformLabels = {
     facebook: "Facebook",
     twitter: "X",

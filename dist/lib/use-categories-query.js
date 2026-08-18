@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useLocaleFromRoute } from "@/lib/use-posts-query";
+import { useLocaleFromRoute } from "../lib/use-posts-query.js";
 export function categoryPostCount(category) {
     if (typeof category.postCount === "number")
         return category.postCount;

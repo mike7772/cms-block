@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { initialLetter } from "@/puck/registry/helpers";
+import { initialLetter } from "../../puck/registry/helpers.js";
 export default function IconListBlock({ block }) {
     var _a;
     const items = (_a = block.items) !== null && _a !== void 0 ? _a : [];

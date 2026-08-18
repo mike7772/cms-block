@@ -6,8 +6,8 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { $deleteTableColumnAtSelection, $deleteTableRowAtSelection, $getTableCellNodeFromLexicalNode, $getTableColumnIndexFromTableCellNode, $getTableNodeFromLexicalNodeOrThrow, $getTableRowIndexFromTableCellNode, $insertTableColumnAtSelection, $insertTableRowAtSelection, $isTableCellNode, $isTableSelection, $mergeCells, $setTableColumnIsHeader, $setTableRowIsHeader, $unmergeCell, TableCellHeaderStates, } from "@lexical/table";
 import { $getSelection, $isRangeSelection, } from "lexical";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Columns3, Ellipsis, Grid2x2, Merge, PaintBucket, Plus, Rows3, Split, Trash2, } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { ColorPickerButton } from "./ColorPickerButton";
+import { cn } from "../../lib/utils.js";
+import { ColorPickerButton } from "./ColorPickerButton.js";
 const DEFAULT_COLUMN_WIDTH = 88;
 function ActionButton({ label, icon, onClick, danger = false, compact = false, disabled = false, active = false, }) {
     return (_jsxs("button", { type: "button", title: label, "aria-label": label, disabled: disabled, onMouseDown: (e) => e.preventDefault(), onClick: onClick, className: cn("inline-flex items-center justify-center gap-1 rounded-md text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40", compact ? "h-6 w-6" : "h-7 px-2", danger

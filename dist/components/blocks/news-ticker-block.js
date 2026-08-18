@@ -1,8 +1,8 @@
 "use client";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Link from "next/link";
-import { postHref } from "@/lib/nav";
-import { usePostsQuery } from "@/lib/use-posts-query";
+import { postHref } from "../../lib/nav.js";
+import { usePostsQuery } from "../../lib/use-posts-query.js";
 const speedDuration = {
     slow: "45s",
     medium: "28s",

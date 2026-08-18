@@ -1,4 +1,4 @@
-import type { LoopCarouselBlock as LoopCarouselBlockType } from "@/lib/types";
+import type { LoopCarouselBlock as LoopCarouselBlockType } from "../../lib/types.js";
 export default function LoopCarouselBlock({ block, }: {
     block: LoopCarouselBlockType;
 }): import("react").JSX.Element;

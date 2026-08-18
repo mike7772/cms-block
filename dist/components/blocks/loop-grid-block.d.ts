@@ -1,4 +1,4 @@
-import type { LoopGridBlock as LoopGridBlockType } from "@/lib/types";
+import type { LoopGridBlock as LoopGridBlockType } from "../../lib/types.js";
 export default function LoopGridBlock({ block, }: {
     block: LoopGridBlockType;
 }): import("react").JSX.Element;

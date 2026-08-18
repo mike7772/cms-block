@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import { useState } from "react";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 const variantStyles = {
     info: "border-sky-dark/40 bg-sky-pale text-ink",
     success: "border-foliage/40 bg-foliage/10 text-foliage-deep",

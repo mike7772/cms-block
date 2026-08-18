@@ -1,4 +1,4 @@
-import type { RelatedPostsBlock as RelatedPostsBlockType } from "@/lib/types";
+import type { RelatedPostsBlock as RelatedPostsBlockType } from "../../lib/types.js";
 export default function RelatedPostsBlock({ block, }: {
     block: RelatedPostsBlockType;
 }): import("react").JSX.Element;

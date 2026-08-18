@@ -1,11 +1,11 @@
-import ContactFormBlock from "@/components/blocks/contact-form-block";
-import LoginFormBlock from "@/components/blocks/login-form-block";
-import SearchBarBlock from "@/components/blocks/search-bar-block";
-import OffCanvasBlock from "@/components/blocks/off-canvas-block";
-import ProgressBarsBlock from "@/components/blocks/progress-bars-block";
-import ProgressTrackerBlock from "@/components/blocks/progress-tracker-block";
-import { stubMedia, stripMediaUrl } from "@/puck/media";
-import { boolField, selectField } from "./helpers";
+import ContactFormBlock from "../../components/blocks/contact-form-block.js";
+import LoginFormBlock from "../../components/blocks/login-form-block.js";
+import SearchBarBlock from "../../components/blocks/search-bar-block.js";
+import OffCanvasBlock from "../../components/blocks/off-canvas-block.js";
+import ProgressBarsBlock from "../../components/blocks/progress-bars-block.js";
+import ProgressTrackerBlock from "../../components/blocks/progress-tracker-block.js";
+import { stubMedia, stripMediaUrl } from "../../puck/media.js";
+import { boolField, selectField } from "./helpers.js";
 import { createElement } from "react";
 const contactFormToBlock = (props) => {
     var _a, _b, _c, _d;

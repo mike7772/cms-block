@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { cn } from "@/lib/utils";
-import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { renderSlot } from "./nested-blocks";
+import { cn } from "../../lib/utils.js";
+import { LanguageSwitcher } from "../../components/layout/language-switcher.js";
+import { renderSlot } from "./nested-blocks.js";
 const maxWidthClass = {
     md: "max-w-3xl",
     lg: "max-w-5xl",

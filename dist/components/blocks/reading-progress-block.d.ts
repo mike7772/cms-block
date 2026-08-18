@@ -1,4 +1,4 @@
-import type { ReadingProgressBlock as ReadingProgressBlockType } from "@/lib/types";
+import type { ReadingProgressBlock as ReadingProgressBlockType } from "../../lib/types.js";
 export default function ReadingProgressBlock({ block, }: {
     block: ReadingProgressBlockType;
 }): import("react").JSX.Element;

@@ -1,8 +1,8 @@
 "use client";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Link from "next/link";
-import { postsHref } from "@/lib/nav";
-import { categoryPostCount, useCategoriesQuery, } from "@/lib/use-categories-query";
+import { postsHref } from "../../lib/nav.js";
+import { categoryPostCount, useCategoriesQuery, } from "../../lib/use-categories-query.js";
 const columnClass = {
     "2": "sm:grid-cols-2",
     "3": "sm:grid-cols-2 lg:grid-cols-3",

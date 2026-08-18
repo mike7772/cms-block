@@ -1,4 +1,4 @@
-import { registryByStrapiComponent } from "./registry";
+import { registryByStrapiComponent } from "./registry/index.js";
 let idCounter = 0;
 function nextId() {
     idCounter += 1;

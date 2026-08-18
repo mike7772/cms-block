@@ -1,4 +1,4 @@
-import type { NewsTickerBlock as NewsTickerBlockType } from "@/lib/types";
+import type { NewsTickerBlock as NewsTickerBlockType } from "../../lib/types.js";
 export default function NewsTickerBlock({ block, }: {
     block: NewsTickerBlockType;
 }): import("react").JSX.Element;

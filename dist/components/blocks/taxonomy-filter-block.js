@@ -3,10 +3,10 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { getPreferredImage } from "@/lib/media";
-import { postHref } from "@/lib/nav";
-import { categoryPostCount, useCategoriesQuery, } from "@/lib/use-categories-query";
-import { usePostsQuery } from "@/lib/use-posts-query";
+import { getPreferredImage } from "../../lib/media.js";
+import { postHref } from "../../lib/nav.js";
+import { categoryPostCount, useCategoriesQuery, } from "../../lib/use-categories-query.js";
+import { usePostsQuery } from "../../lib/use-posts-query.js";
 const columnClass = {
     "2": "sm:grid-cols-2",
     "3": "sm:grid-cols-2 lg:grid-cols-3",

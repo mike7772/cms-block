@@ -1,4 +1,4 @@
-import type { CountdownBlock as CountdownBlockType } from "@/lib/types";
+import type { CountdownBlock as CountdownBlockType } from "../../lib/types.js";
 export default function CountdownBlock({ block, }: {
     block: CountdownBlockType;
 }): import("react").JSX.Element;

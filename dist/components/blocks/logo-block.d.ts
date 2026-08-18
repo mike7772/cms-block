@@ -1,4 +1,4 @@
-import type { LogoBlock as LogoBlockType } from "@/lib/types";
+import type { LogoBlock as LogoBlockType } from "../../lib/types.js";
 export default function LogoBlock({ block }: {
     block: LogoBlockType;
 }): import("react").JSX.Element;

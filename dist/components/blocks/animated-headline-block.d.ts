@@ -1,4 +1,4 @@
-import type { AnimatedHeadlineBlock as AnimatedHeadlineBlockType } from "@/lib/types";
+import type { AnimatedHeadlineBlock as AnimatedHeadlineBlockType } from "../../lib/types.js";
 export default function AnimatedHeadlineBlock({ block, }: {
     block: AnimatedHeadlineBlockType;
 }): import("react").JSX.Element;

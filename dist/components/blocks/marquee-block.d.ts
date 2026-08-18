@@ -1,4 +1,4 @@
-import type { MarqueeBlock as MarqueeBlockType } from "@/lib/types";
+import type { MarqueeBlock as MarqueeBlockType } from "../../lib/types.js";
 export default function MarqueeBlock({ block }: {
     block: MarqueeBlockType;
 }): import("react").JSX.Element;

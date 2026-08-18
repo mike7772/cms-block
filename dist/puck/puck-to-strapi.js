@@ -9,7 +9,7 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import { registryByPuckType } from "./registry";
+import { registryByPuckType } from "./registry/index.js";
 /**
  * Convert Puck editor data into Strapi dynamic-zone blocks.
  * Media relations are omitted (null) when only a URL is known — Strapi

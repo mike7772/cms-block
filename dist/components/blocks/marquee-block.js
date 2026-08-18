@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { asPlainText } from "@/puck/registry/helpers";
+import { asPlainText } from "../../puck/registry/helpers.js";
 function parseItems(raw) {
     const text = asPlainText(raw);
     if (!text.trim())

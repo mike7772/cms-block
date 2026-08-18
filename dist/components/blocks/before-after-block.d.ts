@@ -1,4 +1,4 @@
-import type { BeforeAfterBlock as BeforeAfterBlockType } from "@/lib/types";
+import type { BeforeAfterBlock as BeforeAfterBlockType } from "../../lib/types.js";
 export default function BeforeAfterBlock({ block, }: {
     block: BeforeAfterBlockType;
 }): import("react").JSX.Element;

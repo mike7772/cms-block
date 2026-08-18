@@ -1,4 +1,4 @@
-import type { DividerBlock as DividerBlockType } from "@/lib/types";
+import type { DividerBlock as DividerBlockType } from "../../lib/types.js";
 export default function DividerBlock({ block }: {
     block: DividerBlockType;
 }): import("react").JSX.Element;

@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import { useState } from "react";
-import { getMediaUrl } from "@/lib/media";
+import { getMediaUrl } from "../../lib/media.js";
 export default function SliderBlock({ block }) {
     var _a;
     const files = ((_a = block.files) !== null && _a !== void 0 ? _a : [])

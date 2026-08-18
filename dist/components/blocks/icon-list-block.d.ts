@@ -1,4 +1,4 @@
-import type { IconListBlock as IconListBlockType } from "@/lib/types";
+import type { IconListBlock as IconListBlockType } from "../../lib/types.js";
 export default function IconListBlock({ block }: {
     block: IconListBlockType;
 }): import("react").JSX.Element;

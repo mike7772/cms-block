@@ -1,4 +1,4 @@
-import type { DualButtonBlock as DualButtonBlockType } from "@/lib/types";
+import type { DualButtonBlock as DualButtonBlockType } from "../../lib/types.js";
 export default function DualButtonBlock({ block, }: {
     block: DualButtonBlockType;
 }): import("react").JSX.Element;

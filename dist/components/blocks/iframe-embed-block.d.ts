@@ -1,4 +1,4 @@
-import type { IframeEmbedBlock as IframeEmbedBlockType } from "@/lib/types";
+import type { IframeEmbedBlock as IframeEmbedBlockType } from "../../lib/types.js";
 export default function IframeEmbedBlock({ block, }: {
     block: IframeEmbedBlockType;
 }): import("react").JSX.Element;

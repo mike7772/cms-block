@@ -1,4 +1,4 @@
-import type { Category } from "@/lib/types";
+import type { Category } from "../lib/types.js";
 export type UseCategoriesQueryOptions = {
     limit?: number;
     enabled?: boolean;

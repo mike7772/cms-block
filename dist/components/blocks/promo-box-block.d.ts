@@ -1,4 +1,4 @@
-import type { PromoBoxBlock as PromoBoxBlockType } from "@/lib/types";
+import type { PromoBoxBlock as PromoBoxBlockType } from "../../lib/types.js";
 export default function PromoBoxBlock({ block }: {
     block: PromoBoxBlockType;
 }): import("react").JSX.Element;

@@ -1,4 +1,4 @@
-import type { NumberCounterBlock as NumberCounterBlockType } from "@/lib/types";
+import type { NumberCounterBlock as NumberCounterBlockType } from "../../lib/types.js";
 export default function NumberCounterBlock({ block, }: {
     block: NumberCounterBlockType;
 }): import("react").JSX.Element;

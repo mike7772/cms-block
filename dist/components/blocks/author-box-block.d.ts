@@ -1,4 +1,4 @@
-import type { AuthorBoxBlock as AuthorBoxBlockType } from "@/lib/types";
+import type { AuthorBoxBlock as AuthorBoxBlockType } from "../../lib/types.js";
 export default function AuthorBoxBlock({ block, }: {
     block: AuthorBoxBlockType;
 }): import("react").JSX.Element;

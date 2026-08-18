@@ -1,4 +1,4 @@
-import type { SpacerBlock as SpacerBlockType } from "@/lib/types";
+import type { SpacerBlock as SpacerBlockType } from "../../lib/types.js";
 export default function SpacerBlock({ block, isEditing, }: {
     block: SpacerBlockType;
     isEditing?: boolean;

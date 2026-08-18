@@ -18,5 +18,5 @@ export declare function NestedBlocks({ items, className, itemClassName, }: {
 export declare function renderSlot(slot: unknown, className?: string, options?: {
     itemClassName?: string;
 }): ReactNode;
-export { jsonToSlot, slotToJson } from "./slot-json";
+export { jsonToSlot, slotToJson } from "./slot-json.js";
 //# sourceMappingURL=nested-blocks.d.ts.map

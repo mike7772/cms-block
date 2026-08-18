@@ -2,7 +2,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import { defaultLocale, isLocale, } from "@/i18n/config";
+import { defaultLocale, isLocale, } from "../../i18n/config.js";
 const alignClass = {
     left: "justify-start",
     center: "justify-center",

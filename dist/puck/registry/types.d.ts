@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Fields } from "@puckeditor/core";
-import type { ContentBlock } from "@/lib/types";
-import type { PuckCategory } from "./helpers";
+import type { ContentBlock } from "../../lib/types.js";
+import type { PuckCategory } from "./helpers.js";
 export type RegistryEntry = {
     puckType: string;
     strapiComponent: ContentBlock["__component"];

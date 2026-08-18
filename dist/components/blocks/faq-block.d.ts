@@ -1,4 +1,4 @@
-import type { FaqBlock as FaqBlockType } from "@/lib/types";
+import type { FaqBlock as FaqBlockType } from "../../lib/types.js";
 export default function FaqBlock({ block }: {
     block: FaqBlockType;
 }): import("react").JSX.Element;

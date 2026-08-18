@@ -1,4 +1,4 @@
-import type { FileDownloadBlock as FileDownloadBlockType } from "@/lib/types";
+import type { FileDownloadBlock as FileDownloadBlockType } from "../../lib/types.js";
 export default function FileDownloadBlock({ block, }: {
     block: FileDownloadBlockType;
 }): import("react").JSX.Element;

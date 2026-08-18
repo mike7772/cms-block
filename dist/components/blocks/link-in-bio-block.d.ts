@@ -1,4 +1,4 @@
-import type { LinkInBioBlock as LinkInBioBlockType } from "@/lib/types";
+import type { LinkInBioBlock as LinkInBioBlockType } from "../../lib/types.js";
 export default function LinkInBioBlock({ block, }: {
     block: LinkInBioBlockType;
 }): import("react").JSX.Element;

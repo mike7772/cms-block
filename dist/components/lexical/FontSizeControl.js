@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils.js";
 const MIN_SIZE = 8;
 const MAX_SIZE = 72;
 const STEP = 1;

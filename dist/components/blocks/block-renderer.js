@@ -1,5 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { registryByStrapiComponent } from "@/puck/registry";
+import { registryByStrapiComponent } from "../../puck/registry/index.js";
 export default function BlockRenderer({ blocks }) {
     if (!(blocks === null || blocks === void 0 ? void 0 : blocks.length)) {
         return null;

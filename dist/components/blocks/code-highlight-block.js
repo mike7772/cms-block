@@ -1,7 +1,7 @@
 "use client";
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from "react";
-import { asPlainText } from "@/puck/registry/helpers";
+import { asPlainText } from "../../puck/registry/helpers.js";
 export default function CodeHighlightBlock({ block, }) {
     const [copied, setCopied] = useState(false);
     const dark = block.theme !== "light";

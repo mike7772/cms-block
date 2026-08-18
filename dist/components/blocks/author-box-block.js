@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { asPlainText, initialLetter } from "@/puck/registry/helpers";
+import { asPlainText, initialLetter } from "../../puck/registry/helpers.js";
 export default function AuthorBoxBlock({ block, }) {
     var _a;
     const align = (_a = block.align) !== null && _a !== void 0 ? _a : "left";

@@ -1,4 +1,4 @@
-import type { LexicalRichTextBlock as LexicalRichTextBlockType } from "@/lib/types";
+import type { LexicalRichTextBlock as LexicalRichTextBlockType } from "../../lib/types.js";
 export default function LexicalRichTextBlock({ block, }: {
     block: LexicalRichTextBlockType;
 }): import("react").JSX.Element | null;

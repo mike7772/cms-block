@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { asPlainText } from "@/puck/registry/helpers";
+import { asPlainText } from "../../puck/registry/helpers.js";
 function parseData(raw) {
     try {
         const parsed = JSON.parse(asPlainText(raw) || "[]");

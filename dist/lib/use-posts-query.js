@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { isLocale } from "@/i18n/config";
+import { isLocale } from "../i18n/config.js";
 export function useLocaleFromRoute() {
     const params = useParams();
     const raw = typeof (params === null || params === void 0 ? void 0 : params.locale) === "string" ? params.locale : "en";

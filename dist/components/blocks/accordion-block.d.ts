@@ -1,4 +1,4 @@
-import type { AccordionBlock as AccordionBlockType } from "@/lib/types";
+import type { AccordionBlock as AccordionBlockType } from "../../lib/types.js";
 export default function AccordionBlock({ block, }: {
     block: AccordionBlockType;
 }): import("react").JSX.Element;

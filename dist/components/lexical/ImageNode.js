@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { DecoratorNode, $applyNodeReplacement } from "lexical";
-import { withBasePath } from "@/lib/utils";
+import { withBasePath } from "../../lib/utils.js";
 function convertImageElement(domNode) {
     if (domNode instanceof HTMLImageElement) {
         const { src, alt } = domNode;

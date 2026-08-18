@@ -1,4 +1,4 @@
-import type { StepsBlock as StepsBlockType } from "@/lib/types";
+import type { StepsBlock as StepsBlockType } from "../../lib/types.js";
 export default function StepsBlock({ block }: {
     block: StepsBlockType;
 }): import("react").JSX.Element;

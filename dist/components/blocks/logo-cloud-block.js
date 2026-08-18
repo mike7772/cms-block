@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 export default function LogoCloudBlock({ block, }) {
     var _a;
     const logos = ((_a = block.logos) !== null && _a !== void 0 ? _a : [])

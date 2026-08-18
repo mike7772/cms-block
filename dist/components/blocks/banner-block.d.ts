@@ -1,4 +1,4 @@
-import type { BannerBlock as BannerBlockType } from "@/lib/types";
+import type { BannerBlock as BannerBlockType } from "../../lib/types.js";
 export default function BannerBlock({ block }: {
     block: BannerBlockType;
 }): import("react").JSX.Element | null;

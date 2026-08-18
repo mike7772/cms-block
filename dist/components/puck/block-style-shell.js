@@ -1,7 +1,7 @@
 "use client";
 import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
-import { blockChromeClassName, blockChromeToCss, isDefaultBlockChrome, normalizeBlockAdvanced, normalizeBlockStyle, } from "@/puck/block-style";
-import { cn } from "@/lib/utils";
+import { blockChromeClassName, blockChromeToCss, isDefaultBlockChrome, normalizeBlockAdvanced, normalizeBlockStyle, } from "../../puck/block-style.js";
+import { cn } from "../../lib/utils.js";
 export default function BlockStyleShell({ style, advanced, children, className, }) {
     const normalizedStyle = normalizeBlockStyle(style);
     const normalizedAdvanced = normalizeBlockAdvanced(advanced);

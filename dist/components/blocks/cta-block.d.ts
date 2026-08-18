@@ -1,4 +1,4 @@
-import type { CtaBlock as CtaBlockType } from "@/lib/types";
+import type { CtaBlock as CtaBlockType } from "../../lib/types.js";
 export default function CtaBlock({ block }: {
     block: CtaBlockType;
 }): import("react").JSX.Element;

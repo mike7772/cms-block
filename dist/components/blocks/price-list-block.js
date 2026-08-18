@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 export default function PriceListBlock({ block, }) {
     var _a, _b;
     const layout = (_a = block.layout) !== null && _a !== void 0 ? _a : "single";

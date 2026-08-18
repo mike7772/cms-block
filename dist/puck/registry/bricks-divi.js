@@ -1,18 +1,18 @@
-import ToggleBlock from "@/components/blocks/toggle-block";
-import ContentToggleBlock from "@/components/blocks/content-toggle-block";
-import NumberCounterBlock from "@/components/blocks/number-counter-block";
-import CircleCounterBlock from "@/components/blocks/circle-counter-block";
-import PostSliderBlock from "@/components/blocks/post-slider-block";
-import VideoSliderBlock from "@/components/blocks/video-slider-block";
-import FilterablePortfolioBlock from "@/components/blocks/filterable-portfolio-block";
-import PostNavigationBlock from "@/components/blocks/post-navigation-block";
-import ReadingTimeBlock from "@/components/blocks/reading-time-block";
-import LogoBlock from "@/components/blocks/logo-block";
-import IconBlock from "@/components/blocks/icon-block";
-import BlurbBlock from "@/components/blocks/blurb-block";
-import DropdownBlock from "@/components/blocks/dropdown-block";
-import PromoBoxBlock from "@/components/blocks/promo-box-block";
-import { boolField, selectField } from "./helpers";
+import ToggleBlock from "../../components/blocks/toggle-block.js";
+import ContentToggleBlock from "../../components/blocks/content-toggle-block.js";
+import NumberCounterBlock from "../../components/blocks/number-counter-block.js";
+import CircleCounterBlock from "../../components/blocks/circle-counter-block.js";
+import PostSliderBlock from "../../components/blocks/post-slider-block.js";
+import VideoSliderBlock from "../../components/blocks/video-slider-block.js";
+import FilterablePortfolioBlock from "../../components/blocks/filterable-portfolio-block.js";
+import PostNavigationBlock from "../../components/blocks/post-navigation-block.js";
+import ReadingTimeBlock from "../../components/blocks/reading-time-block.js";
+import LogoBlock from "../../components/blocks/logo-block.js";
+import IconBlock from "../../components/blocks/icon-block.js";
+import BlurbBlock from "../../components/blocks/blurb-block.js";
+import DropdownBlock from "../../components/blocks/dropdown-block.js";
+import PromoBoxBlock from "../../components/blocks/promo-box-block.js";
+import { boolField, selectField } from "./helpers.js";
 import { createElement } from "react";
 function num(value, fallback = null) {
     if (value === "" || value == null)

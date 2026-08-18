@@ -1,4 +1,4 @@
-import type { TimelineBlock as TimelineBlockType } from "@/lib/types";
+import type { TimelineBlock as TimelineBlockType } from "../../lib/types.js";
 export default function TimelineBlock({ block }: {
     block: TimelineBlockType;
 }): import("react").JSX.Element;

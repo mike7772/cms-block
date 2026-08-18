@@ -26,18 +26,18 @@ import { ListNode, ListItemNode, INSERT_ORDERED_LIST_COMMAND, INSERT_UNORDERED_L
 import { LinkNode, $isLinkNode, TOGGLE_LINK_COMMAND, } from "@lexical/link";
 import { TableNode, TableRowNode, TableCellNode, INSERT_TABLE_COMMAND, } from "@lexical/table";
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
-import { ImageNode, $createImageNode } from "./lexical/ImageNode";
-import { InsertTableDialog } from "./lexical/InsertTableDialog";
-import { InsertLinkDialog } from "./lexical/InsertLinkDialog";
-import { InsertImageDialog } from "./lexical/InsertImageDialog";
-import { TableActionMenuPlugin } from "./lexical/TableActionMenuPlugin";
-import { TableCellResizerPlugin } from "./lexical/TableCellResizerPlugin";
-import { TableResizeHandlePlugin } from "./lexical/TableResizeHandlePlugin";
-import { ColorPickerButton } from "./lexical/ColorPickerButton";
-import { StyleDropdown } from "./lexical/StyleDropdown";
-import { FontSizeControl } from "./lexical/FontSizeControl";
+import { ImageNode, $createImageNode } from "./lexical/ImageNode.js";
+import { InsertTableDialog } from "./lexical/InsertTableDialog.js";
+import { InsertLinkDialog } from "./lexical/InsertLinkDialog.js";
+import { InsertImageDialog } from "./lexical/InsertImageDialog.js";
+import { TableActionMenuPlugin } from "./lexical/TableActionMenuPlugin.js";
+import { TableCellResizerPlugin } from "./lexical/TableCellResizerPlugin.js";
+import { TableResizeHandlePlugin } from "./lexical/TableResizeHandlePlugin.js";
+import { ColorPickerButton } from "./lexical/ColorPickerButton.js";
+import { StyleDropdown } from "./lexical/StyleDropdown.js";
+import { FontSizeControl } from "./lexical/FontSizeControl.js";
 import { Bold, Italic, Underline, Strikethrough, Subscript, Superscript, Highlighter, List, ListOrdered, ListChecks, ListX, Unlink, Undo, Redo, Code, IndentIncrease, IndentDecrease, AlignLeft, AlignCenter, AlignRight, AlignJustify, SeparatorHorizontal, RemoveFormatting, CaseUpper, CaseLower, CaseSensitive, } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils.js";
 const MOD = typeof navigator !== "undefined" &&
     /Mac|iPhone|iPad|iPod/.test(navigator.platform)
     ? "⌘"

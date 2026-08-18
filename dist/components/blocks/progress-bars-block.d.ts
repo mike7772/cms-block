@@ -1,4 +1,4 @@
-import type { ProgressBarsBlock as ProgressBarsBlockType } from "@/lib/types";
+import type { ProgressBarsBlock as ProgressBarsBlockType } from "../../lib/types.js";
 export default function ProgressBarsBlock({ block, }: {
     block: ProgressBarsBlockType;
 }): import("react").JSX.Element;

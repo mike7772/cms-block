@@ -1,4 +1,4 @@
-import type { StrapiMedia } from "@/lib/types";
+import type { StrapiMedia } from "../lib/types.js";
 export declare function resolveMediaUrl(url: string): string;
 export declare function stripMediaUrl(media: {
     url?: string | null;

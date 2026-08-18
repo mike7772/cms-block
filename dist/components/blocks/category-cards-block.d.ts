@@ -1,4 +1,4 @@
-import type { CategoryCardsBlock as CategoryCardsBlockType } from "@/lib/types";
+import type { CategoryCardsBlock as CategoryCardsBlockType } from "../../lib/types.js";
 export default function CategoryCardsBlock({ block, }: {
     block: CategoryCardsBlockType;
 }): import("react").JSX.Element;

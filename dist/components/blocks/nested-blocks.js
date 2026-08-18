@@ -10,7 +10,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { createElement } from "react";
-import { registryByPuckType } from "@/puck/registry";
+import { registryByPuckType } from "../../puck/registry/index.js";
 /**
  * Renders nested Puck ComponentData outside the editor (public pages).
  * Inside Puck, slot fields are already transformed into render functions.
@@ -47,4 +47,4 @@ export function renderSlot(slot, className, options) {
     }
     return slot;
 }
-export { jsonToSlot, slotToJson } from "./slot-json";
+export { jsonToSlot, slotToJson } from "./slot-json.js";

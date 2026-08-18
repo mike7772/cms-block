@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { HeaderBlock as HeaderBlockType } from "@/lib/types";
+import type { HeaderBlock as HeaderBlockType } from "../../lib/types.js";
 type HeaderChrome = Omit<HeaderBlockType, "left" | "center" | "right" | "leftJson" | "centerJson" | "rightJson">;
 export default function HeaderBlock({ block, left, center, right, }: {
     block: HeaderChrome;

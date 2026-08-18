@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 const columnClass = {
     "2": "sm:grid-cols-2",
     "3": "sm:grid-cols-2 lg:grid-cols-3",

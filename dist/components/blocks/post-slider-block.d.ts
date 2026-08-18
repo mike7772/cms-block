@@ -1,4 +1,4 @@
-import type { PostSliderBlock as PostSliderBlockType } from "@/lib/types";
+import type { PostSliderBlock as PostSliderBlockType } from "../../lib/types.js";
 export default function PostSliderBlock({ block, }: {
     block: PostSliderBlockType;
 }): import("react").JSX.Element;

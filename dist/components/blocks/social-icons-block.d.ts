@@ -1,4 +1,4 @@
-import type { SocialIconsBlock as SocialIconsBlockType } from "@/lib/types";
+import type { SocialIconsBlock as SocialIconsBlockType } from "../../lib/types.js";
 export default function SocialIconsBlock({ block, }: {
     block: SocialIconsBlockType;
 }): import("react").JSX.Element;

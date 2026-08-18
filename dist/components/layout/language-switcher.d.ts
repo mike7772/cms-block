@@ -1,4 +1,4 @@
-import { type Locale } from "@/i18n/config";
+import { type Locale } from "../../i18n/config.js";
 export declare function LanguageSwitcher({ currentLocale, }: {
     currentLocale?: Locale;
 }): import("react").JSX.Element;

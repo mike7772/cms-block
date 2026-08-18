@@ -1,4 +1,4 @@
-import type { ProgressTrackerBlock as ProgressTrackerBlockType } from "@/lib/types";
+import type { ProgressTrackerBlock as ProgressTrackerBlockType } from "../../lib/types.js";
 export default function ProgressTrackerBlock({ block, }: {
     block: ProgressTrackerBlockType;
 }): import("react").JSX.Element;

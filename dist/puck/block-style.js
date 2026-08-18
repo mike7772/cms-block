@@ -1,4 +1,4 @@
-import { selectOptions } from "@/puck/registry/helpers";
+import { selectOptions } from "../puck/registry/helpers.js";
 export const DEFAULT_BLOCK_STYLE = {
     background: "none",
     backgroundCustom: "",

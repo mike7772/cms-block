@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useId, useRef, useState } from "react";
 import { Baseline, Check, PaintBucket } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils.js";
 const PRESET_COLORS = [
     { label: "Default", value: "" },
     { label: "Red", value: "#dc2626" },

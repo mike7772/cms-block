@@ -1,4 +1,4 @@
-import type { IconBoxBlock as IconBoxBlockType } from "@/lib/types";
+import type { IconBoxBlock as IconBoxBlockType } from "../../lib/types.js";
 export default function IconBoxBlock({ block, }: {
     block: IconBoxBlockType;
 }): import("react").JSX.Element;

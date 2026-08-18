@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Link from "next/link";
-import { initialLetter } from "@/puck/registry/helpers";
+import { initialLetter } from "../../puck/registry/helpers.js";
 const alignClass = {
     left: "text-left items-start",
     center: "text-center items-center",

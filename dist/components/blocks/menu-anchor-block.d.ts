@@ -1,4 +1,4 @@
-import type { MenuAnchorBlock as MenuAnchorBlockType } from "@/lib/types";
+import type { MenuAnchorBlock as MenuAnchorBlockType } from "../../lib/types.js";
 export default function MenuAnchorBlock({ block, }: {
     block: MenuAnchorBlockType;
 }): import("react").JSX.Element;

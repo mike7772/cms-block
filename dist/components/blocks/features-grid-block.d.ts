@@ -1,4 +1,4 @@
-import type { FeaturesGridBlock as FeaturesGridBlockType } from "@/lib/types";
+import type { FeaturesGridBlock as FeaturesGridBlockType } from "../../lib/types.js";
 export default function FeaturesGridBlock({ block, }: {
     block: FeaturesGridBlockType;
 }): import("react").JSX.Element;

@@ -1,13 +1,13 @@
-import GalleryBlock from "@/components/blocks/gallery-block";
-import VideoEmbedBlock from "@/components/blocks/video-embed-block";
-import VideoPlaylistBlock from "@/components/blocks/video-playlist-block";
-import LogoCloudBlock from "@/components/blocks/logo-cloud-block";
-import LottieBlock from "@/components/blocks/lottie-block";
-import GoogleMapsBlock from "@/components/blocks/google-maps-block";
-import HotspotBlock from "@/components/blocks/hotspot-block";
-import PortfolioBlock from "@/components/blocks/portfolio-block";
-import { stubMedia, stubMediaList, stripMediaUrl } from "@/puck/media";
-import { boolField, selectField } from "./helpers";
+import GalleryBlock from "../../components/blocks/gallery-block.js";
+import VideoEmbedBlock from "../../components/blocks/video-embed-block.js";
+import VideoPlaylistBlock from "../../components/blocks/video-playlist-block.js";
+import LogoCloudBlock from "../../components/blocks/logo-cloud-block.js";
+import LottieBlock from "../../components/blocks/lottie-block.js";
+import GoogleMapsBlock from "../../components/blocks/google-maps-block.js";
+import HotspotBlock from "../../components/blocks/hotspot-block.js";
+import PortfolioBlock from "../../components/blocks/portfolio-block.js";
+import { stubMedia, stubMediaList, stripMediaUrl } from "../../puck/media.js";
+import { boolField, selectField } from "./helpers.js";
 import { createElement } from "react";
 const galleryToBlock = (props) => {
     var _a;

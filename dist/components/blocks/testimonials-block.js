@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
-import { initialLetter } from "@/puck/registry/helpers";
+import { getPreferredImage } from "../../lib/media.js";
+import { initialLetter } from "../../puck/registry/helpers.js";
 function Stars({ rating }) {
     const n = Number(rating !== null && rating !== void 0 ? rating : 0);
     if (!n)

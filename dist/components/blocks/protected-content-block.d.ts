@@ -1,4 +1,4 @@
-import type { ProtectedContentBlock as ProtectedContentBlockType } from "@/lib/types";
+import type { ProtectedContentBlock as ProtectedContentBlockType } from "../../lib/types.js";
 export default function ProtectedContentBlock({ block, }: {
     block: ProtectedContentBlockType;
 }): import("react").JSX.Element;

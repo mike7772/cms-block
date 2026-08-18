@@ -1,14 +1,14 @@
-import HeroBlock from "@/components/blocks/hero-block";
-import RichTextBlock from "@/components/blocks/rich-text-block";
-import LexicalRichTextBlock from "@/components/blocks/lexical-rich-text-block";
-import MediaBlock from "@/components/blocks/media-block";
-import QuoteBlock from "@/components/blocks/quote-block";
-import SliderBlock from "@/components/blocks/slider-block";
-import CtaBlock from "@/components/blocks/cta-block";
-import { LexicalBodyField } from "@/components/puck/lexical-body-field";
-import LexicalRichTextInlineEditor from "@/components/puck/lexical-rich-text-inline";
-import { stubMedia, stubMediaList, stripMediaUrl } from "@/puck/media";
-import { selectField } from "@/puck/registry/helpers";
+import HeroBlock from "../../components/blocks/hero-block.js";
+import RichTextBlock from "../../components/blocks/rich-text-block.js";
+import LexicalRichTextBlock from "../../components/blocks/lexical-rich-text-block.js";
+import MediaBlock from "../../components/blocks/media-block.js";
+import QuoteBlock from "../../components/blocks/quote-block.js";
+import SliderBlock from "../../components/blocks/slider-block.js";
+import CtaBlock from "../../components/blocks/cta-block.js";
+import { LexicalBodyField } from "../../components/puck/lexical-body-field.js";
+import LexicalRichTextInlineEditor from "../../components/puck/lexical-rich-text-inline.js";
+import { stubMedia, stubMediaList, stripMediaUrl } from "../../puck/media.js";
+import { selectField } from "../../puck/registry/helpers.js";
 import { createElement } from "react";
 function heroToBlock(props) {
     return {

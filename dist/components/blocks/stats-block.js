@@ -1,6 +1,6 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 export default function StatsBlock({ block }) {
     var _a;
     const stats = (_a = block.stats) !== null && _a !== void 0 ? _a : [];

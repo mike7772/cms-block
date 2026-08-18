@@ -1,4 +1,4 @@
-import type { FilterablePortfolioBlock as FilterablePortfolioBlockType } from "@/lib/types";
+import type { FilterablePortfolioBlock as FilterablePortfolioBlockType } from "../../lib/types.js";
 export default function FilterablePortfolioBlock({ block, }: {
     block: FilterablePortfolioBlockType;
 }): import("react").JSX.Element;

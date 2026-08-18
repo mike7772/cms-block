@@ -1,4 +1,4 @@
-import type { AdvancedHeadingBlock as AdvancedHeadingBlockType } from "@/lib/types";
+import type { AdvancedHeadingBlock as AdvancedHeadingBlockType } from "../../lib/types.js";
 export default function AdvancedHeadingBlock({ block, }: {
     block: AdvancedHeadingBlockType;
 }): import("react").JSX.Element;

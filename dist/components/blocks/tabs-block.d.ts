@@ -1,4 +1,4 @@
-import type { TabsBlock as TabsBlockType } from "@/lib/types";
+import type { TabsBlock as TabsBlockType } from "../../lib/types.js";
 export default function TabsBlock({ block }: {
     block: TabsBlockType;
 }): import("react").JSX.Element | null;

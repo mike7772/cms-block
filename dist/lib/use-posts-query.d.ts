@@ -1,5 +1,5 @@
-import { type Locale } from "@/i18n/config";
-import type { Post } from "@/lib/types";
+import { type Locale } from "../i18n/config.js";
+import type { Post } from "../lib/types.js";
 export type PostsOrderBy = "newest" | "oldest" | "title";
 export type UsePostsQueryOptions = {
     limit?: number;

@@ -1,19 +1,19 @@
-import AdvancedHeadingBlock from "@/components/blocks/advanced-heading-block";
-import AnimatedHeadlineBlock from "@/components/blocks/animated-headline-block";
-import AlertBlock from "@/components/blocks/alert-block";
-import AccordionBlock from "@/components/blocks/accordion-block";
-import TabsBlock from "@/components/blocks/tabs-block";
-import IconBoxBlock from "@/components/blocks/icon-box-block";
-import ImageBoxBlock from "@/components/blocks/image-box-block";
-import ContentCardsBlock from "@/components/blocks/content-cards-block";
-import CodeHighlightBlock from "@/components/blocks/code-highlight-block";
-import DataTableBlock from "@/components/blocks/data-table-block";
-import SpacerBlock from "@/components/blocks/spacer-block";
-import ImageAccordionBlock from "@/components/blocks/image-accordion-block";
-import DualButtonBlock from "@/components/blocks/dual-button-block";
-import ProtectedContentBlock from "@/components/blocks/protected-content-block";
-import { stubMedia, stripMediaUrl } from "@/puck/media";
-import { boolField, selectField } from "@/puck/registry/helpers";
+import AdvancedHeadingBlock from "../../components/blocks/advanced-heading-block.js";
+import AnimatedHeadlineBlock from "../../components/blocks/animated-headline-block.js";
+import AlertBlock from "../../components/blocks/alert-block.js";
+import AccordionBlock from "../../components/blocks/accordion-block.js";
+import TabsBlock from "../../components/blocks/tabs-block.js";
+import IconBoxBlock from "../../components/blocks/icon-box-block.js";
+import ImageBoxBlock from "../../components/blocks/image-box-block.js";
+import ContentCardsBlock from "../../components/blocks/content-cards-block.js";
+import CodeHighlightBlock from "../../components/blocks/code-highlight-block.js";
+import DataTableBlock from "../../components/blocks/data-table-block.js";
+import SpacerBlock from "../../components/blocks/spacer-block.js";
+import ImageAccordionBlock from "../../components/blocks/image-accordion-block.js";
+import DualButtonBlock from "../../components/blocks/dual-button-block.js";
+import ProtectedContentBlock from "../../components/blocks/protected-content-block.js";
+import { stubMedia, stripMediaUrl } from "../../puck/media.js";
+import { boolField, selectField } from "../../puck/registry/helpers.js";
 import { createElement } from "react";
 function parseJsonArray(value) {
     try {

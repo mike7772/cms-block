@@ -1,4 +1,4 @@
-import type { StrapiMedia } from "./types";
+import type { StrapiMedia } from "./types.js";
 export declare function getMediaUrl(media?: StrapiMedia | null): string | null;
 export declare function getPreferredImage(media?: StrapiMedia | null): {
     src: string;

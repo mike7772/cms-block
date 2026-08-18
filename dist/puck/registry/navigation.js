@@ -1,14 +1,14 @@
-import BreadcrumbsBlock from "@/components/blocks/breadcrumbs-block";
-import MenuBlock from "@/components/blocks/menu-block";
-import MenuAnchorBlock from "@/components/blocks/menu-anchor-block";
-import ShareButtonsBlock from "@/components/blocks/share-buttons-block";
-import SitemapBlock from "@/components/blocks/sitemap-block";
-import SocialIconsBlock from "@/components/blocks/social-icons-block";
-import TableOfContentsBlock from "@/components/blocks/table-of-contents-block";
-import { stubMedia, stripMediaUrl } from "@/puck/media";
-import { boolField, selectField } from "./helpers";
+import BreadcrumbsBlock from "../../components/blocks/breadcrumbs-block.js";
+import MenuBlock from "../../components/blocks/menu-block.js";
+import MenuAnchorBlock from "../../components/blocks/menu-anchor-block.js";
+import ShareButtonsBlock from "../../components/blocks/share-buttons-block.js";
+import SitemapBlock from "../../components/blocks/sitemap-block.js";
+import SocialIconsBlock from "../../components/blocks/social-icons-block.js";
+import TableOfContentsBlock from "../../components/blocks/table-of-contents-block.js";
+import { stubMedia, stripMediaUrl } from "../../puck/media.js";
+import { boolField, selectField } from "./helpers.js";
 import { createElement } from "react";
-import { MENU_DEFAULT_DROPDOWN_ITEM, MENU_DEFAULT_GROUP, MENU_DEFAULT_LINKS, } from "@/puck/chrome-defaults";
+import { MENU_DEFAULT_DROPDOWN_ITEM, MENU_DEFAULT_GROUP, MENU_DEFAULT_LINKS, } from "../../puck/chrome-defaults.js";
 function mapMenuChildren(children) {
     return (children !== null && children !== void 0 ? children : []).map((child, j) => {
         var _a, _b, _c;

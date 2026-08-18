@@ -1,12 +1,12 @@
-import { existingRegistry } from "./existing";
-import { contentRegistry } from "./content";
-import { layoutRegistry } from "./layout";
-import { marketingRegistry } from "./marketing";
-import { mediaRegistry } from "./media";
-import { formsRegistry } from "./forms";
-import { dynamicRegistry } from "./dynamic";
-import { navigationRegistry } from "./navigation";
-import { bricksDiviRegistry } from "./bricks-divi";
+import { existingRegistry } from "./existing.js";
+import { contentRegistry } from "./content.js";
+import { layoutRegistry } from "./layout.js";
+import { marketingRegistry } from "./marketing.js";
+import { mediaRegistry } from "./media.js";
+import { formsRegistry } from "./forms.js";
+import { dynamicRegistry } from "./dynamic.js";
+import { navigationRegistry } from "./navigation.js";
+import { bricksDiviRegistry } from "./bricks-divi.js";
 export const allRegistryEntries = [
     ...existingRegistry,
     ...layoutRegistry,

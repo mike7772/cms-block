@@ -1,4 +1,4 @@
-import type { MenuBlock as MenuBlockType } from "@/lib/types";
+import type { MenuBlock as MenuBlockType } from "../../lib/types.js";
 export default function MenuBlock({ block, isEditing, }: {
     block: MenuBlockType;
     isEditing?: boolean;

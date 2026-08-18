@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils.js";
 export function StyleDropdown({ label, options, onSelect, width = "w-28", searchable = false, currentValue, previewFont = false, }) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");

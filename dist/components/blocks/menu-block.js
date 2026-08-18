@@ -5,10 +5,10 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useParams, usePathname } from "next/navigation";
 import { registerOverlayPortal } from "@puckeditor/core";
 import { ArrowRight, BarChart3, Briefcase, Building2, Check, ChevronDown, Code2, FileText, GitBranch, Globe, Heart, LayoutDashboard, LayoutTemplate, Mail, MapPin, Newspaper, Phone, Puzzle, Sparkles, Star, Users, Video, } from "lucide-react";
-import { getPreferredImage } from "@/lib/media";
-import { cn } from "@/lib/utils";
-import { defaultLocale, isLocale, } from "@/i18n/config";
-import { hasTextContent } from "@/puck/registry/helpers";
+import { getPreferredImage } from "../../lib/media.js";
+import { cn } from "../../lib/utils.js";
+import { defaultLocale, isLocale, } from "../../i18n/config.js";
+import { hasTextContent } from "../../puck/registry/helpers.js";
 const MENU_CHILD_ICONS = {
     building: Building2,
     briefcase: Briefcase,

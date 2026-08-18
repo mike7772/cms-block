@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { StrapiMedia } from "./media";
+import type { StrapiMedia } from "./media.js";
 export interface HeroBlock {
     __component: "shared.hero";
     id: number;

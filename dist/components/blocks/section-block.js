@@ -1,7 +1,7 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
-import { getPreferredImage } from "@/lib/media";
-import { renderSlot } from "./nested-blocks";
+import { getPreferredImage } from "../../lib/media.js";
+import { renderSlot } from "./nested-blocks.js";
 const paddingClass = {
     none: "py-0",
     small: "py-6",

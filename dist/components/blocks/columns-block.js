@@ -1,5 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { renderSlot } from "./nested-blocks";
+import { renderSlot } from "./nested-blocks.js";
 const gapClass = {
     small: "gap-4",
     medium: "gap-6",

@@ -1,8 +1,8 @@
 import { createElement } from "react";
-import BlockStyleShell from "@/components/puck/block-style-shell";
-import { DEFAULT_BLOCK_ADVANCED, DEFAULT_BLOCK_STYLE, blockStyleFields, } from "@/puck/block-style";
-import { allRegistryEntries } from "./registry";
-import { enableContentEditableFields } from "./registry/helpers";
+import BlockStyleShell from "../components/puck/block-style-shell.js";
+import { DEFAULT_BLOCK_ADVANCED, DEFAULT_BLOCK_STYLE, blockStyleFields, } from "../puck/block-style.js";
+import { allRegistryEntries } from "./registry/index.js";
+import { enableContentEditableFields } from "./registry/helpers.js";
 const components = {};
 const categories = {};
 for (const entry of allRegistryEntries) {

@@ -2,9 +2,9 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import Link from "next/link";
-import { getPreferredImage } from "@/lib/media";
-import { postHref } from "@/lib/nav";
-import { usePostsQuery } from "@/lib/use-posts-query";
+import { getPreferredImage } from "../../lib/media.js";
+import { postHref } from "../../lib/nav.js";
+import { usePostsQuery } from "../../lib/use-posts-query.js";
 const columnClass = {
     "2": "sm:grid-cols-2",
     "3": "sm:grid-cols-2 lg:grid-cols-3",

@@ -1,4 +1,4 @@
-import type { ContentBlock } from "@/lib/types";
+import type { ContentBlock } from "../lib/types.js";
 import type { Data } from "@puckeditor/core";
 /**
  * Convert Puck editor data into Strapi dynamic-zone blocks.

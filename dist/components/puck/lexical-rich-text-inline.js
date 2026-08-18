@@ -2,8 +2,8 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useCallback, useEffect, useRef } from "react";
 import { createUsePuck, registerOverlayPortal, useGetPuck, } from "@puckeditor/core";
-import LexicalEditor from "@/components/LexicalEditor";
-import { cn } from "@/lib/utils";
+import LexicalEditor from "../../components/LexicalEditor.js";
+import { cn } from "../../lib/utils.js";
 const usePuck = createUsePuck();
 const proseClass = "prose prose-slate mx-auto max-w-3xl prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-ink prose-a:text-court prose-strong:text-ink prose-td:px-1.5 prose-td:py-1 prose-th:px-1.5 prose-th:py-1 prose-table:text-sm";
 /**

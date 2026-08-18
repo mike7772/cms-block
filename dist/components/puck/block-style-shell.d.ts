@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { type BlockAdvanced, type BlockStyle } from "@/puck/block-style";
+import { type BlockAdvanced, type BlockStyle } from "../../puck/block-style.js";
 export default function BlockStyleShell({ style, advanced, children, className, }: {
     style?: BlockStyle | null;
     advanced?: BlockAdvanced | null;

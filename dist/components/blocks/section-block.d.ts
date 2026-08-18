@@ -1,4 +1,4 @@
-import type { SectionBlock as SectionBlockType } from "@/lib/types";
+import type { SectionBlock as SectionBlockType } from "../../lib/types.js";
 export default function SectionBlock({ block }: {
     block: SectionBlockType;
 }): import("react").JSX.Element;

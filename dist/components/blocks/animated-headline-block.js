@@ -1,7 +1,7 @@
 "use client";
 import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
 import { useEffect, useMemo, useState } from "react";
-import { asPlainText } from "@/puck/registry/helpers";
+import { asPlainText } from "../../puck/registry/helpers.js";
 const alignClass = {
     left: "text-left",
     center: "text-center",

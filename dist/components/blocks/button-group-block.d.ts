@@ -1,4 +1,4 @@
-import type { ButtonGroupBlock as ButtonGroupBlockType } from "@/lib/types";
+import type { ButtonGroupBlock as ButtonGroupBlockType } from "../../lib/types.js";
 export default function ButtonGroupBlock({ block, }: {
     block: ButtonGroupBlockType;
 }): import("react").JSX.Element;

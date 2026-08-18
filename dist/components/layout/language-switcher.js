@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useRef, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { defaultLocale, isLocale, locales, localeNames, localeShortNames, } from "@/i18n/config";
+import { defaultLocale, isLocale, locales, localeNames, localeShortNames, } from "../../i18n/config.js";
 function localeFromPath(pathname) {
     const segments = pathname.split("/").filter(Boolean);
     for (const segment of segments) {

@@ -1,4 +1,4 @@
-import type { ContentToggleBlock as ContentToggleBlockType } from "@/lib/types";
+import type { ContentToggleBlock as ContentToggleBlockType } from "../../lib/types.js";
 export default function ContentToggleBlock({ block, }: {
     block: ContentToggleBlockType;
 }): import("react").JSX.Element;

@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import { useState } from "react";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 export default function TabsBlock({ block }) {
     var _a;
     const tabs = (_a = block.tabs) !== null && _a !== void 0 ? _a : [];

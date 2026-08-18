@@ -1,4 +1,4 @@
-import type { SitemapBlock as SitemapBlockType } from "@/lib/types";
+import type { SitemapBlock as SitemapBlockType } from "../../lib/types.js";
 export default function SitemapBlock({ block }: {
     block: SitemapBlockType;
 }): import("react").JSX.Element;

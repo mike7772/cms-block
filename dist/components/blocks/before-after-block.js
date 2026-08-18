@@ -2,7 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import { useState } from "react";
-import { getPreferredImage } from "@/lib/media";
+import { getPreferredImage } from "../../lib/media.js";
 export default function BeforeAfterBlock({ block, }) {
     const [position, setPosition] = useState(50);
     const before = getPreferredImage(block.beforeImage);

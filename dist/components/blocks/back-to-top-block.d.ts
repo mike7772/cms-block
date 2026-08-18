@@ -1,4 +1,4 @@
-import type { BackToTopBlock as BackToTopBlockType } from "@/lib/types";
+import type { BackToTopBlock as BackToTopBlockType } from "../../lib/types.js";
 export default function BackToTopBlock({ block, }: {
     block: BackToTopBlockType;
 }): import("react").JSX.Element | null;
