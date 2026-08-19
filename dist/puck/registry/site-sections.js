@@ -45,6 +45,21 @@ function passthroughFromBlock(keys) {
 function passthroughToBlock(component, keys) {
     return (props) => (Object.assign({ __component: component, id: 0 }, Object.fromEntries(keys.map((k) => [k, props[k] || null]))));
 }
+/** Puck attaches internal metadata (a `puck: { renderDropZone, dragRef, ... }`
+ * object containing functions, plus `id`/`style`/`advanced`) to every
+ * block's raw props. Passing that straight into a Client Component (several
+ * of these sections use useState/live widgets) breaks RSC serialization —
+ * "Functions cannot be passed directly to Client Components". Picking only
+ * the block's own declared fields keeps every render() call receiving a
+ * plain, serializable object, same as every other registry block already
+ * gets via its toBlock() conversion step. */
+function pickKnown(props, keys) {
+    var _a;
+    const clean = {};
+    for (const k of keys)
+        clean[k] = (_a = props[k]) !== null && _a !== void 0 ? _a : "";
+    return clean;
+}
 function siteEntry(puckType, strapiComponent, label, category, keys, defaultProps, render, longFields = []) {
     return {
         puckType,
@@ -55,7 +70,7 @@ function siteEntry(puckType, strapiComponent, label, category, keys, defaultProp
         defaultProps,
         fromBlock: passthroughFromBlock(keys),
         toBlock: passthroughToBlock(strapiComponent, keys),
-        render: render,
+        render: ((props) => render(pickKnown(props, keys))),
     };
 }
 /** Simple content-only placeholder for blocks whose real render embeds a
