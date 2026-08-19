@@ -1703,6 +1703,77 @@ export interface SiteServicesAdditionalBlock {
   item4Description?: string | null;
 }
 
+export interface SiteAboutSubpageHeroBlock {
+  __component: "site.about-subpage-hero";
+  id: number;
+  backLabel?: string | null;
+  backUrl?: string | null;
+  title: string;
+  subtitle?: string | null;
+}
+
+export interface SiteAboutPresidentMessageBlock {
+  __component: "site.about-president-message";
+  id: number;
+  imageUrl?: string | null;
+  imageCaptionTitle?: string | null;
+  imageCaptionSubtitle?: string | null;
+  quoteText?: string | null;
+  bodyHeading?: string | null;
+  bodyParagraph1?: string | null;
+  bodyParagraph2?: string | null;
+  bodyParagraph3?: string | null;
+  bodyParagraph4?: string | null;
+  commitmentHeading?: string | null;
+  commitment1?: string | null;
+  commitment2?: string | null;
+  commitment3?: string | null;
+  commitment4?: string | null;
+}
+
+export interface SiteAboutVisionSectionBlock {
+  __component: "site.about-vision-section";
+  id: number;
+  heading?: string | null;
+  text?: string | null;
+}
+
+export interface SiteAboutMissionSectionBlock {
+  __component: "site.about-mission-section";
+  id: number;
+  heading?: string | null;
+  text?: string | null;
+  pillar1Title?: string | null;
+  pillar1Description?: string | null;
+  pillar2Title?: string | null;
+  pillar2Description?: string | null;
+  pillar3Title?: string | null;
+  pillar3Description?: string | null;
+}
+
+export interface SiteAboutCoreValuesSectionBlock {
+  __component: "site.about-core-values-section";
+  id: number;
+  heading?: string | null;
+  description?: string | null;
+  value1Title?: string | null;
+  value1Description?: string | null;
+  value2Title?: string | null;
+  value2Description?: string | null;
+  value3Title?: string | null;
+  value3Description?: string | null;
+  value4Title?: string | null;
+  value4Description?: string | null;
+}
+
+export interface SiteAboutImageBannerBlock {
+  __component: "site.about-image-banner";
+  id: number;
+  imageUrl?: string | null;
+  captionTitle?: string | null;
+  captionText?: string | null;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Union                                                                      */
 /* -------------------------------------------------------------------------- */
@@ -1831,4 +1902,10 @@ export type ContentBlock =
   | SiteServicesHeroBlock
   | SiteServicesGridBlock
   | SiteServicesFeeCalculatorBlock
-  | SiteServicesAdditionalBlock;
+  | SiteServicesAdditionalBlock
+  | SiteAboutSubpageHeroBlock
+  | SiteAboutPresidentMessageBlock
+  | SiteAboutVisionSectionBlock
+  | SiteAboutMissionSectionBlock
+  | SiteAboutCoreValuesSectionBlock
+  | SiteAboutImageBannerBlock;

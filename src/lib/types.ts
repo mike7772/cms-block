@@ -157,6 +157,12 @@ export type {
   SiteServicesGridBlock,
   SiteServicesFeeCalculatorBlock,
   SiteServicesAdditionalBlock,
+  SiteAboutSubpageHeroBlock,
+  SiteAboutPresidentMessageBlock,
+  SiteAboutVisionSectionBlock,
+  SiteAboutMissionSectionBlock,
+  SiteAboutCoreValuesSectionBlock,
+  SiteAboutImageBannerBlock,
 } from "./types/blocks";
 
 import type { StrapiMedia } from "./types/media";

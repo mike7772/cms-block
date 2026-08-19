@@ -3,6 +3,7 @@ import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeUpdatesSe
 import { AboutHeroSection, AboutQuickLinksSection, AboutBodySection, } from "../../components/site-sections/about.js";
 import { ContactHeroSection, ContactInfoAndFormSection, ContactMapSection, } from "../../components/site-sections/contact.js";
 import { ServicesHeroSection, ServicesGridSection, ServicesAdditionalSection, } from "../../components/site-sections/services.js";
+import { AboutSubpageHeroSection, AboutPresidentMessageSection, AboutVisionSection, AboutMissionSection, AboutCoreValuesSection, AboutImageBannerSection, } from "../../components/site-sections/about-subpages.js";
 /**
  * "Site section" blocks reproduce the OCCMS public portal's real page
  * sections (/, /about, /contact, /services) — structural layout and icons
@@ -286,4 +287,61 @@ export const siteSectionsRegistry = [
         item4Title: "Online Support",
         item4Description: "Online help and support",
     }, (props) => createElement(ServicesAdditionalSection, props), ["description"]),
+    siteEntry("AboutSubpageHero", "site.about-subpage-hero", "About: Subpage Hero", "About", ["backLabel", "backUrl", "title", "subtitle"], {
+        backLabel: "Back to About Us",
+        backUrl: "/home/about",
+        title: "Page Title",
+        subtitle: "Page subtitle.",
+    }, (props) => createElement(AboutSubpageHeroSection, props), ["subtitle"]),
+    siteEntry("AboutPresidentMessage", "site.about-president-message", "About: President's Message", "About", [
+        "imageUrl", "imageCaptionTitle", "imageCaptionSubtitle", "quoteText", "bodyHeading",
+        "bodyParagraph1", "bodyParagraph2", "bodyParagraph3", "bodyParagraph4",
+        "commitmentHeading", "commitment1", "commitment2", "commitment3", "commitment4",
+    ], {
+        imageUrl: "/images/President.jpg",
+        imageCaptionTitle: "Court President",
+        imageCaptionSubtitle: "Supreme Court of Oromia",
+        quoteText: "\"Above all, we are committed to delivering fair and accurate justice for all people. Justice must be right and protect human rights, or there can be no justice. Justice must be fair and swift.\"",
+        bodyHeading: "At the Supreme Court of Oromia",
+        bodyParagraph1: "The Supreme Court of Oromia is the highest court operating in the Oromia Region. Our mission is to provide fair, swift, and transparent justice to the people.",
+        bodyParagraph2: "We are working to provide modern and accessible court services through an electronic case management system. This makes it easier and more convenient for everyone to access justice.",
+        bodyParagraph3: "Above all, we are committed to delivering fair and accurate justice for all people, regardless of their status. Everyone has the right to access justice, whether they are within the country or abroad.",
+        bodyParagraph4: "Justice must not only be fair, accurate, swift and transparent, but also must be able to protect human rights and respect human dignity. Therefore, all our work focuses on protecting people and upholding full human rights.",
+        commitmentHeading: "Our Commitment",
+        commitment1: "Delivering fair and accurate justice",
+        commitment2: "Providing swift and accessible services",
+        commitment3: "Working with electronic systems",
+        commitment4: "Protecting human dignity and justice",
+    }, (props) => createElement(AboutPresidentMessageSection, props), ["quoteText", "bodyParagraph1", "bodyParagraph2", "bodyParagraph3", "bodyParagraph4"]),
+    siteEntry("AboutVision", "site.about-vision-section", "About: Vision", "About", ["heading", "text"], {
+        heading: "Our Vision",
+        text: "To be a justice system where fair, swift and transparent justice is accessible to all people, focusing on protecting people and upholding full human rights, providing modern and accessible services through electronic systems, and being a strong and accurate justice system in the Oromia Region.",
+    }, (props) => createElement(AboutVisionSection, props), ["text"]),
+    siteEntry("AboutMission", "site.about-mission-section", "About: Mission", "About", ["heading", "text", "pillar1Title", "pillar1Description", "pillar2Title", "pillar2Description", "pillar3Title", "pillar3Description"], {
+        heading: "Our Mission",
+        text: "To provide fair, swift and transparent justice to the people, to provide modern and accessible court services through an electronic case management system, to fully protect people and uphold human rights.",
+        pillar1Title: "Fair Justice",
+        pillar1Description: "Fair and accurate justice",
+        pillar2Title: "Swift Service",
+        pillar2Description: "Swift and accessible service",
+        pillar3Title: "People First",
+        pillar3Description: "Serving all people",
+    }, (props) => createElement(AboutMissionSection, props), ["text"]),
+    siteEntry("AboutCoreValues", "site.about-core-values-section", "About: Core Values", "About", ["heading", "description", "value1Title", "value1Description", "value2Title", "value2Description", "value3Title", "value3Description", "value4Title", "value4Description"], {
+        heading: "Our Core Values",
+        description: "The core values that guide our work",
+        value1Title: "Integrity",
+        value1Description: "All our work is accurate and truthful",
+        value2Title: "People-Centered",
+        value2Description: "Serving and respecting all people",
+        value3Title: "Transparency",
+        value3Description: "All our work is transparent and open",
+        value4Title: "Efficiency",
+        value4Description: "Swift service and complete work",
+    }, (props) => createElement(AboutCoreValuesSection, props), ["description"]),
+    siteEntry("AboutImageBanner", "site.about-image-banner", "About: Image Banner", "About", ["imageUrl", "captionTitle", "captionText"], {
+        imageUrl: "/images/about image.jpg",
+        captionTitle: "Justice for All",
+        captionText: "Fair justice accessible to everyone",
+    }, (props) => createElement(AboutImageBannerSection, props)),
 ];
