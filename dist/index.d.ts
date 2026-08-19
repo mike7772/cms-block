@@ -4,4 +4,7 @@ export { strapiBlocksToPuckData } from "./puck/strapi-to-puck.js";
 export { allRegistryEntries, registryByPuckType, registryByStrapiComponent, getEntryForBlock, } from "./puck/registry/index.js";
 export type { RegistryEntry } from "./puck/registry/types.js";
 export type { ContentBlock } from "./lib/types.js";
+export { blockStyleFields, normalizeBlockStyle, normalizeBlockAdvanced, DEFAULT_BLOCK_STYLE, DEFAULT_BLOCK_ADVANCED, } from "./puck/block-style.js";
+export type { BlockStyle, BlockAdvanced } from "./puck/block-style.js";
+export { default as BlockStyleShell } from "./components/puck/block-style-shell.js";
 //# sourceMappingURL=index.d.ts.map
