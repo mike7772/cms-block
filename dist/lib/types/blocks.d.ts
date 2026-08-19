@@ -1206,5 +1206,254 @@ export interface ChartBlock {
     dataJson: string;
     variant?: "bar" | "horizontal" | null;
 }
-export type ContentBlock = HeroBlock | RichTextBlock | LexicalRichTextBlock | MediaBlock | QuoteBlock | SliderBlock | CtaBlock | AdvancedHeadingBlock | AnimatedHeadlineBlock | AlertBlock | AccordionBlock | TabsBlock | IconBoxBlock | ImageBoxBlock | ContentCardsBlock | CodeHighlightBlock | DataTableBlock | SpacerBlock | FeaturesGridBlock | FaqBlock | TestimonialsBlock | ReviewsBlock | StatsBlock | TeamBlock | PricingBlock | PriceListBlock | FlipBoxesBlock | NewsletterBlock | LinkInBioBlock | CountdownBlock | GalleryBlock | VideoEmbedBlock | VideoPlaylistBlock | LogoCloudBlock | LottieBlock | GoogleMapsBlock | HotspotBlock | PortfolioBlock | ContactFormBlock | LoginFormBlock | SearchBarBlock | OffCanvasBlock | ProgressBarsBlock | ProgressTrackerBlock | PostsBlock | LoopGridBlock | LoopCarouselBlock | TaxonomyFilterBlock | PostListBlock | PostTimelineBlock | FeaturedPostBlock | NewsTickerBlock | CategoryCardsBlock | RelatedPostsBlock | AuthorBoxBlock | ContentTickerBlock | ImageAccordionBlock | DualButtonBlock | ProtectedContentBlock | ReadingProgressBlock | BackToTopBlock | BusinessHoursBlock | ToggleBlock | ContentToggleBlock | NumberCounterBlock | CircleCounterBlock | PostSliderBlock | VideoSliderBlock | FilterablePortfolioBlock | PostNavigationBlock | ReadingTimeBlock | LogoBlock | IconBlock | BlurbBlock | DropdownBlock | PromoBoxBlock | BreadcrumbsBlock | MenuBlock | MenuAnchorBlock | ShareButtonsBlock | SitemapBlock | SocialIconsBlock | TableOfContentsBlock | SectionBlock | ColumnsBlock | HeaderBlock | FooterBlock | ButtonBlock | ButtonGroupBlock | DividerBlock | IconListBlock | HtmlEmbedBlock | IframeEmbedBlock | BannerBlock | TimelineBlock | StepsBlock | BeforeAfterBlock | ModalBlock | AudioPlayerBlock | FileDownloadBlock | MarqueeBlock | RatingBlock | ChartBlock;
+export interface SiteHomeHeroBlock {
+    __component: "site.home-hero";
+    id: number;
+    badge?: string | null;
+    title: string;
+    titleHighlight?: string | null;
+    description?: string | null;
+    fileNewCaseLabel?: string | null;
+    trackCaseStatusLabel?: string | null;
+    imageUrl?: string | null;
+    buildingCaption?: string | null;
+}
+export interface SiteHomeSearchBlock {
+    __component: "site.home-search";
+    id: number;
+    title?: string | null;
+    description?: string | null;
+    searchByDateLabel?: string | null;
+    searchByPartyLabel?: string | null;
+}
+export interface SiteHomeAboutUsBlock {
+    __component: "site.home-about-us";
+    id: number;
+    badge?: string | null;
+    heading?: string | null;
+    description?: string | null;
+    visionHeading?: string | null;
+    visionText?: string | null;
+    missionHeading?: string | null;
+    missionText?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+    videoUrl?: string | null;
+}
+export interface SiteHomeFeeCalculatorBlock {
+    __component: "site.home-fee-calculator";
+    id: number;
+    badge?: string | null;
+    title?: string | null;
+    description?: string | null;
+}
+export interface SiteHomeFeaturesBlock {
+    __component: "site.home-features";
+    id: number;
+    feature1Title?: string | null;
+    feature1Description?: string | null;
+    feature2Title?: string | null;
+    feature2Description?: string | null;
+    feature3Title?: string | null;
+    feature3Description?: string | null;
+    feature4Title?: string | null;
+    feature4Description?: string | null;
+}
+export interface SiteHomeUpdatesBlock {
+    __component: "site.home-updates";
+    id: number;
+    title?: string | null;
+    viewAllLabel?: string | null;
+    readMoreLabel?: string | null;
+    update1Type?: string | null;
+    update1Date?: string | null;
+    update1Title?: string | null;
+    update1Description?: string | null;
+    update2Type?: string | null;
+    update2Date?: string | null;
+    update2Title?: string | null;
+    update2Description?: string | null;
+    update3Type?: string | null;
+    update3Date?: string | null;
+    update3Title?: string | null;
+    update3Description?: string | null;
+}
+export interface SiteHomeCoreFeaturesBlock {
+    __component: "site.home-core-features";
+    id: number;
+    badge?: string | null;
+    title?: string | null;
+    description?: string | null;
+    learnMoreLabel?: string | null;
+    item1Title?: string | null;
+    item1Description?: string | null;
+    item2Title?: string | null;
+    item2Description?: string | null;
+    item3Title?: string | null;
+    item3Description?: string | null;
+}
+export interface SiteHomeStatsBlock {
+    __component: "site.home-stats";
+    id: number;
+    stat1Value?: string | null;
+    stat1Label?: string | null;
+    stat2Value?: string | null;
+    stat2Label?: string | null;
+    stat3Value?: string | null;
+    stat3Label?: string | null;
+    stat4Value?: string | null;
+    stat4Label?: string | null;
+}
+export interface SiteHomeFaqBlock {
+    __component: "site.home-faq";
+    id: number;
+    title?: string | null;
+    description?: string | null;
+    viewAllLabel?: string | null;
+    faq1?: string | null;
+    faq2?: string | null;
+    faq3?: string | null;
+    faq4?: string | null;
+    faq5?: string | null;
+}
+export interface SiteHomeCtaBlock {
+    __component: "site.home-cta";
+    id: number;
+    heading?: string | null;
+    description?: string | null;
+    primaryButtonLabel?: string | null;
+    secondaryButtonLabel?: string | null;
+    newsletterHeading?: string | null;
+    newsletterDescription?: string | null;
+    emailPlaceholder?: string | null;
+    subscribeButtonLabel?: string | null;
+    disclaimerText?: string | null;
+}
+export interface SiteHomeContactInfoBlock {
+    __component: "site.home-contact-info";
+    id: number;
+    visitTitle?: string | null;
+    visitAddress?: string | null;
+    visitActionLabel?: string | null;
+    callTitle?: string | null;
+    callPhone?: string | null;
+    callHours?: string | null;
+    callActionLabel?: string | null;
+    callHref?: string | null;
+    emailTitle?: string | null;
+    emailAddress?: string | null;
+    emailResponseTime?: string | null;
+    emailActionLabel?: string | null;
+    emailHref?: string | null;
+}
+export interface SiteAboutHeroBlock {
+    __component: "site.about-hero";
+    id: number;
+    title: string;
+    description?: string | null;
+}
+export interface SiteAboutQuickLinksBlock {
+    __component: "site.about-quick-links";
+    id: number;
+    link1Title?: string | null;
+    link1Description?: string | null;
+    link1Url?: string | null;
+    link1Label?: string | null;
+    link2Title?: string | null;
+    link2Description?: string | null;
+    link2Url?: string | null;
+    link2Label?: string | null;
+}
+export interface SiteAboutBodyBlock {
+    __component: "site.about-body";
+    id: number;
+    heading?: string | null;
+    paragraph1?: string | null;
+    paragraph2?: string | null;
+    paragraph3?: string | null;
+    imageUrl?: string | null;
+}
+export interface SiteContactHeroBlock {
+    __component: "site.contact-hero";
+    id: number;
+    title: string;
+    description?: string | null;
+}
+export interface SiteContactInfoAndFormBlock {
+    __component: "site.contact-info-and-form";
+    id: number;
+    infoHeading?: string | null;
+    infoDescription?: string | null;
+    addressTitle?: string | null;
+    addressLine1?: string | null;
+    addressLine2?: string | null;
+    addressLine3?: string | null;
+    phoneTitle?: string | null;
+    phone1?: string | null;
+    phone2?: string | null;
+    emailTitle?: string | null;
+    email1?: string | null;
+    email2?: string | null;
+    hoursTitle?: string | null;
+    hoursLine1?: string | null;
+    hoursLine2?: string | null;
+    formHeading?: string | null;
+    submitLabel?: string | null;
+    successMessage?: string | null;
+}
+export interface SiteContactMapBlock {
+    __component: "site.contact-map";
+    id: number;
+    heading?: string | null;
+    placeholderText?: string | null;
+}
+export interface SiteServicesHeroBlock {
+    __component: "site.services-hero";
+    id: number;
+    title: string;
+    description?: string | null;
+}
+export interface SiteServicesGridBlock {
+    __component: "site.services-grid";
+    id: number;
+    service1Title?: string | null;
+    service1Description?: string | null;
+    service1Features?: string | null;
+    service2Title?: string | null;
+    service2Description?: string | null;
+    service2Features?: string | null;
+    service3Title?: string | null;
+    service3Description?: string | null;
+    service3Features?: string | null;
+    service4Title?: string | null;
+    service4Description?: string | null;
+    service4Features?: string | null;
+    service5Title?: string | null;
+    service5Description?: string | null;
+    service5Features?: string | null;
+    service6Title?: string | null;
+    service6Description?: string | null;
+    service6Features?: string | null;
+}
+export interface SiteServicesFeeCalculatorBlock {
+    __component: "site.services-fee-calculator";
+    id: number;
+    heading?: string | null;
+    description?: string | null;
+}
+export interface SiteServicesAdditionalBlock {
+    __component: "site.services-additional";
+    id: number;
+    heading?: string | null;
+    description?: string | null;
+    item1Title?: string | null;
+    item1Description?: string | null;
+    item2Title?: string | null;
+    item2Description?: string | null;
+    item3Title?: string | null;
+    item3Description?: string | null;
+    item4Title?: string | null;
+    item4Description?: string | null;
+}
+export type ContentBlock = HeroBlock | RichTextBlock | LexicalRichTextBlock | MediaBlock | QuoteBlock | SliderBlock | CtaBlock | AdvancedHeadingBlock | AnimatedHeadlineBlock | AlertBlock | AccordionBlock | TabsBlock | IconBoxBlock | ImageBoxBlock | ContentCardsBlock | CodeHighlightBlock | DataTableBlock | SpacerBlock | FeaturesGridBlock | FaqBlock | TestimonialsBlock | ReviewsBlock | StatsBlock | TeamBlock | PricingBlock | PriceListBlock | FlipBoxesBlock | NewsletterBlock | LinkInBioBlock | CountdownBlock | GalleryBlock | VideoEmbedBlock | VideoPlaylistBlock | LogoCloudBlock | LottieBlock | GoogleMapsBlock | HotspotBlock | PortfolioBlock | ContactFormBlock | LoginFormBlock | SearchBarBlock | OffCanvasBlock | ProgressBarsBlock | ProgressTrackerBlock | PostsBlock | LoopGridBlock | LoopCarouselBlock | TaxonomyFilterBlock | PostListBlock | PostTimelineBlock | FeaturedPostBlock | NewsTickerBlock | CategoryCardsBlock | RelatedPostsBlock | AuthorBoxBlock | ContentTickerBlock | ImageAccordionBlock | DualButtonBlock | ProtectedContentBlock | ReadingProgressBlock | BackToTopBlock | BusinessHoursBlock | ToggleBlock | ContentToggleBlock | NumberCounterBlock | CircleCounterBlock | PostSliderBlock | VideoSliderBlock | FilterablePortfolioBlock | PostNavigationBlock | ReadingTimeBlock | LogoBlock | IconBlock | BlurbBlock | DropdownBlock | PromoBoxBlock | BreadcrumbsBlock | MenuBlock | MenuAnchorBlock | ShareButtonsBlock | SitemapBlock | SocialIconsBlock | TableOfContentsBlock | SectionBlock | ColumnsBlock | HeaderBlock | FooterBlock | ButtonBlock | ButtonGroupBlock | DividerBlock | IconListBlock | HtmlEmbedBlock | IframeEmbedBlock | BannerBlock | TimelineBlock | StepsBlock | BeforeAfterBlock | ModalBlock | AudioPlayerBlock | FileDownloadBlock | MarqueeBlock | RatingBlock | ChartBlock | SiteHomeHeroBlock | SiteHomeSearchBlock | SiteHomeAboutUsBlock | SiteHomeFeeCalculatorBlock | SiteHomeFeaturesBlock | SiteHomeUpdatesBlock | SiteHomeCoreFeaturesBlock | SiteHomeStatsBlock | SiteHomeFaqBlock | SiteHomeCtaBlock | SiteHomeContactInfoBlock | SiteAboutHeroBlock | SiteAboutQuickLinksBlock | SiteAboutBodyBlock | SiteContactHeroBlock | SiteContactInfoAndFormBlock | SiteContactMapBlock | SiteServicesHeroBlock | SiteServicesGridBlock | SiteServicesFeeCalculatorBlock | SiteServicesAdditionalBlock;
 //# sourceMappingURL=blocks.d.ts.map

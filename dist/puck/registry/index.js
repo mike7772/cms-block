@@ -7,6 +7,7 @@ import { formsRegistry } from "./forms.js";
 import { dynamicRegistry } from "./dynamic.js";
 import { navigationRegistry } from "./navigation.js";
 import { bricksDiviRegistry } from "./bricks-divi.js";
+import { siteSectionsRegistry } from "./site-sections.js";
 export const allRegistryEntries = [
     ...existingRegistry,
     ...layoutRegistry,
@@ -17,6 +18,7 @@ export const allRegistryEntries = [
     ...dynamicRegistry,
     ...navigationRegistry,
     ...bricksDiviRegistry,
+    ...siteSectionsRegistry,
 ];
 export const registryByPuckType = new Map(allRegistryEntries.map((entry) => [entry.puckType, entry]));
 export const registryByStrapiComponent = new Map(allRegistryEntries.map((entry) => [entry.strapiComponent, entry]));

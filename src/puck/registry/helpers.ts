@@ -156,4 +156,8 @@ export type PuckCategory =
   | "Media"
   | "Forms"
   | "Dynamic"
-  | "Navigation";
+  | "Navigation"
+  | "Home"
+  | "About"
+  | "Contact"
+  | "Services";

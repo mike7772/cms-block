@@ -7,6 +7,7 @@ import { formsRegistry } from "./forms";
 import { dynamicRegistry } from "./dynamic";
 import { navigationRegistry } from "./navigation";
 import { bricksDiviRegistry } from "./bricks-divi";
+import { siteSectionsRegistry } from "./site-sections";
 import type { RegistryEntry } from "./types";
 import type { ContentBlock } from "@/lib/types";
 
@@ -20,6 +21,7 @@ export const allRegistryEntries: RegistryEntry[] = [
   ...dynamicRegistry,
   ...navigationRegistry,
   ...bricksDiviRegistry,
+  ...siteSectionsRegistry,
 ];
 
 export const registryByPuckType = new Map(

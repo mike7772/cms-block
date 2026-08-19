@@ -18,5 +18,5 @@ export declare function asPlainText(value: unknown): string;
 /** Safe first character for avatars/fallback glyphs when value may be a ReactNode. */
 export declare function initialLetter(value: unknown, fallback?: string): string;
 export declare function hasTextContent(value: unknown): boolean;
-export type PuckCategory = "Layout" | "Content" | "Marketing" | "Media" | "Forms" | "Dynamic" | "Navigation";
+export type PuckCategory = "Layout" | "Content" | "Marketing" | "Media" | "Forms" | "Dynamic" | "Navigation" | "Home" | "About" | "Contact" | "Services";
 //# sourceMappingURL=helpers.d.ts.map
