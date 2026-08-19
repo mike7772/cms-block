@@ -1,1 +1,1 @@
-{"version":3,"file":"puck.config.d.ts","sourceRoot":"","sources":["../../src/puck/puck.config.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,MAAM,EAAE,MAAM,kBAAkB,CAAC;AA6C/C,eAAO,MAAM,UAAU,EAAE,MAMxB,CAAC;AAEF,eAAe,UAAU,CAAC"}
+{"version":3,"file":"puck.config.d.ts","sourceRoot":"","sources":["../../src/puck/puck.config.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,MAAM,EAAE,MAAM,kBAAkB,CAAC;AA8C/C,eAAO,MAAM,UAAU,EAAE,MAMxB,CAAC;AAEF,eAAe,UAAU,CAAC"}

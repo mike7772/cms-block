@@ -10,6 +10,7 @@ import {
 } from "@/puck/block-style";
 import { allRegistryEntries } from "./registry";
 import { enableContentEditableFields } from "./registry/helpers";
+import { siteSectionComponents, siteSectionCategories } from "./site-sections-registration";
 
 const components: Config["components"] = {};
 const categories: NonNullable<Config["categories"]> = {};
@@ -47,8 +48,8 @@ export const puckConfig: Config = {
   root: {
     fields: {},
   },
-  categories,
-  components,
+  categories: { ...categories, ...siteSectionCategories },
+  components: { ...components, ...siteSectionComponents },
 };
 
 export default puckConfig;
