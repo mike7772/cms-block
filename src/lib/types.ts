@@ -163,6 +163,8 @@ export type {
   SiteAboutMissionSectionBlock,
   SiteAboutCoreValuesSectionBlock,
   SiteAboutImageBannerBlock,
+  SiteCaseSearchWidgetBlock,
+  SiteFeeCalculatorWidgetBlock,
 } from "./types/blocks";
 
 import type { StrapiMedia } from "./types/media";

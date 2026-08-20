@@ -1,6 +1,10 @@
 import { createElement } from "react";
+import Link from "next/link";
+import { Calendar, Calculator, Users } from "lucide-react";
 import type { RegistryEntry } from "./types";
 import type { ContentBlock } from "@/lib/types";
+import { CaseSearchWidget } from "@/components/site-sections/case-search-widget";
+import { CourtFeeCalculatorWidget } from "@/components/site-sections/fee-calculator-widget";
 import {
   HomeHeroSection,
   HomeAboutUsSection,
@@ -49,13 +53,13 @@ import {
  * pass-through mappings — built with the small helpers below instead of
  * hand-writing 21 nearly-identical converter pairs.
  *
- * Three blocks that embed a *live* app widget (case search, fee calculator)
- * are included here for their *content* fields (so Strapi/Puck can store
- * and edit their heading/description text and the blocks dynamiczone stays
- * complete) but their `render` is a plain content-only fallback — the
- * consuming portal app overrides them locally with the real live widget
- * (see that app's lib/cms/puck-config.tsx), same as CaseSearchWidget/
- * FeeCalculatorWidget.
+ * The blocks that embed a *live* app widget (case search, fee calculator —
+ * HomeSearch, HomeFeeCalculator, ServicesFeeCalculator, CaseSearchWidget,
+ * FeeCalculatorWidget) render the real interactive widgets directly
+ * (case-search-widget.tsx / fee-calculator-widget.tsx), calling
+ * OCCMS-Backend's public endpoints via NEXT_PUBLIC_API_URL — so both
+ * OCCMS_FRONTED_V1 (editor) and PUBLIC_PORTAL (renderer) show the exact
+ * same live widget, not an app-local placeholder.
  */
 
 const text = { type: "text" as const };
@@ -122,23 +126,135 @@ function siteEntry(
   };
 }
 
-/** Simple content-only placeholder for blocks whose real render embeds a
- * live app widget the shared package doesn't have access to. */
-function ContentOnlyFallback({
+/** Generic "heading + description + live widget" wrapper shared by the two
+ * bare widget blocks (CaseSearchWidget / FeeCalculatorWidget). */
+function WidgetSection({
   heading,
   description,
+  children,
 }: {
   heading?: string;
   description?: string;
+  children: ReturnType<typeof createElement>;
 }) {
   return createElement(
     "section",
     { className: "bg-white py-8 sm:py-12" },
     createElement(
       "div",
-      { className: "container mx-auto max-w-4xl px-4 text-center" },
-      heading ? createElement("h2", { className: "text-xl font-bold text-blue-900" }, heading) : null,
-      description ? createElement("p", { className: "mt-2 text-gray-600" }, description) : null,
+      { className: "container mx-auto px-4 sm:px-6" },
+      createElement(
+        "div",
+        { className: "relative z-10 mx-auto max-w-4xl rounded-xl bg-white p-4 shadow-lg sm:p-6" },
+        heading
+          ? createElement("h2", { className: "mb-3 text-lg font-bold text-blue-900 sm:mb-4 sm:text-xl" }, heading)
+          : null,
+        description ? createElement("p", { className: "mb-3 text-sm text-gray-600 sm:mb-4 sm:text-base" }, description) : null,
+        children,
+      ),
+    ),
+  );
+}
+
+function HomeSearchWidgetSection(props: {
+  title?: string;
+  description?: string;
+  searchByDateLabel?: string;
+  searchByPartyLabel?: string;
+}) {
+  return createElement(
+    "section",
+    { className: "relative z-20 bg-white py-8 sm:py-12" },
+    createElement(
+      "div",
+      { className: "container mx-auto px-4 sm:px-6" },
+      createElement(
+        "div",
+        { className: "relative z-10 mx-auto -mt-12 max-w-4xl rounded-xl bg-white p-4 shadow-lg sm:-mt-16 sm:p-6 md:-mt-20" },
+        props.title
+          ? createElement("h2", { className: "mb-3 text-lg font-bold text-blue-900 sm:mb-4 sm:text-xl" }, props.title)
+          : null,
+        props.description
+          ? createElement("p", { className: "mb-3 text-sm text-gray-600 sm:mb-4 sm:text-base" }, props.description)
+          : null,
+        createElement(CaseSearchWidget, {}),
+        createElement(
+          "div",
+          { className: "mt-3 flex flex-wrap gap-4 sm:mt-4 sm:gap-6" },
+          createElement(
+            Link,
+            { href: "/dashboard/case-status", className: "group flex items-center text-sm text-blue-600 hover:text-blue-800" },
+            createElement(Calendar, { className: "mr-2 h-4 w-4" }),
+            createElement("span", null, props.searchByDateLabel),
+          ),
+          createElement(
+            Link,
+            { href: "/dashboard/case-search", className: "group flex items-center text-sm text-blue-600 hover:text-blue-800" },
+            createElement(Users, { className: "mr-2 h-4 w-4" }),
+            createElement("span", null, props.searchByPartyLabel),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+function HomeFeeCalculatorWidgetSection(props: { badge?: string; title?: string; description?: string }) {
+  return createElement(
+    "section",
+    { id: "court-fee", className: "bg-white py-16" },
+    createElement(
+      "div",
+      { className: "container mx-auto px-4" },
+      createElement(
+        "div",
+        { className: "mb-12 text-center" },
+        props.badge
+          ? createElement("div", { className: "mb-4 inline-block rounded-full bg-blue-100 px-3 py-1 text-blue-600" }, props.badge)
+          : null,
+        props.title
+          ? createElement("h2", { className: "mb-6 font-serif text-3xl font-bold text-blue-900 md:text-4xl" }, props.title)
+          : null,
+        props.description
+          ? createElement("p", { className: "mx-auto max-w-2xl text-lg text-gray-700" }, props.description)
+          : null,
+      ),
+      createElement("div", { className: "mx-auto max-w-full" }, createElement(CourtFeeCalculatorWidget, {})),
+    ),
+  );
+}
+
+function ServicesFeeCalculatorWidgetSection(props: { heading?: string; description?: string }) {
+  return createElement(
+    "section",
+    { className: "bg-gray-50 py-16" },
+    createElement(
+      "div",
+      { className: "container mx-auto px-4" },
+      createElement(
+        "div",
+        { className: "mx-auto max-w-4xl" },
+        createElement(
+          "div",
+          { className: "mb-12 text-center" },
+          createElement(
+            "div",
+            { className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100" },
+            createElement(Calculator, { className: "h-8 w-8 text-blue-600" }),
+          ),
+          props.heading
+            ? createElement("h2", { className: "mb-4 font-serif text-3xl font-bold text-blue-900 md:text-4xl" }, props.heading)
+            : null,
+          props.description
+            ? createElement("p", { className: "mx-auto max-w-2xl text-lg text-gray-700" }, props.description)
+            : null,
+        ),
+        createElement(
+          "div",
+          { className: "rounded-xl bg-white p-8 shadow-lg" },
+          createElement(CourtFeeCalculatorWidget, {}),
+        ),
+      ),
     ),
   );
 }
@@ -177,7 +293,7 @@ export const siteSectionsRegistry: RegistryEntry[] = [
       searchByDateLabel: "Search by Hearing Date",
       searchByPartyLabel: "Search by Party Name",
     },
-    (props) => createElement(ContentOnlyFallback, props as never),
+    (props) => createElement(HomeSearchWidgetSection, props as never),
     ["description"],
   ),
 
@@ -217,7 +333,7 @@ export const siteSectionsRegistry: RegistryEntry[] = [
       title: "Court Fee Calculator",
       description: "Calculate the required court fee based on your case cost amount before filing your case",
     },
-    (props) => createElement(ContentOnlyFallback, props as never),
+    (props) => createElement(HomeFeeCalculatorWidgetSection, props as never),
     ["description"],
   ),
 
@@ -538,7 +654,7 @@ export const siteSectionsRegistry: RegistryEntry[] = [
       heading: "Calculate Court Fees",
       description: "Use our calculator to accurately and quickly determine court fees.",
     },
-    (props) => createElement(ContentOnlyFallback, props as never),
+    (props) => createElement(ServicesFeeCalculatorWidgetSection, props as never),
     ["description"],
   ),
 
@@ -685,5 +801,44 @@ export const siteSectionsRegistry: RegistryEntry[] = [
       captionText: "Fair justice accessible to everyone",
     },
     (props) => createElement(AboutImageBannerSection, props as never),
+  ),
+
+  siteEntry(
+    "CaseSearchWidget",
+    "site.case-search-widget",
+    "Case Search Widget",
+    "Home",
+    ["heading", "description"],
+    {
+      heading: "Quick Case Lookup",
+      description: "Access your case information instantly",
+    },
+    (props) =>
+      createElement(
+        WidgetSection,
+        props as never,
+        createElement(CaseSearchWidget, {}),
+      ),
+    ["description"],
+  ),
+
+  siteEntry(
+    "FeeCalculatorWidget",
+    "site.fee-calculator-widget",
+    "Court Fee Calculator",
+    "Home",
+    ["heading", "description"],
+    {
+      heading: "Court Fee Calculator",
+      description:
+        "Calculate the required court fee based on your case cost amount before filing your case",
+    },
+    (props) =>
+      createElement(
+        WidgetSection,
+        props as never,
+        createElement(CourtFeeCalculatorWidget, {}),
+      ),
+    ["description"],
   ),
 ];

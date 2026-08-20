@@ -1774,6 +1774,20 @@ export interface SiteAboutImageBannerBlock {
   captionText?: string | null;
 }
 
+export interface SiteCaseSearchWidgetBlock {
+  __component: "site.case-search-widget";
+  id: number;
+  heading?: string | null;
+  description?: string | null;
+}
+
+export interface SiteFeeCalculatorWidgetBlock {
+  __component: "site.fee-calculator-widget";
+  id: number;
+  heading?: string | null;
+  description?: string | null;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Union                                                                      */
 /* -------------------------------------------------------------------------- */
@@ -1908,4 +1922,6 @@ export type ContentBlock =
   | SiteAboutVisionSectionBlock
   | SiteAboutMissionSectionBlock
   | SiteAboutCoreValuesSectionBlock
-  | SiteAboutImageBannerBlock;
+  | SiteAboutImageBannerBlock
+  | SiteCaseSearchWidgetBlock
+  | SiteFeeCalculatorWidgetBlock;

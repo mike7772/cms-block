@@ -41,6 +41,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      ethiopian-date:
+        specifier: ^0.0.6
+        version: 0.0.6
       lexical:
         specifier: ^0.48.0
         version: 0.48.0(typescript@5.9.3)
@@ -1093,6 +1096,9 @@ packages:
 
   estree-util-is-identifier-name@3.0.0:
     resolution: {integrity: sha512-hFtqIDZTIUZ9BXLb8y4pYGyk6+wekIivNVTcmvk8NoOh+VeRn5y6cEHzbURrWbfp1fIqdVipilzj+lfaadNZmg==}
+
+  ethiopian-date@0.0.6:
+    resolution: {integrity: sha512-O+8hYimosZVn85MWcHtq9HQLR2HdELZPbv1zk3Xc6nm1cYvBl3V1fezrcMkqWKt8tin9dr3/vk0JkQAEWQZzXA==}
 
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
@@ -2722,6 +2728,8 @@ snapshots:
   escape-string-regexp@5.0.0: {}
 
   estree-util-is-identifier-name@3.0.0: {}
+
+  ethiopian-date@0.0.6: {}
 
   extend@3.0.2: {}
 
