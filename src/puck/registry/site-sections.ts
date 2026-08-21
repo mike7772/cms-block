@@ -1,10 +1,12 @@
 import { createElement } from "react";
 import Link from "next/link";
 import { Calendar, Calculator, Users } from "lucide-react";
+import type { CustomField } from "@puckeditor/core";
 import type { RegistryEntry } from "./types";
 import type { ContentBlock } from "@/lib/types";
 import { CaseSearchWidget } from "@/components/site-sections/case-search-widget";
 import { CourtFeeCalculatorWidget } from "@/components/site-sections/fee-calculator-widget";
+import { ImageUrlField } from "@/components/puck-fields/image-url-field";
 import {
   HomeHeroSection,
   HomeAboutUsSection,
@@ -65,9 +67,20 @@ import {
 const text = { type: "text" as const };
 const textarea = { type: "textarea" as const };
 
+/** Any field literally named "imageUrl" gets the upload-capable custom field
+ * (paste a link OR upload straight to MinIO) instead of a plain text input —
+ * every image field in this registry uses that exact key. */
+const imageUrlField: CustomField<string> = {
+  type: "custom",
+  render: ({ value, onChange, readOnly }) =>
+    createElement(ImageUrlField, { value: value ?? "", onChange, readOnly }),
+};
+
 function fieldsOf(keys: string[], long: Set<string> = new Set()) {
-  const fields: Record<string, { type: "text" | "textarea" }> = {};
-  for (const k of keys) fields[k] = long.has(k) ? textarea : text;
+  const fields: Record<string, { type: "text" | "textarea" } | CustomField<string>> = {};
+  for (const k of keys) {
+    fields[k] = k === "imageUrl" ? imageUrlField : long.has(k) ? textarea : text;
+  }
   return fields;
 }
 

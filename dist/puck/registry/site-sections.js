@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Calendar, Calculator, Users } from "lucide-react";
 import { CaseSearchWidget } from "../../components/site-sections/case-search-widget.js";
 import { CourtFeeCalculatorWidget } from "../../components/site-sections/fee-calculator-widget.js";
+import { ImageUrlField } from "../../components/puck-fields/image-url-field.js";
 import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeUpdatesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeFaqSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
 import { AboutHeroSection, AboutQuickLinksSection, AboutBodySection, } from "../../components/site-sections/about.js";
 import { ContactHeroSection, ContactInfoAndFormSection, ContactMapSection, } from "../../components/site-sections/contact.js";
@@ -31,10 +32,18 @@ import { AboutSubpageHeroSection, AboutPresidentMessageSection, AboutVisionSecti
  */
 const text = { type: "text" };
 const textarea = { type: "textarea" };
+/** Any field literally named "imageUrl" gets the upload-capable custom field
+ * (paste a link OR upload straight to MinIO) instead of a plain text input —
+ * every image field in this registry uses that exact key. */
+const imageUrlField = {
+    type: "custom",
+    render: ({ value, onChange, readOnly }) => createElement(ImageUrlField, { value: value !== null && value !== void 0 ? value : "", onChange, readOnly }),
+};
 function fieldsOf(keys, long = new Set()) {
     const fields = {};
-    for (const k of keys)
-        fields[k] = long.has(k) ? textarea : text;
+    for (const k of keys) {
+        fields[k] = k === "imageUrl" ? imageUrlField : long.has(k) ? textarea : text;
+    }
     return fields;
 }
 function passthroughFromBlock(keys) {
