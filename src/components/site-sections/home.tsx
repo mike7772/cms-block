@@ -41,7 +41,13 @@ export function HomeHeroSection(props: HomeHeroProps) {
   const p = props;
   return (
     <section className="relative overflow-hidden bg-blue-900 py-8 text-white sm:py-12 md:py-16 lg:py-24">
-      <div className="bg-pattern absolute inset-0 opacity-10"></div>
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+        }}
+      ></div>
       <div className="container relative z-10 mx-auto grid items-center gap-6 px-4 sm:gap-8 sm:px-6 md:grid-cols-2 md:gap-12">
         <div className="space-y-4 sm:space-y-6">
           <div className="inline-block rounded-full bg-blue-800 px-2.5 py-0.5 text-xs font-medium text-blue-100 sm:px-3 sm:py-1 sm:text-sm">
@@ -420,7 +426,13 @@ export function HomeCtaSection(props: HomeCtaProps) {
   const p = props;
   return (
     <section className="relative overflow-hidden bg-blue-900 py-8 text-white sm:py-12 md:py-16 lg:py-24">
-      <div className="bg-pattern absolute inset-0 opacity-10"></div>
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+        }}
+      ></div>
       <div className="container relative z-10 mx-auto grid items-center gap-6 px-4 sm:gap-8 sm:px-6 md:grid-cols-2 md:gap-12">
         <div>
           <h2 className="mb-4 font-serif text-2xl font-bold leading-tight sm:mb-6 sm:text-3xl md:text-4xl">{p.heading}</h2>
