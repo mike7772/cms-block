@@ -11,6 +11,8 @@ export function ServicesHeroSection(props) {
     return (_jsx("section", { className: "bg-gradient-to-br from-blue-50 to-blue-100 py-16 md:py-24", children: _jsx("div", { className: "container mx-auto px-4", children: _jsxs("div", { className: "mx-auto max-w-4xl text-center", children: [_jsx("h1", { className: "mb-6 font-serif text-4xl font-bold text-blue-900 md:text-5xl", children: p.title }), _jsx("p", { className: "mx-auto max-w-2xl text-lg text-gray-700 md:text-xl", children: p.description })] }) }) }));
 }
 function bulletsToList(text) {
+    if (typeof text !== "string")
+        return [];
     return text
         .split("\n")
         .map((line) => line.trim())

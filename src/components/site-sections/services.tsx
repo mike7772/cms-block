@@ -38,7 +38,8 @@ export function ServicesHeroSection(props: ServicesHeroProps) {
   );
 }
 
-function bulletsToList(text: string): string[] {
+function bulletsToList(text: string | undefined | null): string[] {
+  if (typeof text !== "string") return [];
   return text
     .split("\n")
     .map((line) => line.trim())
