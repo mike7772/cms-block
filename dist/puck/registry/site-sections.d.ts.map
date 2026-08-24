@@ -1,1 +1,1 @@
-{"version":3,"file":"site-sections.d.ts","sourceRoot":"","sources":["../../../src/puck/registry/site-sections.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,SAAS,CAAC;AA8Q7C,eAAO,MAAM,oBAAoB,EAAE,aAAa,EAskB/C,CAAC"}
+{"version":3,"file":"site-sections.d.ts","sourceRoot":"","sources":["../../../src/puck/registry/site-sections.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,SAAS,CAAC;AAsS7C,eAAO,MAAM,oBAAoB,EAAE,aAAa,EAykB/C,CAAC"}

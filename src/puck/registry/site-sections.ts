@@ -5,7 +5,13 @@ import type { CustomField } from "@puckeditor/core";
 import type { RegistryEntry } from "./types";
 import type { ContentBlock } from "@/lib/types";
 import { CaseSearchWidget } from "@/components/site-sections/case-search-widget";
-import { CourtFeeCalculatorWidget } from "@/components/site-sections/fee-calculator-widget";
+import {
+  CourtFeeCalculatorWidget,
+  DEFAULT_HOW_TO_USE_STEPS,
+  type CourtFeeCalculatorWidgetProps,
+} from "@/components/site-sections/fee-calculator-widget";
+
+const HOW_TO_USE_STEP_KEYS = ["howToUseStep1", "howToUseStep2", "howToUseStep3", "howToUseStep4"];
 import { ImageUrlField } from "@/components/puck-fields/image-url-field";
 import {
   HomeHeroSection,
@@ -212,7 +218,9 @@ function HomeSearchWidgetSection(props: {
   );
 }
 
-function HomeFeeCalculatorWidgetSection(props: { badge?: string; title?: string; description?: string }) {
+function HomeFeeCalculatorWidgetSection(
+  props: { badge?: string; title?: string; description?: string } & CourtFeeCalculatorWidgetProps,
+) {
   return createElement(
     "section",
     { id: "court-fee", className: "bg-white py-16" },
@@ -232,12 +240,23 @@ function HomeFeeCalculatorWidgetSection(props: { badge?: string; title?: string;
           ? createElement("p", { className: "mx-auto max-w-2xl text-lg text-gray-700" }, props.description)
           : null,
       ),
-      createElement("div", { className: "mx-auto max-w-full" }, createElement(CourtFeeCalculatorWidget, {})),
+      createElement(
+        "div",
+        { className: "mx-auto max-w-full" },
+        createElement(CourtFeeCalculatorWidget, {
+          howToUseStep1: props.howToUseStep1,
+          howToUseStep2: props.howToUseStep2,
+          howToUseStep3: props.howToUseStep3,
+          howToUseStep4: props.howToUseStep4,
+        }),
+      ),
     ),
   );
 }
 
-function ServicesFeeCalculatorWidgetSection(props: { heading?: string; description?: string }) {
+function ServicesFeeCalculatorWidgetSection(
+  props: { heading?: string; description?: string } & CourtFeeCalculatorWidgetProps,
+) {
   return createElement(
     "section",
     { className: "bg-gray-50 py-16" },
@@ -265,7 +284,12 @@ function ServicesFeeCalculatorWidgetSection(props: { heading?: string; descripti
         createElement(
           "div",
           { className: "rounded-xl bg-white p-8 shadow-lg" },
-          createElement(CourtFeeCalculatorWidget, {}),
+          createElement(CourtFeeCalculatorWidget, {
+            howToUseStep1: props.howToUseStep1,
+            howToUseStep2: props.howToUseStep2,
+            howToUseStep3: props.howToUseStep3,
+            howToUseStep4: props.howToUseStep4,
+          }),
         ),
       ),
     ),
@@ -340,11 +364,12 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.home-fee-calculator",
     "Home: Fee Calculator",
     "Home",
-    ["badge", "title", "description"],
+    ["badge", "title", "description", ...HOW_TO_USE_STEP_KEYS],
     {
       badge: "Calculate Fees",
       title: "Court Fee Calculator",
       description: "Calculate the required court fee based on your case cost amount before filing your case",
+      ...Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step])),
     },
     (props) => createElement(HomeFeeCalculatorWidgetSection, props as never),
     ["description"],
@@ -662,10 +687,11 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.services-fee-calculator",
     "Services: Fee Calculator",
     "Services",
-    ["heading", "description"],
+    ["heading", "description", ...HOW_TO_USE_STEP_KEYS],
     {
       heading: "Calculate Court Fees",
       description: "Use our calculator to accurately and quickly determine court fees.",
+      ...Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step])),
     },
     (props) => createElement(ServicesFeeCalculatorWidgetSection, props as never),
     ["description"],
@@ -840,17 +866,18 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.fee-calculator-widget",
     "Court Fee Calculator",
     "Home",
-    ["heading", "description"],
+    ["heading", "description", ...HOW_TO_USE_STEP_KEYS],
     {
       heading: "Court Fee Calculator",
       description:
         "Calculate the required court fee based on your case cost amount before filing your case",
+      ...Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step])),
     },
     (props) =>
       createElement(
         WidgetSection,
         props as never,
-        createElement(CourtFeeCalculatorWidget, {}),
+        createElement(CourtFeeCalculatorWidget, props as CourtFeeCalculatorWidgetProps),
       ),
     ["description"],
   ),

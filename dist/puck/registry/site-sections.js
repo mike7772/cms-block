@@ -2,7 +2,8 @@ import { createElement } from "react";
 import Link from "next/link";
 import { Calendar, Calculator, Users } from "lucide-react";
 import { CaseSearchWidget } from "../../components/site-sections/case-search-widget.js";
-import { CourtFeeCalculatorWidget } from "../../components/site-sections/fee-calculator-widget.js";
+import { CourtFeeCalculatorWidget, DEFAULT_HOW_TO_USE_STEPS, } from "../../components/site-sections/fee-calculator-widget.js";
+const HOW_TO_USE_STEP_KEYS = ["howToUseStep1", "howToUseStep2", "howToUseStep3", "howToUseStep4"];
 import { ImageUrlField } from "../../components/puck-fields/image-url-field.js";
 import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeUpdatesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeFaqSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
 import { AboutHeroSection, AboutQuickLinksSection, AboutBodySection, } from "../../components/site-sections/about.js";
@@ -108,14 +109,24 @@ function HomeFeeCalculatorWidgetSection(props) {
         ? createElement("h2", { className: "mb-6 font-serif text-3xl font-bold text-blue-900 md:text-4xl" }, props.title)
         : null, props.description
         ? createElement("p", { className: "mx-auto max-w-2xl text-lg text-gray-700" }, props.description)
-        : null), createElement("div", { className: "mx-auto max-w-full" }, createElement(CourtFeeCalculatorWidget, {}))));
+        : null), createElement("div", { className: "mx-auto max-w-full" }, createElement(CourtFeeCalculatorWidget, {
+        howToUseStep1: props.howToUseStep1,
+        howToUseStep2: props.howToUseStep2,
+        howToUseStep3: props.howToUseStep3,
+        howToUseStep4: props.howToUseStep4,
+    }))));
 }
 function ServicesFeeCalculatorWidgetSection(props) {
     return createElement("section", { className: "bg-gray-50 py-16" }, createElement("div", { className: "container mx-auto px-4" }, createElement("div", { className: "mx-auto max-w-4xl" }, createElement("div", { className: "mb-12 text-center" }, createElement("div", { className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100" }, createElement(Calculator, { className: "h-8 w-8 text-blue-600" })), props.heading
         ? createElement("h2", { className: "mb-4 font-serif text-3xl font-bold text-blue-900 md:text-4xl" }, props.heading)
         : null, props.description
         ? createElement("p", { className: "mx-auto max-w-2xl text-lg text-gray-700" }, props.description)
-        : null), createElement("div", { className: "rounded-xl bg-white p-8 shadow-lg" }, createElement(CourtFeeCalculatorWidget, {})))));
+        : null), createElement("div", { className: "rounded-xl bg-white p-8 shadow-lg" }, createElement(CourtFeeCalculatorWidget, {
+        howToUseStep1: props.howToUseStep1,
+        howToUseStep2: props.howToUseStep2,
+        howToUseStep3: props.howToUseStep3,
+        howToUseStep4: props.howToUseStep4,
+    })))));
 }
 export const siteSectionsRegistry = [
     siteEntry("HomeHero", "site.home-hero", "Home: Hero", "Home", ["badge", "title", "titleHighlight", "description", "fileNewCaseLabel", "trackCaseStatusLabel", "imageUrl", "buildingCaption"], {
@@ -146,11 +157,7 @@ export const siteSectionsRegistry = [
         ctaUrl: "/about",
         videoUrl: "/images/MMWO-interior-design.mp4",
     }, (props) => createElement(HomeAboutUsSection, props), ["description", "visionText", "missionText"]),
-    siteEntry("HomeFeeCalculator", "site.home-fee-calculator", "Home: Fee Calculator", "Home", ["badge", "title", "description"], {
-        badge: "Calculate Fees",
-        title: "Court Fee Calculator",
-        description: "Calculate the required court fee based on your case cost amount before filing your case",
-    }, (props) => createElement(HomeFeeCalculatorWidgetSection, props), ["description"]),
+    siteEntry("HomeFeeCalculator", "site.home-fee-calculator", "Home: Fee Calculator", "Home", ["badge", "title", "description", ...HOW_TO_USE_STEP_KEYS], Object.assign({ badge: "Calculate Fees", title: "Court Fee Calculator", description: "Calculate the required court fee based on your case cost amount before filing your case" }, Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step]))), (props) => createElement(HomeFeeCalculatorWidgetSection, props), ["description"]),
     siteEntry("HomeFeatures", "site.home-features", "Home: Features", "Home", ["feature1Title", "feature1Description", "feature2Title", "feature2Description", "feature3Title", "feature3Description", "feature4Title", "feature4Description"], {
         feature1Title: "Fast Processing",
         feature1Description: "Quick and efficient case handling",
@@ -309,10 +316,7 @@ export const siteSectionsRegistry = [
         service6Description: "Data security and privacy protection",
         service6Features: "Data protection\nPrivacy assured\nSecure access",
     }, (props) => createElement(ServicesGridSection, props), ["service1Description", "service1Features", "service2Description", "service2Features", "service3Description", "service3Features", "service4Description", "service4Features", "service5Description", "service5Features", "service6Description", "service6Features"]),
-    siteEntry("ServicesFeeCalculator", "site.services-fee-calculator", "Services: Fee Calculator", "Services", ["heading", "description"], {
-        heading: "Calculate Court Fees",
-        description: "Use our calculator to accurately and quickly determine court fees.",
-    }, (props) => createElement(ServicesFeeCalculatorWidgetSection, props), ["description"]),
+    siteEntry("ServicesFeeCalculator", "site.services-fee-calculator", "Services: Fee Calculator", "Services", ["heading", "description", ...HOW_TO_USE_STEP_KEYS], Object.assign({ heading: "Calculate Court Fees", description: "Use our calculator to accurately and quickly determine court fees." }, Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step]))), (props) => createElement(ServicesFeeCalculatorWidgetSection, props), ["description"]),
     siteEntry("ServicesAdditional", "site.services-additional", "Services: Additional", "Services", ["heading", "description", "item1Title", "item1Description", "item2Title", "item2Description", "item3Title", "item3Description", "item4Title", "item4Description"], {
         heading: "Additional Services",
         description: "More services beyond our core offerings.",
@@ -386,8 +390,5 @@ export const siteSectionsRegistry = [
         heading: "Quick Case Lookup",
         description: "Access your case information instantly",
     }, (props) => createElement(WidgetSection, props, createElement(CaseSearchWidget, {})), ["description"]),
-    siteEntry("FeeCalculatorWidget", "site.fee-calculator-widget", "Court Fee Calculator", "Home", ["heading", "description"], {
-        heading: "Court Fee Calculator",
-        description: "Calculate the required court fee based on your case cost amount before filing your case",
-    }, (props) => createElement(WidgetSection, props, createElement(CourtFeeCalculatorWidget, {})), ["description"]),
+    siteEntry("FeeCalculatorWidget", "site.fee-calculator-widget", "Court Fee Calculator", "Home", ["heading", "description", ...HOW_TO_USE_STEP_KEYS], Object.assign({ heading: "Court Fee Calculator", description: "Calculate the required court fee based on your case cost amount before filing your case" }, Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step]))), (props) => createElement(WidgetSection, props, createElement(CourtFeeCalculatorWidget, props)), ["description"]),
 ];

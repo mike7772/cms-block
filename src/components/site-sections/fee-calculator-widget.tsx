@@ -19,19 +19,33 @@ function useDebounce<T>(value: T, delay: number): T {
   return debounced;
 }
 
-const HOW_TO_USE_STEPS = [
+export const DEFAULT_HOW_TO_USE_STEPS = [
   "Enter your case monetary value in Ethiopian Birr (ETB)",
   "The fee will be calculated automatically",
   "Review the calculated fee amount",
   "Use the final fee amount when filing your case at the court",
 ];
 
+export type CourtFeeCalculatorWidgetProps = {
+  howToUseStep1?: string;
+  howToUseStep2?: string;
+  howToUseStep3?: string;
+  howToUseStep4?: string;
+};
+
 /** Interactive court-fee calculator: debounced amount input, live POST to
- * OCCMS-Backend's calculation endpoint, plus the "How to Use" card and the
- * static fee-schedule list — a full, identical port of PUBLIC_PORTAL's
- * CourtFeeCalculatorNew (same container/grid structure as the original, so
- * it renders the same wherever it's embedded: home page, services page). */
-export function CourtFeeCalculatorWidget() {
+ * OCCMS-Backend's calculation endpoint, plus the "How to Use" card (CMS-
+ * editable, one field per step) and the static fee-schedule list — a full,
+ * identical port of PUBLIC_PORTAL's CourtFeeCalculatorNew (same container/
+ * grid structure as the original, so it renders the same wherever it's
+ * embedded: home page, services page). */
+export function CourtFeeCalculatorWidget(props: CourtFeeCalculatorWidgetProps) {
+  const howToUseSteps = [
+    props.howToUseStep1 || DEFAULT_HOW_TO_USE_STEPS[0],
+    props.howToUseStep2 || DEFAULT_HOW_TO_USE_STEPS[1],
+    props.howToUseStep3 || DEFAULT_HOW_TO_USE_STEPS[2],
+    props.howToUseStep4 || DEFAULT_HOW_TO_USE_STEPS[3],
+  ];
   const [caseCostAmount, setCaseCostAmount] = useState("");
   const [calculatedFee, setCalculatedFee] = useState<number | null>(null);
   const [calculating, setCalculating] = useState(false);
@@ -77,7 +91,10 @@ export function CourtFeeCalculatorWidget() {
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
-    if (value === "" || /^\d+$/.test(value)) setCaseCostAmount(value);
+    // Whole numbers or decimals (e.g. "50000.5"); no upper bound on magnitude —
+    // the backend's fee calculation already extends the highest bracket's rate
+    // indefinitely for amounts beyond the defined ranges.
+    if (value === "" || /^\d*\.?\d*$/.test(value)) setCaseCostAmount(value);
   }
 
   function formatCurrency(amount: number) {
@@ -113,7 +130,7 @@ export function CourtFeeCalculatorWidget() {
                   <input
                     id="caseCostAmount"
                     type="text"
-                    inputMode="numeric"
+                    inputMode="decimal"
                     placeholder="Enter case cost amount"
                     value={caseCostAmount}
                     onChange={handleInputChange}
@@ -164,8 +181,8 @@ export function CourtFeeCalculatorWidget() {
             <div className="p-6 pt-6">
               <h3 className="mb-3 font-semibold text-blue-900">How to Use</h3>
               <ol className="space-y-2 text-sm text-gray-700">
-                {HOW_TO_USE_STEPS.map((step, index) => (
-                  <li key={step} className="flex items-start gap-2">
+                {howToUseSteps.map((step, index) => (
+                  <li key={index} className="flex items-start gap-2">
                     <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
                       {index + 1}
                     </span>

@@ -12,18 +12,25 @@ function useDebounce(value, delay) {
     }, [value, delay]);
     return debounced;
 }
-const HOW_TO_USE_STEPS = [
+export const DEFAULT_HOW_TO_USE_STEPS = [
     "Enter your case monetary value in Ethiopian Birr (ETB)",
     "The fee will be calculated automatically",
     "Review the calculated fee amount",
     "Use the final fee amount when filing your case at the court",
 ];
 /** Interactive court-fee calculator: debounced amount input, live POST to
- * OCCMS-Backend's calculation endpoint, plus the "How to Use" card and the
- * static fee-schedule list — a full, identical port of PUBLIC_PORTAL's
- * CourtFeeCalculatorNew (same container/grid structure as the original, so
- * it renders the same wherever it's embedded: home page, services page). */
-export function CourtFeeCalculatorWidget() {
+ * OCCMS-Backend's calculation endpoint, plus the "How to Use" card (CMS-
+ * editable, one field per step) and the static fee-schedule list — a full,
+ * identical port of PUBLIC_PORTAL's CourtFeeCalculatorNew (same container/
+ * grid structure as the original, so it renders the same wherever it's
+ * embedded: home page, services page). */
+export function CourtFeeCalculatorWidget(props) {
+    const howToUseSteps = [
+        props.howToUseStep1 || DEFAULT_HOW_TO_USE_STEPS[0],
+        props.howToUseStep2 || DEFAULT_HOW_TO_USE_STEPS[1],
+        props.howToUseStep3 || DEFAULT_HOW_TO_USE_STEPS[2],
+        props.howToUseStep4 || DEFAULT_HOW_TO_USE_STEPS[3],
+    ];
     const [caseCostAmount, setCaseCostAmount] = useState("");
     const [calculatedFee, setCalculatedFee] = useState(null);
     const [calculating, setCalculating] = useState(false);
@@ -70,13 +77,16 @@ export function CourtFeeCalculatorWidget() {
     }, [debouncedAmount]);
     function handleInputChange(e) {
         const value = e.target.value;
-        if (value === "" || /^\d+$/.test(value))
+        // Whole numbers or decimals (e.g. "50000.5"); no upper bound on magnitude —
+        // the backend's fee calculation already extends the highest bracket's rate
+        // indefinitely for amounts beyond the defined ranges.
+        if (value === "" || /^\d*\.?\d*$/.test(value))
             setCaseCostAmount(value);
     }
     function formatCurrency(amount) {
         return `ETB ${amount.toLocaleString("en-ET")}`;
     }
-    return (_jsx("div", { className: "container mx-auto px-4 py-8", children: _jsxs("div", { className: "grid grid-cols-1 gap-6 lg:grid-cols-2", children: [_jsxs("div", { className: "space-y-6", children: [_jsxs("div", { className: "rounded-lg border text-card-foreground border-blue-200 bg-white shadow-lg", children: [_jsx("div", { className: "flex flex-col space-y-1.5 p-6 border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100", children: _jsxs("p", { className: "font-semibold leading-none tracking-tight flex items-center gap-2 text-lg text-blue-900", children: [_jsx(Calculator, { className: "h-5 w-5" }), " Fee Calculation"] }) }), _jsx("div", { className: "p-6 pt-6", children: _jsxs("div", { className: "space-y-4", children: [_jsxs("div", { className: "space-y-2", children: [_jsx("label", { htmlFor: "caseCostAmount", className: "text-sm font-medium leading-none text-gray-700", children: "Case Cost Amount (ETB)" }), _jsx("input", { id: "caseCostAmount", type: "text", inputMode: "numeric", placeholder: "Enter case cost amount", value: caseCostAmount, onChange: handleInputChange, className: "flex h-12 w-full rounded-md border border-blue-300 bg-background px-3 py-2 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:border-blue-500 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" }), _jsx("p", { className: "text-xs text-gray-500", children: "Fee will be calculated automatically as you type" })] }), error && (_jsx("div", { className: "rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700", children: error })), calculatedFee !== null && (_jsx("div", { className: "mt-6 rounded-lg border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50 p-6", children: _jsxs("div", { className: "text-center", children: [_jsx("p", { className: "mb-2 text-sm text-gray-600", children: "Required Court Fee" }), _jsx("p", { className: "text-4xl font-bold text-green-700", children: formatCurrency(calculatedFee) }), _jsx("p", { className: "mt-3 text-xs text-gray-500", children: "This fee is calculated based on your case cost amount" })] }) })), calculating && (_jsxs("div", { className: "flex items-center justify-center py-4", children: [_jsx("div", { className: "h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600" }), _jsx("span", { className: "ml-3 text-sm text-gray-600", children: "Calculating..." })] })), _jsx("div", { className: "mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4", children: _jsxs("p", { className: "text-sm text-blue-900", children: [_jsx("strong", { children: "Important:" }), " This is the court fee required for filing your case. Additional fees may apply for other court services. Please ensure you have the exact amount when visiting the court."] }) })] }) })] }), _jsx("div", { className: "rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50", children: _jsxs("div", { className: "p-6 pt-6", children: [_jsx("h3", { className: "mb-3 font-semibold text-blue-900", children: "How to Use" }), _jsx("ol", { className: "space-y-2 text-sm text-gray-700", children: HOW_TO_USE_STEPS.map((step, index) => (_jsxs("li", { className: "flex items-start gap-2", children: [_jsx("span", { className: "flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white", children: index + 1 }), _jsx("span", { children: step })] }, step))) })] }) })] }), _jsx("div", { children: _jsx(ServiceFeesList, {}) })] }) }));
+    return (_jsx("div", { className: "container mx-auto px-4 py-8", children: _jsxs("div", { className: "grid grid-cols-1 gap-6 lg:grid-cols-2", children: [_jsxs("div", { className: "space-y-6", children: [_jsxs("div", { className: "rounded-lg border text-card-foreground border-blue-200 bg-white shadow-lg", children: [_jsx("div", { className: "flex flex-col space-y-1.5 p-6 border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100", children: _jsxs("p", { className: "font-semibold leading-none tracking-tight flex items-center gap-2 text-lg text-blue-900", children: [_jsx(Calculator, { className: "h-5 w-5" }), " Fee Calculation"] }) }), _jsx("div", { className: "p-6 pt-6", children: _jsxs("div", { className: "space-y-4", children: [_jsxs("div", { className: "space-y-2", children: [_jsx("label", { htmlFor: "caseCostAmount", className: "text-sm font-medium leading-none text-gray-700", children: "Case Cost Amount (ETB)" }), _jsx("input", { id: "caseCostAmount", type: "text", inputMode: "decimal", placeholder: "Enter case cost amount", value: caseCostAmount, onChange: handleInputChange, className: "flex h-12 w-full rounded-md border border-blue-300 bg-background px-3 py-2 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:border-blue-500 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" }), _jsx("p", { className: "text-xs text-gray-500", children: "Fee will be calculated automatically as you type" })] }), error && (_jsx("div", { className: "rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700", children: error })), calculatedFee !== null && (_jsx("div", { className: "mt-6 rounded-lg border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50 p-6", children: _jsxs("div", { className: "text-center", children: [_jsx("p", { className: "mb-2 text-sm text-gray-600", children: "Required Court Fee" }), _jsx("p", { className: "text-4xl font-bold text-green-700", children: formatCurrency(calculatedFee) }), _jsx("p", { className: "mt-3 text-xs text-gray-500", children: "This fee is calculated based on your case cost amount" })] }) })), calculating && (_jsxs("div", { className: "flex items-center justify-center py-4", children: [_jsx("div", { className: "h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600" }), _jsx("span", { className: "ml-3 text-sm text-gray-600", children: "Calculating..." })] })), _jsx("div", { className: "mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4", children: _jsxs("p", { className: "text-sm text-blue-900", children: [_jsx("strong", { children: "Important:" }), " This is the court fee required for filing your case. Additional fees may apply for other court services. Please ensure you have the exact amount when visiting the court."] }) })] }) })] }), _jsx("div", { className: "rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50", children: _jsxs("div", { className: "p-6 pt-6", children: [_jsx("h3", { className: "mb-3 font-semibold text-blue-900", children: "How to Use" }), _jsx("ol", { className: "space-y-2 text-sm text-gray-700", children: howToUseSteps.map((step, index) => (_jsxs("li", { className: "flex items-start gap-2", children: [_jsx("span", { className: "flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white", children: index + 1 }), _jsx("span", { children: step })] }, index))) })] }) })] }), _jsx("div", { children: _jsx(ServiceFeesList, {}) })] }) }));
 }
 const SERVICE_CATEGORIES = [
     {
