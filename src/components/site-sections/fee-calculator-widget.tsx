@@ -31,7 +31,7 @@ export type CourtFeeCalculatorWidgetProps = {
   howToUseStep2?: string;
   howToUseStep3?: string;
   howToUseStep4?: string;
-};
+} & ServiceFeesListProps;
 
 /** Interactive court-fee calculator: debounced amount input, live POST to
  * OCCMS-Backend's calculation endpoint, plus the "How to Use" card (CMS-
@@ -196,20 +196,44 @@ export function CourtFeeCalculatorWidget(props: CourtFeeCalculatorWidgetProps) {
 
         {/* RIGHT COLUMN: Service Fees List */}
         <div>
-          <ServiceFeesList />
+          <ServiceFeesList {...props} />
         </div>
       </div>
     </div>
   );
 }
 
+type ServiceFeeItem = { description: string; fee: string };
+
 type ServiceCategory = {
   id: string;
   title: string;
-  items: { description: string; fee: string }[];
+  items: ServiceFeeItem[];
 };
 
-const SERVICE_CATEGORIES: ServiceCategory[] = [
+/** One line per item: "description | fee". Lets editors add/remove/reorder
+ * items in a single textarea instead of needing a field per item. */
+export function serializeFeeItems(items: ServiceFeeItem[]): string {
+  return items.map((item) => `${item.description} | ${item.fee}`).join("\n");
+}
+
+function parseFeeItems(text: string | undefined, fallback: ServiceFeeItem[]): ServiceFeeItem[] {
+  if (!text || !text.trim()) return fallback;
+  return text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const separatorIndex = line.lastIndexOf("|");
+      if (separatorIndex === -1) return { description: line, fee: "" };
+      return {
+        description: line.slice(0, separatorIndex).trim(),
+        fee: line.slice(separatorIndex + 1).trim(),
+      };
+    });
+}
+
+const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     id: "non-monetary-cases",
     title: "1. Cases That Cannot Be Valued in Money",
@@ -353,11 +377,33 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
 ];
 
+/** Puck field key (in DEFAULT_SERVICE_CATEGORIES order) for each category's
+ * items — one pipe-delimited textarea per category, title stays fixed. */
+export const CATEGORY_ITEM_KEYS = DEFAULT_SERVICE_CATEGORIES.map((_, i) => `category${i + 1}Items`);
+
+export type ServiceFeesListProps = Partial<Record<(typeof CATEGORY_ITEM_KEYS)[number], string>>;
+
+/** The registry's defaultProps for the categoryNItems fields — each
+ * pre-filled with its category's current default items, serialized. */
+export function defaultServiceFeesListProps(): Record<string, string> {
+  return Object.fromEntries(
+    DEFAULT_SERVICE_CATEGORIES.map((category, i) => [
+      CATEGORY_ITEM_KEYS[i],
+      serializeFeeItems(category.items),
+    ]),
+  );
+}
+
 /** Static fee-schedule accordion — a direct port of PUBLIC_PORTAL's
  * ServiceFeesList (English text only, matching this package's single-locale
- * content convention). */
-function ServiceFeesList() {
+ * content convention). Category titles are fixed; each category's line
+ * items are CMS-editable as one "description | fee" per line textarea. */
+function ServiceFeesList(props: ServiceFeesListProps) {
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
+  const categories = DEFAULT_SERVICE_CATEGORIES.map((category, i) => ({
+    ...category,
+    items: parseFeeItems(props[CATEGORY_ITEM_KEYS[i]], category.items),
+  }));
 
   function toggleCategory(categoryId: string) {
     setExpandedCategories((prev) =>
@@ -376,7 +422,7 @@ function ServiceFeesList() {
         </p>
       </div>
       <div className="space-y-2 p-6 pt-0">
-        {SERVICE_CATEGORIES.map((category) => {
+        {categories.map((category) => {
           const isExpanded = expandedCategories.includes(category.id);
           return (
             <div key={category.id} className="overflow-hidden rounded-lg border border-gray-200">
