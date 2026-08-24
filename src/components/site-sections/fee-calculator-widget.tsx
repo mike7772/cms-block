@@ -89,18 +89,27 @@ export function CourtFeeCalculatorWidget() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* LEFT COLUMN: Court Fee Calculator */}
         <div className="space-y-6">
-          <div className="rounded-lg border border-blue-200 bg-white shadow-lg">
-            <div className="rounded-t-lg border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 px-6 py-4">
-              <p className="flex items-center gap-2 text-lg font-semibold text-blue-900">
+          {/* Card: rounded-lg border bg-card text-card-foreground shadow-sm, overridden with border-blue-200 bg-white shadow-lg */}
+          <div className="rounded-lg border text-card-foreground border-blue-200 bg-white shadow-lg">
+            {/* CardHeader: flex flex-col space-y-1.5 p-6, overridden with border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 */}
+            <div className="flex flex-col space-y-1.5 p-6 border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100">
+              {/* CardTitle: text-2xl font-semibold leading-none tracking-tight, overridden with flex items-center gap-2 text-lg text-blue-900 */}
+              <p className="font-semibold leading-none tracking-tight flex items-center gap-2 text-lg text-blue-900">
                 <Calculator className="h-5 w-5" /> Fee Calculation
               </p>
             </div>
+            {/* CardContent: p-6 pt-0, overridden with pt-6 -> p-6 all around */}
             <div className="p-6 pt-6">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="caseCostAmount" className="text-sm font-medium text-gray-700">
+                  {/* Label: text-sm font-medium leading-none, plus text-gray-700 */}
+                  <label
+                    htmlFor="caseCostAmount"
+                    className="text-sm font-medium leading-none text-gray-700"
+                  >
                     Case Cost Amount (ETB)
                   </label>
+                  {/* Input base classes, h-10->h-12, border-input->border-blue-300, text-base->text-lg */}
                   <input
                     id="caseCostAmount"
                     type="text"
@@ -108,7 +117,7 @@ export function CourtFeeCalculatorWidget() {
                     placeholder="Enter case cost amount"
                     value={caseCostAmount}
                     onChange={handleInputChange}
-                    className="h-12 w-full rounded-md border border-blue-300 px-3 text-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                    className="flex h-12 w-full rounded-md border border-blue-300 bg-background px-3 py-2 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:border-blue-500 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                   />
                   <p className="text-xs text-gray-500">Fee will be calculated automatically as you type</p>
                 </div>
@@ -149,8 +158,9 @@ export function CourtFeeCalculatorWidget() {
             </div>
           </div>
 
-          {/* Additional Info Card */}
-          <div className="rounded-lg border border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+          {/* Additional Info Card: Card with border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 (shadow-sm kept, not overridden) */}
+          <div className="rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+            {/* CardContent with pt-6 -> p-6 all around */}
             <div className="p-6 pt-6">
               <h3 className="mb-3 font-semibold text-blue-900">How to Use</h3>
               <ol className="space-y-2 text-sm text-gray-700">
@@ -339,10 +349,12 @@ function ServiceFeesList() {
   }
 
   return (
-    <div className="rounded-lg border border-blue-200 bg-white">
-      <div className="p-6">
-        <p className="text-lg font-semibold text-blue-800">Court Services and Fees</p>
-        <p className="mt-1 text-sm text-gray-600">
+    <div className="rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-white">
+      <div className="flex flex-col space-y-1.5 p-6">
+        <p className="font-semibold leading-none tracking-tight text-lg text-blue-800">
+          Court Services and Fees
+        </p>
+        <p className="text-sm text-gray-600">
           Official court service fees as per Regulation No. 1/2017
         </p>
       </div>
