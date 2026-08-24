@@ -1,36 +1,46 @@
 import { createElement } from "react";
 import Link from "next/link";
 import { Calendar, Calculator, Users } from "lucide-react";
-import type { CustomField } from "@puckeditor/core";
+import type { ArrayField, CustomField, Fields } from "@puckeditor/core";
 import type { RegistryEntry } from "./types";
 import type { ContentBlock } from "@/lib/types";
 import { CaseSearchWidget } from "@/components/site-sections/case-search-widget";
 import {
   CourtFeeCalculatorWidget,
   DEFAULT_HOW_TO_USE_STEPS,
-  CATEGORY_ITEM_KEYS,
-  defaultServiceFeesListProps,
+  DEFAULT_SERVICE_CATEGORIES,
   type CourtFeeCalculatorWidgetProps,
+  type HowToUseStep,
+  type ServiceCategory,
 } from "@/components/site-sections/fee-calculator-widget";
-
-const HOW_TO_USE_STEP_KEYS = ["howToUseStep1", "howToUseStep2", "howToUseStep3", "howToUseStep4"];
-
-/** Field labels for the 9 fee-schedule category textareas, so the page
- * builder shows which category each one edits instead of a raw key name. */
-const CATEGORY_ITEM_LABELS: Record<string, string> = Object.fromEntries(
-  [
-    "1. Cases That Cannot Be Valued in Money — items (one per line: description | fee)",
-    "2. Combined Causes of Action — items (one per line: description | fee)",
-    "3. Fees for Various Services — items (one per line: description | fee)",
-    "4. Court Fees for Review or Appeal Cases — items (one per line: description | fee)",
-    "5. Fees for Petitions During Proceedings or After Judgment — items (one per line: description | fee)",
-    "6. Court Fee When Petition is Amended — items (one per line: description | fee)",
-    "7. Court Fee for Judgment Execution — items (one per line: description | fee)",
-    "8. Circumstances for Refund of Court Fees — items (one per line: description | fee)",
-    "9. Cases Exempt from Court Fees — items (one per line: description | fee)",
-  ].map((label, i) => [CATEGORY_ITEM_KEYS[i], label]),
-);
 import { ImageUrlField } from "@/components/puck-fields/image-url-field";
+
+const howToUseStepsField: ArrayField<HowToUseStep[]> = {
+  type: "array",
+  arrayFields: { text: { type: "text" } },
+  defaultItemProps: { text: "" },
+  getItemSummary: (item) => item.text || "Step",
+};
+
+const feeCategoryItemsField: ArrayField<ServiceCategory["items"]> = {
+  type: "array",
+  arrayFields: {
+    description: { type: "text" },
+    fee: { type: "text" },
+  },
+  defaultItemProps: { description: "", fee: "" },
+  getItemSummary: (item) => item.description || "Item",
+};
+
+const feeCategoriesField: ArrayField<ServiceCategory[]> = {
+  type: "array",
+  arrayFields: {
+    title: { type: "text" },
+    items: feeCategoryItemsField,
+  },
+  defaultItemProps: { title: "", items: [] },
+  getItemSummary: (item) => item.title || "Category",
+};
 import {
   HomeHeroSection,
   HomeAboutUsSection,
@@ -105,9 +115,18 @@ function fieldsOf(
   long: Set<string> = new Set(),
   labels: Record<string, string> = {},
 ) {
-  const fields: Record<string, { type: "text" | "textarea"; label?: string } | CustomField<string>> = {};
+  const fields: Fields = {};
   for (const k of keys) {
-    const base = k === "imageUrl" ? imageUrlField : long.has(k) ? textarea : text;
+    const base: Fields[string] =
+      k === "imageUrl"
+        ? imageUrlField
+        : k === "howToUseSteps"
+          ? howToUseStepsField
+          : k === "feeCategories"
+            ? feeCategoriesField
+            : long.has(k)
+              ? textarea
+              : text;
     fields[k] = labels[k] ? { ...base, label: labels[k] } : base;
   }
   return fields;
@@ -151,7 +170,7 @@ function siteEntry(
   label: string,
   category: RegistryEntry["category"],
   keys: string[],
-  defaultProps: Record<string, string>,
+  defaultProps: Record<string, unknown>,
   render: (props: Record<string, unknown>) => ReturnType<typeof createElement>,
   longFields: string[] = [],
   fieldLabels: Record<string, string> = {},
@@ -378,17 +397,16 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.home-fee-calculator",
     "Home: Fee Calculator",
     "Home",
-    ["badge", "title", "description", ...HOW_TO_USE_STEP_KEYS, ...CATEGORY_ITEM_KEYS],
+    ["badge", "title", "description", "howToUseSteps", "feeCategories"],
     {
       badge: "Calculate Fees",
       title: "Court Fee Calculator",
       description: "Calculate the required court fee based on your case cost amount before filing your case",
-      ...Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step])),
-      ...defaultServiceFeesListProps(),
+      howToUseSteps: DEFAULT_HOW_TO_USE_STEPS,
+      feeCategories: DEFAULT_SERVICE_CATEGORIES,
     },
     (props) => createElement(HomeFeeCalculatorWidgetSection, props as never),
-    ["description", ...CATEGORY_ITEM_KEYS],
-    CATEGORY_ITEM_LABELS,
+    ["description"],
   ),
 
   siteEntry(
@@ -703,16 +721,15 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.services-fee-calculator",
     "Services: Fee Calculator",
     "Services",
-    ["heading", "description", ...HOW_TO_USE_STEP_KEYS, ...CATEGORY_ITEM_KEYS],
+    ["heading", "description", "howToUseSteps", "feeCategories"],
     {
       heading: "Calculate Court Fees",
       description: "Use our calculator to accurately and quickly determine court fees.",
-      ...Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step])),
-      ...defaultServiceFeesListProps(),
+      howToUseSteps: DEFAULT_HOW_TO_USE_STEPS,
+      feeCategories: DEFAULT_SERVICE_CATEGORIES,
     },
     (props) => createElement(ServicesFeeCalculatorWidgetSection, props as never),
-    ["description", ...CATEGORY_ITEM_KEYS],
-    CATEGORY_ITEM_LABELS,
+    ["description"],
   ),
 
   siteEntry(
@@ -884,13 +901,13 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.fee-calculator-widget",
     "Court Fee Calculator",
     "Home",
-    ["heading", "description", ...HOW_TO_USE_STEP_KEYS, ...CATEGORY_ITEM_KEYS],
+    ["heading", "description", "howToUseSteps", "feeCategories"],
     {
       heading: "Court Fee Calculator",
       description:
         "Calculate the required court fee based on your case cost amount before filing your case",
-      ...Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step])),
-      ...defaultServiceFeesListProps(),
+      howToUseSteps: DEFAULT_HOW_TO_USE_STEPS,
+      feeCategories: DEFAULT_SERVICE_CATEGORIES,
     },
     (props) =>
       createElement(
@@ -898,7 +915,6 @@ export const siteSectionsRegistry: RegistryEntry[] = [
         props as never,
         createElement(CourtFeeCalculatorWidget, props as CourtFeeCalculatorWidgetProps),
       ),
-    ["description", ...CATEGORY_ITEM_KEYS],
-    CATEGORY_ITEM_LABELS,
+    ["description"],
   ),
 ];

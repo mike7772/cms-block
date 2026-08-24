@@ -13,24 +13,20 @@ function useDebounce(value, delay) {
     return debounced;
 }
 export const DEFAULT_HOW_TO_USE_STEPS = [
-    "Enter your case monetary value in Ethiopian Birr (ETB)",
-    "The fee will be calculated automatically",
-    "Review the calculated fee amount",
-    "Use the final fee amount when filing your case at the court",
+    { text: "Enter your case monetary value in Ethiopian Birr (ETB)" },
+    { text: "The fee will be calculated automatically" },
+    { text: "Review the calculated fee amount" },
+    { text: "Use the final fee amount when filing your case at the court" },
 ];
 /** Interactive court-fee calculator: debounced amount input, live POST to
  * OCCMS-Backend's calculation endpoint, plus the "How to Use" card (CMS-
- * editable, one field per step) and the static fee-schedule list — a full,
- * identical port of PUBLIC_PORTAL's CourtFeeCalculatorNew (same container/
- * grid structure as the original, so it renders the same wherever it's
- * embedded: home page, services page). */
+ * editable as an add/remove/reorder list, no fixed count) and the static
+ * fee-schedule list — a full, identical port of PUBLIC_PORTAL's
+ * CourtFeeCalculatorNew (same container/grid structure as the original, so
+ * it renders the same wherever it's embedded: home page, services page). */
 export function CourtFeeCalculatorWidget(props) {
-    const howToUseSteps = [
-        props.howToUseStep1 || DEFAULT_HOW_TO_USE_STEPS[0],
-        props.howToUseStep2 || DEFAULT_HOW_TO_USE_STEPS[1],
-        props.howToUseStep3 || DEFAULT_HOW_TO_USE_STEPS[2],
-        props.howToUseStep4 || DEFAULT_HOW_TO_USE_STEPS[3],
-    ];
+    var _a;
+    const howToUseSteps = ((_a = props.howToUseSteps) === null || _a === void 0 ? void 0 : _a.length) ? props.howToUseSteps : DEFAULT_HOW_TO_USE_STEPS;
     const [caseCostAmount, setCaseCostAmount] = useState("");
     const [calculatedFee, setCalculatedFee] = useState(null);
     const [calculating, setCalculating] = useState(false);
@@ -86,33 +82,10 @@ export function CourtFeeCalculatorWidget(props) {
     function formatCurrency(amount) {
         return `ETB ${amount.toLocaleString("en-ET")}`;
     }
-    return (_jsx("div", { className: "container mx-auto px-4 py-8", children: _jsxs("div", { className: "grid grid-cols-1 gap-6 lg:grid-cols-2", children: [_jsxs("div", { className: "space-y-6", children: [_jsxs("div", { className: "rounded-lg border text-card-foreground border-blue-200 bg-white shadow-lg", children: [_jsx("div", { className: "flex flex-col space-y-1.5 p-6 border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100", children: _jsxs("p", { className: "font-semibold leading-none tracking-tight flex items-center gap-2 text-lg text-blue-900", children: [_jsx(Calculator, { className: "h-5 w-5" }), " Fee Calculation"] }) }), _jsx("div", { className: "p-6 pt-6", children: _jsxs("div", { className: "space-y-4", children: [_jsxs("div", { className: "space-y-2", children: [_jsx("label", { htmlFor: "caseCostAmount", className: "text-sm font-medium leading-none text-gray-700", children: "Case Cost Amount (ETB)" }), _jsx("input", { id: "caseCostAmount", type: "text", inputMode: "decimal", placeholder: "Enter case cost amount", value: caseCostAmount, onChange: handleInputChange, className: "flex h-12 w-full rounded-md border border-blue-300 bg-background px-3 py-2 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:border-blue-500 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" }), _jsx("p", { className: "text-xs text-gray-500", children: "Fee will be calculated automatically as you type" })] }), error && (_jsx("div", { className: "rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700", children: error })), calculatedFee !== null && (_jsx("div", { className: "mt-6 rounded-lg border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50 p-6", children: _jsxs("div", { className: "text-center", children: [_jsx("p", { className: "mb-2 text-sm text-gray-600", children: "Required Court Fee" }), _jsx("p", { className: "text-4xl font-bold text-green-700", children: formatCurrency(calculatedFee) }), _jsx("p", { className: "mt-3 text-xs text-gray-500", children: "This fee is calculated based on your case cost amount" })] }) })), calculating && (_jsxs("div", { className: "flex items-center justify-center py-4", children: [_jsx("div", { className: "h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600" }), _jsx("span", { className: "ml-3 text-sm text-gray-600", children: "Calculating..." })] })), _jsx("div", { className: "mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4", children: _jsxs("p", { className: "text-sm text-blue-900", children: [_jsx("strong", { children: "Important:" }), " This is the court fee required for filing your case. Additional fees may apply for other court services. Please ensure you have the exact amount when visiting the court."] }) })] }) })] }), _jsx("div", { className: "rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50", children: _jsxs("div", { className: "p-6 pt-6", children: [_jsx("h3", { className: "mb-3 font-semibold text-blue-900", children: "How to Use" }), _jsx("ol", { className: "space-y-2 text-sm text-gray-700", children: howToUseSteps.map((step, index) => (_jsxs("li", { className: "flex items-start gap-2", children: [_jsx("span", { className: "flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white", children: index + 1 }), _jsx("span", { children: step })] }, index))) })] }) })] }), _jsx("div", { children: _jsx(ServiceFeesList, Object.assign({}, props)) })] }) }));
+    return (_jsx("div", { className: "container mx-auto px-4 py-8", children: _jsxs("div", { className: "grid grid-cols-1 gap-6 lg:grid-cols-2", children: [_jsxs("div", { className: "space-y-6", children: [_jsxs("div", { className: "rounded-lg border text-card-foreground border-blue-200 bg-white shadow-lg", children: [_jsx("div", { className: "flex flex-col space-y-1.5 p-6 border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100", children: _jsxs("p", { className: "font-semibold leading-none tracking-tight flex items-center gap-2 text-lg text-blue-900", children: [_jsx(Calculator, { className: "h-5 w-5" }), " Fee Calculation"] }) }), _jsx("div", { className: "p-6 pt-6", children: _jsxs("div", { className: "space-y-4", children: [_jsxs("div", { className: "space-y-2", children: [_jsx("label", { htmlFor: "caseCostAmount", className: "text-sm font-medium leading-none text-gray-700", children: "Case Cost Amount (ETB)" }), _jsx("input", { id: "caseCostAmount", type: "text", inputMode: "decimal", placeholder: "Enter case cost amount", value: caseCostAmount, onChange: handleInputChange, className: "flex h-12 w-full rounded-md border border-blue-300 bg-background px-3 py-2 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:border-blue-500 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" }), _jsx("p", { className: "text-xs text-gray-500", children: "Fee will be calculated automatically as you type" })] }), error && (_jsx("div", { className: "rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700", children: error })), calculatedFee !== null && (_jsx("div", { className: "mt-6 rounded-lg border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50 p-6", children: _jsxs("div", { className: "text-center", children: [_jsx("p", { className: "mb-2 text-sm text-gray-600", children: "Required Court Fee" }), _jsx("p", { className: "text-4xl font-bold text-green-700", children: formatCurrency(calculatedFee) }), _jsx("p", { className: "mt-3 text-xs text-gray-500", children: "This fee is calculated based on your case cost amount" })] }) })), calculating && (_jsxs("div", { className: "flex items-center justify-center py-4", children: [_jsx("div", { className: "h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600" }), _jsx("span", { className: "ml-3 text-sm text-gray-600", children: "Calculating..." })] })), _jsx("div", { className: "mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4", children: _jsxs("p", { className: "text-sm text-blue-900", children: [_jsx("strong", { children: "Important:" }), " This is the court fee required for filing your case. Additional fees may apply for other court services. Please ensure you have the exact amount when visiting the court."] }) })] }) })] }), _jsx("div", { className: "rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50", children: _jsxs("div", { className: "p-6 pt-6", children: [_jsx("h3", { className: "mb-3 font-semibold text-blue-900", children: "How to Use" }), _jsx("ol", { className: "space-y-2 text-sm text-gray-700", children: howToUseSteps.map((step, index) => (_jsxs("li", { className: "flex items-start gap-2", children: [_jsx("span", { className: "flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white", children: index + 1 }), _jsx("span", { children: step.text })] }, index))) })] }) })] }), _jsx("div", { children: _jsx(ServiceFeesList, Object.assign({}, props)) })] }) }));
 }
-/** One line per item: "description | fee". Lets editors add/remove/reorder
- * items in a single textarea instead of needing a field per item. */
-export function serializeFeeItems(items) {
-    return items.map((item) => `${item.description} | ${item.fee}`).join("\n");
-}
-function parseFeeItems(text, fallback) {
-    if (!text || !text.trim())
-        return fallback;
-    return text
-        .split("\n")
-        .map((line) => line.trim())
-        .filter(Boolean)
-        .map((line) => {
-        const separatorIndex = line.lastIndexOf("|");
-        if (separatorIndex === -1)
-            return { description: line, fee: "" };
-        return {
-            description: line.slice(0, separatorIndex).trim(),
-            fee: line.slice(separatorIndex + 1).trim(),
-        };
-    });
-}
-const DEFAULT_SERVICE_CATEGORIES = [
+export const DEFAULT_SERVICE_CATEGORIES = [
     {
-        id: "non-monetary-cases",
         title: "1. Cases That Cannot Be Valued in Money",
         items: [
             { description: "If the petition is submitted to the Federal First Instance Court", fee: "ETB 1,000" },
@@ -130,7 +103,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "combined-causes",
         title: "2. Combined Causes of Action",
         items: [
             {
@@ -140,7 +112,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "service-fees",
         title: "3. Fees for Various Services",
         items: [
             { description: "Summons for parties or witnesses (per witness)", fee: "ETB 50" },
@@ -152,7 +123,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "review-appeal-cases",
         title: "4. Court Fees for Review or Appeal Cases",
         items: [
             { description: "Administrative decision appealed to Federal First Instance Court", fee: "ETB 1,000" },
@@ -164,7 +134,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "procedural-petitions",
         title: "5. Fees for Petitions During Proceedings or After Judgment",
         items: [
             { description: "Petition to set aside default judgment and enter proceedings", fee: "ETB 500" },
@@ -176,7 +145,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "petition-amendment",
         title: "6. Court Fee When Petition is Amended",
         items: [
             {
@@ -186,7 +154,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "judgment-execution",
         title: "7. Court Fee for Judgment Execution",
         items: [
             { description: "Judgment amount from 0 to ETB 100,000", fee: "ETB 300" },
@@ -203,7 +170,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "fee-refund",
         title: "8. Circumstances for Refund of Court Fees",
         items: [
             {
@@ -227,7 +193,6 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
     {
-        id: "fee-exemptions",
         title: "9. Cases Exempt from Court Fees",
         items: [
             { description: "Petitions regarding alimony and child support", fee: "Exempt" },
@@ -245,29 +210,19 @@ const DEFAULT_SERVICE_CATEGORIES = [
         ],
     },
 ];
-/** Puck field key (in DEFAULT_SERVICE_CATEGORIES order) for each category's
- * items — one pipe-delimited textarea per category, title stays fixed. */
-export const CATEGORY_ITEM_KEYS = DEFAULT_SERVICE_CATEGORIES.map((_, i) => `category${i + 1}Items`);
-/** The registry's defaultProps for the categoryNItems fields — each
- * pre-filled with its category's current default items, serialized. */
-export function defaultServiceFeesListProps() {
-    return Object.fromEntries(DEFAULT_SERVICE_CATEGORIES.map((category, i) => [
-        CATEGORY_ITEM_KEYS[i],
-        serializeFeeItems(category.items),
-    ]));
-}
 /** Static fee-schedule accordion — a direct port of PUBLIC_PORTAL's
  * ServiceFeesList (English text only, matching this package's single-locale
- * content convention). Category titles are fixed; each category's line
- * items are CMS-editable as one "description | fee" per line textarea. */
+ * content convention), now fully CMS-editable — categories and their items
+ * can be added, removed, and reordered with no fixed count. */
 function ServiceFeesList(props) {
-    const [expandedCategories, setExpandedCategories] = useState([]);
-    const categories = DEFAULT_SERVICE_CATEGORIES.map((category, i) => (Object.assign(Object.assign({}, category), { items: parseFeeItems(props[CATEGORY_ITEM_KEYS[i]], category.items) })));
-    function toggleCategory(categoryId) {
-        setExpandedCategories((prev) => prev.includes(categoryId) ? prev.filter((id) => id !== categoryId) : [...prev, categoryId]);
+    var _a;
+    const [expandedIndexes, setExpandedIndexes] = useState([]);
+    const categories = ((_a = props.feeCategories) === null || _a === void 0 ? void 0 : _a.length) ? props.feeCategories : DEFAULT_SERVICE_CATEGORIES;
+    function toggleCategory(index) {
+        setExpandedIndexes((prev) => prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]);
     }
-    return (_jsxs("div", { className: "rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-white", children: [_jsxs("div", { className: "flex flex-col space-y-1.5 p-6", children: [_jsx("p", { className: "font-semibold leading-none tracking-tight text-lg text-blue-800", children: "Court Services and Fees" }), _jsx("p", { className: "text-sm text-gray-600", children: "Official court service fees as per Regulation No. 1/2017" })] }), _jsx("div", { className: "space-y-2 p-6 pt-0", children: categories.map((category) => {
-                    const isExpanded = expandedCategories.includes(category.id);
-                    return (_jsxs("div", { className: "overflow-hidden rounded-lg border border-gray-200", children: [_jsxs("button", { type: "button", onClick: () => toggleCategory(category.id), className: "flex w-full items-center justify-between bg-blue-50 p-4 text-left transition-colors hover:bg-blue-100", children: [_jsx("span", { className: "font-medium text-blue-900", children: category.title }), isExpanded ? (_jsx(ChevronUp, { className: "h-5 w-5 flex-shrink-0 text-blue-600" })) : (_jsx(ChevronDown, { className: "h-5 w-5 flex-shrink-0 text-blue-600" }))] }), isExpanded && (_jsx("div", { className: "space-y-3 bg-white p-4", children: category.items.map((item, index) => (_jsxs("div", { className: "flex items-start justify-between gap-4 border-b border-gray-100 pb-3 last:border-0", children: [_jsx("p", { className: "flex-1 text-sm text-gray-700", children: item.description }), _jsx("span", { className: "whitespace-nowrap text-sm font-semibold text-blue-700", children: item.fee })] }, index))) }))] }, category.id));
+    return (_jsxs("div", { className: "rounded-lg border text-card-foreground shadow-sm border-blue-200 bg-white", children: [_jsxs("div", { className: "flex flex-col space-y-1.5 p-6", children: [_jsx("p", { className: "font-semibold leading-none tracking-tight text-lg text-blue-800", children: "Court Services and Fees" }), _jsx("p", { className: "text-sm text-gray-600", children: "Official court service fees as per Regulation No. 1/2017" })] }), _jsx("div", { className: "space-y-2 p-6 pt-0", children: categories.map((category, index) => {
+                    const isExpanded = expandedIndexes.includes(index);
+                    return (_jsxs("div", { className: "overflow-hidden rounded-lg border border-gray-200", children: [_jsxs("button", { type: "button", onClick: () => toggleCategory(index), className: "flex w-full items-center justify-between bg-blue-50 p-4 text-left transition-colors hover:bg-blue-100", children: [_jsx("span", { className: "font-medium text-blue-900", children: category.title }), isExpanded ? (_jsx(ChevronUp, { className: "h-5 w-5 flex-shrink-0 text-blue-600" })) : (_jsx(ChevronDown, { className: "h-5 w-5 flex-shrink-0 text-blue-600" }))] }), isExpanded && (_jsx("div", { className: "space-y-3 bg-white p-4", children: category.items.map((item, index) => (_jsxs("div", { className: "flex items-start justify-between gap-4 border-b border-gray-100 pb-3 last:border-0", children: [_jsx("p", { className: "flex-1 text-sm text-gray-700", children: item.description }), _jsx("span", { className: "whitespace-nowrap text-sm font-semibold text-blue-700", children: item.fee })] }, index))) }))] }, index));
                 }) })] }));
 }

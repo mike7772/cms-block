@@ -19,33 +19,27 @@ function useDebounce<T>(value: T, delay: number): T {
   return debounced;
 }
 
-export const DEFAULT_HOW_TO_USE_STEPS = [
-  "Enter your case monetary value in Ethiopian Birr (ETB)",
-  "The fee will be calculated automatically",
-  "Review the calculated fee amount",
-  "Use the final fee amount when filing your case at the court",
+export type HowToUseStep = { text: string };
+
+export const DEFAULT_HOW_TO_USE_STEPS: HowToUseStep[] = [
+  { text: "Enter your case monetary value in Ethiopian Birr (ETB)" },
+  { text: "The fee will be calculated automatically" },
+  { text: "Review the calculated fee amount" },
+  { text: "Use the final fee amount when filing your case at the court" },
 ];
 
 export type CourtFeeCalculatorWidgetProps = {
-  howToUseStep1?: string;
-  howToUseStep2?: string;
-  howToUseStep3?: string;
-  howToUseStep4?: string;
+  howToUseSteps?: HowToUseStep[];
 } & ServiceFeesListProps;
 
 /** Interactive court-fee calculator: debounced amount input, live POST to
  * OCCMS-Backend's calculation endpoint, plus the "How to Use" card (CMS-
- * editable, one field per step) and the static fee-schedule list — a full,
- * identical port of PUBLIC_PORTAL's CourtFeeCalculatorNew (same container/
- * grid structure as the original, so it renders the same wherever it's
- * embedded: home page, services page). */
+ * editable as an add/remove/reorder list, no fixed count) and the static
+ * fee-schedule list — a full, identical port of PUBLIC_PORTAL's
+ * CourtFeeCalculatorNew (same container/grid structure as the original, so
+ * it renders the same wherever it's embedded: home page, services page). */
 export function CourtFeeCalculatorWidget(props: CourtFeeCalculatorWidgetProps) {
-  const howToUseSteps = [
-    props.howToUseStep1 || DEFAULT_HOW_TO_USE_STEPS[0],
-    props.howToUseStep2 || DEFAULT_HOW_TO_USE_STEPS[1],
-    props.howToUseStep3 || DEFAULT_HOW_TO_USE_STEPS[2],
-    props.howToUseStep4 || DEFAULT_HOW_TO_USE_STEPS[3],
-  ];
+  const howToUseSteps = props.howToUseSteps?.length ? props.howToUseSteps : DEFAULT_HOW_TO_USE_STEPS;
   const [caseCostAmount, setCaseCostAmount] = useState("");
   const [calculatedFee, setCalculatedFee] = useState<number | null>(null);
   const [calculating, setCalculating] = useState(false);
@@ -186,7 +180,7 @@ export function CourtFeeCalculatorWidget(props: CourtFeeCalculatorWidgetProps) {
                     <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
                       {index + 1}
                     </span>
-                    <span>{step}</span>
+                    <span>{step.text}</span>
                   </li>
                 ))}
               </ol>
@@ -203,39 +197,15 @@ export function CourtFeeCalculatorWidget(props: CourtFeeCalculatorWidgetProps) {
   );
 }
 
-type ServiceFeeItem = { description: string; fee: string };
+export type ServiceFeeItem = { description: string; fee: string };
 
-type ServiceCategory = {
-  id: string;
+export type ServiceCategory = {
   title: string;
   items: ServiceFeeItem[];
 };
 
-/** One line per item: "description | fee". Lets editors add/remove/reorder
- * items in a single textarea instead of needing a field per item. */
-export function serializeFeeItems(items: ServiceFeeItem[]): string {
-  return items.map((item) => `${item.description} | ${item.fee}`).join("\n");
-}
-
-function parseFeeItems(text: string | undefined, fallback: ServiceFeeItem[]): ServiceFeeItem[] {
-  if (!text || !text.trim()) return fallback;
-  return text
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
-      const separatorIndex = line.lastIndexOf("|");
-      if (separatorIndex === -1) return { description: line, fee: "" };
-      return {
-        description: line.slice(0, separatorIndex).trim(),
-        fee: line.slice(separatorIndex + 1).trim(),
-      };
-    });
-}
-
-const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
+export const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
   {
-    id: "non-monetary-cases",
     title: "1. Cases That Cannot Be Valued in Money",
     items: [
       { description: "If the petition is submitted to the Federal First Instance Court", fee: "ETB 1,000" },
@@ -253,7 +223,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "combined-causes",
     title: "2. Combined Causes of Action",
     items: [
       {
@@ -264,7 +233,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "service-fees",
     title: "3. Fees for Various Services",
     items: [
       { description: "Summons for parties or witnesses (per witness)", fee: "ETB 50" },
@@ -277,7 +245,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "review-appeal-cases",
     title: "4. Court Fees for Review or Appeal Cases",
     items: [
       { description: "Administrative decision appealed to Federal First Instance Court", fee: "ETB 1,000" },
@@ -289,7 +256,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "procedural-petitions",
     title: "5. Fees for Petitions During Proceedings or After Judgment",
     items: [
       { description: "Petition to set aside default judgment and enter proceedings", fee: "ETB 500" },
@@ -301,7 +267,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "petition-amendment",
     title: "6. Court Fee When Petition is Amended",
     items: [
       {
@@ -312,7 +277,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "judgment-execution",
     title: "7. Court Fee for Judgment Execution",
     items: [
       { description: "Judgment amount from 0 to ETB 100,000", fee: "ETB 300" },
@@ -330,7 +294,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "fee-refund",
     title: "8. Circumstances for Refund of Court Fees",
     items: [
       {
@@ -357,7 +320,6 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: "fee-exemptions",
     title: "9. Cases Exempt from Court Fees",
     items: [
       { description: "Petitions regarding alimony and child support", fee: "Exempt" },
@@ -377,37 +339,21 @@ const DEFAULT_SERVICE_CATEGORIES: ServiceCategory[] = [
   },
 ];
 
-/** Puck field key (in DEFAULT_SERVICE_CATEGORIES order) for each category's
- * items — one pipe-delimited textarea per category, title stays fixed. */
-export const CATEGORY_ITEM_KEYS = DEFAULT_SERVICE_CATEGORIES.map((_, i) => `category${i + 1}Items`);
-
-export type ServiceFeesListProps = Partial<Record<(typeof CATEGORY_ITEM_KEYS)[number], string>>;
-
-/** The registry's defaultProps for the categoryNItems fields — each
- * pre-filled with its category's current default items, serialized. */
-export function defaultServiceFeesListProps(): Record<string, string> {
-  return Object.fromEntries(
-    DEFAULT_SERVICE_CATEGORIES.map((category, i) => [
-      CATEGORY_ITEM_KEYS[i],
-      serializeFeeItems(category.items),
-    ]),
-  );
-}
+export type ServiceFeesListProps = {
+  feeCategories?: ServiceCategory[];
+};
 
 /** Static fee-schedule accordion — a direct port of PUBLIC_PORTAL's
  * ServiceFeesList (English text only, matching this package's single-locale
- * content convention). Category titles are fixed; each category's line
- * items are CMS-editable as one "description | fee" per line textarea. */
+ * content convention), now fully CMS-editable — categories and their items
+ * can be added, removed, and reordered with no fixed count. */
 function ServiceFeesList(props: ServiceFeesListProps) {
-  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
-  const categories = DEFAULT_SERVICE_CATEGORIES.map((category, i) => ({
-    ...category,
-    items: parseFeeItems(props[CATEGORY_ITEM_KEYS[i]], category.items),
-  }));
+  const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
+  const categories = props.feeCategories?.length ? props.feeCategories : DEFAULT_SERVICE_CATEGORIES;
 
-  function toggleCategory(categoryId: string) {
-    setExpandedCategories((prev) =>
-      prev.includes(categoryId) ? prev.filter((id) => id !== categoryId) : [...prev, categoryId],
+  function toggleCategory(index: number) {
+    setExpandedIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   }
 
@@ -422,13 +368,13 @@ function ServiceFeesList(props: ServiceFeesListProps) {
         </p>
       </div>
       <div className="space-y-2 p-6 pt-0">
-        {categories.map((category) => {
-          const isExpanded = expandedCategories.includes(category.id);
+        {categories.map((category, index) => {
+          const isExpanded = expandedIndexes.includes(index);
           return (
-            <div key={category.id} className="overflow-hidden rounded-lg border border-gray-200">
+            <div key={index} className="overflow-hidden rounded-lg border border-gray-200">
               <button
                 type="button"
-                onClick={() => toggleCategory(category.id)}
+                onClick={() => toggleCategory(index)}
                 className="flex w-full items-center justify-between bg-blue-50 p-4 text-left transition-colors hover:bg-blue-100"
               >
                 <span className="font-medium text-blue-900">{category.title}</span>

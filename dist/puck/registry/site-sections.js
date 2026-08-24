@@ -2,22 +2,32 @@ import { createElement } from "react";
 import Link from "next/link";
 import { Calendar, Calculator, Users } from "lucide-react";
 import { CaseSearchWidget } from "../../components/site-sections/case-search-widget.js";
-import { CourtFeeCalculatorWidget, DEFAULT_HOW_TO_USE_STEPS, CATEGORY_ITEM_KEYS, defaultServiceFeesListProps, } from "../../components/site-sections/fee-calculator-widget.js";
-const HOW_TO_USE_STEP_KEYS = ["howToUseStep1", "howToUseStep2", "howToUseStep3", "howToUseStep4"];
-/** Field labels for the 9 fee-schedule category textareas, so the page
- * builder shows which category each one edits instead of a raw key name. */
-const CATEGORY_ITEM_LABELS = Object.fromEntries([
-    "1. Cases That Cannot Be Valued in Money — items (one per line: description | fee)",
-    "2. Combined Causes of Action — items (one per line: description | fee)",
-    "3. Fees for Various Services — items (one per line: description | fee)",
-    "4. Court Fees for Review or Appeal Cases — items (one per line: description | fee)",
-    "5. Fees for Petitions During Proceedings or After Judgment — items (one per line: description | fee)",
-    "6. Court Fee When Petition is Amended — items (one per line: description | fee)",
-    "7. Court Fee for Judgment Execution — items (one per line: description | fee)",
-    "8. Circumstances for Refund of Court Fees — items (one per line: description | fee)",
-    "9. Cases Exempt from Court Fees — items (one per line: description | fee)",
-].map((label, i) => [CATEGORY_ITEM_KEYS[i], label]));
+import { CourtFeeCalculatorWidget, DEFAULT_HOW_TO_USE_STEPS, DEFAULT_SERVICE_CATEGORIES, } from "../../components/site-sections/fee-calculator-widget.js";
 import { ImageUrlField } from "../../components/puck-fields/image-url-field.js";
+const howToUseStepsField = {
+    type: "array",
+    arrayFields: { text: { type: "text" } },
+    defaultItemProps: { text: "" },
+    getItemSummary: (item) => item.text || "Step",
+};
+const feeCategoryItemsField = {
+    type: "array",
+    arrayFields: {
+        description: { type: "text" },
+        fee: { type: "text" },
+    },
+    defaultItemProps: { description: "", fee: "" },
+    getItemSummary: (item) => item.description || "Item",
+};
+const feeCategoriesField = {
+    type: "array",
+    arrayFields: {
+        title: { type: "text" },
+        items: feeCategoryItemsField,
+    },
+    defaultItemProps: { title: "", items: [] },
+    getItemSummary: (item) => item.title || "Category",
+};
 import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeUpdatesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeFaqSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
 import { AboutHeroSection, AboutQuickLinksSection, AboutBodySection, } from "../../components/site-sections/about.js";
 import { ContactHeroSection, ContactInfoAndFormSection, ContactMapSection, } from "../../components/site-sections/contact.js";
@@ -56,7 +66,15 @@ const imageUrlField = {
 function fieldsOf(keys, long = new Set(), labels = {}) {
     const fields = {};
     for (const k of keys) {
-        const base = k === "imageUrl" ? imageUrlField : long.has(k) ? textarea : text;
+        const base = k === "imageUrl"
+            ? imageUrlField
+            : k === "howToUseSteps"
+                ? howToUseStepsField
+                : k === "feeCategories"
+                    ? feeCategoriesField
+                    : long.has(k)
+                        ? textarea
+                        : text;
         fields[k] = labels[k] ? Object.assign(Object.assign({}, base), { label: labels[k] }) : base;
     }
     return fields;
@@ -161,7 +179,13 @@ export const siteSectionsRegistry = [
         ctaUrl: "/about",
         videoUrl: "/images/MMWO-interior-design.mp4",
     }, (props) => createElement(HomeAboutUsSection, props), ["description", "visionText", "missionText"]),
-    siteEntry("HomeFeeCalculator", "site.home-fee-calculator", "Home: Fee Calculator", "Home", ["badge", "title", "description", ...HOW_TO_USE_STEP_KEYS, ...CATEGORY_ITEM_KEYS], Object.assign(Object.assign({ badge: "Calculate Fees", title: "Court Fee Calculator", description: "Calculate the required court fee based on your case cost amount before filing your case" }, Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step]))), defaultServiceFeesListProps()), (props) => createElement(HomeFeeCalculatorWidgetSection, props), ["description", ...CATEGORY_ITEM_KEYS], CATEGORY_ITEM_LABELS),
+    siteEntry("HomeFeeCalculator", "site.home-fee-calculator", "Home: Fee Calculator", "Home", ["badge", "title", "description", "howToUseSteps", "feeCategories"], {
+        badge: "Calculate Fees",
+        title: "Court Fee Calculator",
+        description: "Calculate the required court fee based on your case cost amount before filing your case",
+        howToUseSteps: DEFAULT_HOW_TO_USE_STEPS,
+        feeCategories: DEFAULT_SERVICE_CATEGORIES,
+    }, (props) => createElement(HomeFeeCalculatorWidgetSection, props), ["description"]),
     siteEntry("HomeFeatures", "site.home-features", "Home: Features", "Home", ["feature1Title", "feature1Description", "feature2Title", "feature2Description", "feature3Title", "feature3Description", "feature4Title", "feature4Description"], {
         feature1Title: "Fast Processing",
         feature1Description: "Quick and efficient case handling",
@@ -320,7 +344,12 @@ export const siteSectionsRegistry = [
         service6Description: "Data security and privacy protection",
         service6Features: "Data protection\nPrivacy assured\nSecure access",
     }, (props) => createElement(ServicesGridSection, props), ["service1Description", "service1Features", "service2Description", "service2Features", "service3Description", "service3Features", "service4Description", "service4Features", "service5Description", "service5Features", "service6Description", "service6Features"]),
-    siteEntry("ServicesFeeCalculator", "site.services-fee-calculator", "Services: Fee Calculator", "Services", ["heading", "description", ...HOW_TO_USE_STEP_KEYS, ...CATEGORY_ITEM_KEYS], Object.assign(Object.assign({ heading: "Calculate Court Fees", description: "Use our calculator to accurately and quickly determine court fees." }, Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step]))), defaultServiceFeesListProps()), (props) => createElement(ServicesFeeCalculatorWidgetSection, props), ["description", ...CATEGORY_ITEM_KEYS], CATEGORY_ITEM_LABELS),
+    siteEntry("ServicesFeeCalculator", "site.services-fee-calculator", "Services: Fee Calculator", "Services", ["heading", "description", "howToUseSteps", "feeCategories"], {
+        heading: "Calculate Court Fees",
+        description: "Use our calculator to accurately and quickly determine court fees.",
+        howToUseSteps: DEFAULT_HOW_TO_USE_STEPS,
+        feeCategories: DEFAULT_SERVICE_CATEGORIES,
+    }, (props) => createElement(ServicesFeeCalculatorWidgetSection, props), ["description"]),
     siteEntry("ServicesAdditional", "site.services-additional", "Services: Additional", "Services", ["heading", "description", "item1Title", "item1Description", "item2Title", "item2Description", "item3Title", "item3Description", "item4Title", "item4Description"], {
         heading: "Additional Services",
         description: "More services beyond our core offerings.",
@@ -394,5 +423,10 @@ export const siteSectionsRegistry = [
         heading: "Quick Case Lookup",
         description: "Access your case information instantly",
     }, (props) => createElement(WidgetSection, props, createElement(CaseSearchWidget, {})), ["description"]),
-    siteEntry("FeeCalculatorWidget", "site.fee-calculator-widget", "Court Fee Calculator", "Home", ["heading", "description", ...HOW_TO_USE_STEP_KEYS, ...CATEGORY_ITEM_KEYS], Object.assign(Object.assign({ heading: "Court Fee Calculator", description: "Calculate the required court fee based on your case cost amount before filing your case" }, Object.fromEntries(DEFAULT_HOW_TO_USE_STEPS.map((step, i) => [HOW_TO_USE_STEP_KEYS[i], step]))), defaultServiceFeesListProps()), (props) => createElement(WidgetSection, props, createElement(CourtFeeCalculatorWidget, props)), ["description", ...CATEGORY_ITEM_KEYS], CATEGORY_ITEM_LABELS),
+    siteEntry("FeeCalculatorWidget", "site.fee-calculator-widget", "Court Fee Calculator", "Home", ["heading", "description", "howToUseSteps", "feeCategories"], {
+        heading: "Court Fee Calculator",
+        description: "Calculate the required court fee based on your case cost amount before filing your case",
+        howToUseSteps: DEFAULT_HOW_TO_USE_STEPS,
+        feeCategories: DEFAULT_SERVICE_CATEGORIES,
+    }, (props) => createElement(WidgetSection, props, createElement(CourtFeeCalculatorWidget, props)), ["description"]),
 ];
