@@ -42,24 +42,6 @@ export type HomeFeaturesProps = {
     feature4Description: string;
 };
 export declare function HomeFeaturesSection(props: HomeFeaturesProps): import("react").JSX.Element;
-export type HomeUpdatesProps = {
-    title: string;
-    viewAllLabel: string;
-    readMoreLabel: string;
-    update1Type: string;
-    update1Date: string;
-    update1Title: string;
-    update1Description: string;
-    update2Type: string;
-    update2Date: string;
-    update2Title: string;
-    update2Description: string;
-    update3Type: string;
-    update3Date: string;
-    update3Title: string;
-    update3Description: string;
-};
-export declare function HomeUpdatesSection(props: HomeUpdatesProps): import("react").JSX.Element;
 export type HomeCoreFeaturesProps = {
     badge: string;
     title: string;

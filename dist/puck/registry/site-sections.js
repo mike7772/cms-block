@@ -28,7 +28,8 @@ const feeCategoriesField = {
     defaultItemProps: { title: "", items: [] },
     getItemSummary: (item) => item.title || "Category",
 };
-import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeUpdatesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeFaqSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
+import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeFaqSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
+import { HomeUpdatesWidgetSection } from "../../components/site-sections/home-updates-widget.js";
 import { AboutHeroSection, AboutQuickLinksSection, AboutBodySection, } from "../../components/site-sections/about.js";
 import { ContactHeroSection, ContactInfoAndFormSection, ContactMapSection, } from "../../components/site-sections/contact.js";
 import { ServicesHeroSection, ServicesGridSection, ServicesAdditionalSection, } from "../../components/site-sections/services.js";
@@ -196,23 +197,11 @@ export const siteSectionsRegistry = [
         feature4Title: "Real-Time Updates",
         feature4Description: "Get instant case status updates",
     }, (props) => createElement(HomeFeaturesSection, props)),
-    siteEntry("HomeUpdates", "site.home-updates", "Home: Latest Updates", "Home", ["title", "viewAllLabel", "readMoreLabel", "update1Type", "update1Date", "update1Title", "update1Description", "update2Type", "update2Date", "update2Title", "update2Description", "update3Type", "update3Date", "update3Title", "update3Description"], {
+    siteEntry("HomeUpdates", "site.home-updates", "Home: Latest Updates", "Home", ["title", "viewAllLabel", "readMoreLabel"], {
         title: "Latest Updates",
         viewAllLabel: "View All",
         readMoreLabel: "Read More",
-        update1Type: "Announcement",
-        update1Date: "May 15, 2025",
-        update1Title: "New E-Filing System Launch",
-        update1Description: "We are excited to announce the launch of our new electronic filing system for all case types.",
-        update2Type: "Notice",
-        update2Date: "May 10, 2025",
-        update2Title: "Court Holiday Schedule",
-        update2Description: "Please note the upcoming court holidays and adjusted operating hours.",
-        update3Type: "Service Update",
-        update3Date: "May 5, 2025",
-        update3Title: "Improved Case Tracking",
-        update3Description: "Our case tracking system has been enhanced for better user experience.",
-    }, (props) => createElement(HomeUpdatesSection, props), ["update1Description", "update2Description", "update3Description"]),
+    }, (props) => createElement(HomeUpdatesWidgetSection, props)),
     siteEntry("HomeCoreFeatures", "site.home-core-features", "Home: Core Features", "Home", ["badge", "title", "description", "learnMoreLabel", "item1Title", "item1Description", "item2Title", "item2Description", "item3Title", "item3Description"], {
         badge: "Why Choose Us",
         title: "Core Features",

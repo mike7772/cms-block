@@ -45,13 +45,13 @@ import {
   HomeHeroSection,
   HomeAboutUsSection,
   HomeFeaturesSection,
-  HomeUpdatesSection,
   HomeCoreFeaturesSection,
   HomeStatsSection,
   HomeFaqSection,
   HomeCtaSection,
   HomeContactInfoSection,
 } from "@/components/site-sections/home";
+import { HomeUpdatesWidgetSection } from "@/components/site-sections/home-updates-widget";
 import {
   AboutHeroSection,
   AboutQuickLinksSection,
@@ -433,26 +433,13 @@ export const siteSectionsRegistry: RegistryEntry[] = [
     "site.home-updates",
     "Home: Latest Updates",
     "Home",
-    ["title", "viewAllLabel", "readMoreLabel", "update1Type", "update1Date", "update1Title", "update1Description", "update2Type", "update2Date", "update2Title", "update2Description", "update3Type", "update3Date", "update3Title", "update3Description"],
+    ["title", "viewAllLabel", "readMoreLabel"],
     {
       title: "Latest Updates",
       viewAllLabel: "View All",
       readMoreLabel: "Read More",
-      update1Type: "Announcement",
-      update1Date: "May 15, 2025",
-      update1Title: "New E-Filing System Launch",
-      update1Description: "We are excited to announce the launch of our new electronic filing system for all case types.",
-      update2Type: "Notice",
-      update2Date: "May 10, 2025",
-      update2Title: "Court Holiday Schedule",
-      update2Description: "Please note the upcoming court holidays and adjusted operating hours.",
-      update3Type: "Service Update",
-      update3Date: "May 5, 2025",
-      update3Title: "Improved Case Tracking",
-      update3Description: "Our case tracking system has been enhanced for better user experience.",
     },
-    (props) => createElement(HomeUpdatesSection, props as never),
-    ["update1Description", "update2Description", "update3Description"],
+    (props) => createElement(HomeUpdatesWidgetSection, props as never),
   ),
 
   siteEntry(

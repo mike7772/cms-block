@@ -1497,18 +1497,6 @@ export interface SiteHomeUpdatesBlock {
   title?: string | null;
   viewAllLabel?: string | null;
   readMoreLabel?: string | null;
-  update1Type?: string | null;
-  update1Date?: string | null;
-  update1Title?: string | null;
-  update1Description?: string | null;
-  update2Type?: string | null;
-  update2Date?: string | null;
-  update2Title?: string | null;
-  update2Description?: string | null;
-  update3Type?: string | null;
-  update3Date?: string | null;
-  update3Title?: string | null;
-  update3Description?: string | null;
 }
 
 export interface SiteHomeCoreFeaturesBlock {

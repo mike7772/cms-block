@@ -34,15 +34,6 @@ export function HomeFeaturesSection(props) {
                     return (_jsxs("div", { className: "group flex items-center gap-4 rounded-xl bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md", children: [_jsx("div", { className: `flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-300 sm:h-12 sm:w-12 ${item.bg}`, children: _jsx(Icon, { className: `h-5 w-5 sm:h-6 sm:w-6 ${item.color}` }) }), _jsxs("div", { className: "min-w-0", children: [_jsx("h3", { className: "text-sm font-medium text-gray-900 sm:text-base", children: item.title }), _jsx("p", { className: "truncate text-xs text-gray-500 sm:text-sm", children: item.description })] })] }, i));
                 }) }) }) }));
 }
-export function HomeUpdatesSection(props) {
-    const p = props;
-    const updates = [
-        { type: p.update1Type, date: p.update1Date, title: p.update1Title, description: p.update1Description },
-        { type: p.update2Type, date: p.update2Date, title: p.update2Title, description: p.update2Description },
-        { type: p.update3Type, date: p.update3Date, title: p.update3Title, description: p.update3Description },
-    ];
-    return (_jsx("section", { className: "bg-white py-8 sm:py-12 md:py-16", children: _jsxs("div", { className: "container mx-auto px-4 sm:px-6", children: [_jsxs("div", { className: "mb-6 flex flex-col items-start justify-between gap-3 sm:mb-10 sm:flex-row sm:items-center sm:gap-0", children: [_jsx("h2", { className: "font-serif text-2xl font-bold text-blue-900 sm:text-3xl", children: p.title }), _jsxs(Link, { href: "#", className: "group flex items-center text-blue-600 hover:text-blue-800", children: [_jsx("span", { children: p.viewAllLabel }), _jsx(ArrowRight, { className: "ml-2 h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" })] })] }), _jsx("div", { className: "grid gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3", children: updates.map((u, i) => (_jsx("div", { className: "group overflow-hidden rounded-xl border border-gray-100 bg-white transition-all duration-300 hover:border-blue-200 hover:shadow-md", children: _jsxs("div", { className: "p-6", children: [_jsxs("div", { className: "mb-4 flex items-center justify-between", children: [_jsx("span", { className: "rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600", children: u.type }), _jsx("span", { className: "text-sm text-gray-500", children: u.date })] }), _jsx("h3", { className: "mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-700", children: u.title }), _jsx("p", { className: "mb-4 text-gray-600", children: u.description }), _jsxs(Link, { href: "#", className: "group inline-flex items-center gap-2 font-medium text-blue-600 hover:text-blue-800", children: [_jsx("span", { className: "transition-all duration-300 group-hover:mr-2", children: p.readMoreLabel }), _jsx(ArrowRight, { className: "h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-2" })] })] }) }, i))) })] }) }));
-}
 export function HomeCoreFeaturesSection(props) {
     const p = props;
     const items = [
