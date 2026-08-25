@@ -2,6 +2,7 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import Link from "next/link";
 import { useState } from "react";
+import { resolveMediaUrl } from "../../puck/media.js";
 const heightClass = {
     small: "h-48 sm:h-56",
     medium: "h-64 sm:h-80",
@@ -17,7 +18,7 @@ export default function ImageAccordionBlock({ block, }) {
     }
     return (_jsxs("section", { className: "mx-auto max-w-6xl", children: [block.heading ? (_jsx("h2", { className: "section-heading mb-6 text-center", children: block.heading })) : null, _jsx("div", { className: `flex gap-2 overflow-hidden rounded-2xl ${height}`, children: items.map((item, index) => {
                     const expanded = active === index;
-                    const inner = (_jsxs(_Fragment, { children: [_jsx("img", { src: item.imageUrl, alt: item.title, className: "absolute inset-0 h-full w-full object-cover transition duration-500" }), _jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/20 to-transparent" }), _jsxs("div", { className: `absolute inset-x-0 bottom-0 p-4 transition ${expanded ? "opacity-100" : "opacity-90"}`, children: [_jsx("h3", { className: `font-semibold text-white ${expanded ? "text-lg sm:text-xl" : "truncate text-sm"}`, children: item.title }), expanded && item.subtitle ? (_jsx("p", { className: "mt-1 text-sm text-white/75", children: item.subtitle })) : null] })] }));
+                    const inner = (_jsxs(_Fragment, { children: [_jsx("img", { src: resolveMediaUrl(item.imageUrl), alt: item.title, className: "absolute inset-0 h-full w-full object-cover transition duration-500" }), _jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/20 to-transparent" }), _jsxs("div", { className: `absolute inset-x-0 bottom-0 p-4 transition ${expanded ? "opacity-100" : "opacity-90"}`, children: [_jsx("h3", { className: `font-semibold text-white ${expanded ? "text-lg sm:text-xl" : "truncate text-sm"}`, children: item.title }), expanded && item.subtitle ? (_jsx("p", { className: "mt-1 text-sm text-white/75", children: item.subtitle })) : null] })] }));
                     const className = `relative overflow-hidden transition-all duration-500 ease-out ${expanded ? "flex-[3]" : "flex-1"}`;
                     if (item.url) {
                         return (_jsx(Link, { href: item.url, className: className, onMouseEnter: () => setActive(index), onFocus: () => setActive(index), children: inner }, `${item.title}-${index}`));

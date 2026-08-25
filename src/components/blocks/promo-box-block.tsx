@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { PromoBoxBlock as PromoBoxBlockType } from "@/lib/types";
+import { resolveMediaUrl } from "@/puck/media";
 
 export default function PromoBoxBlock({ block }: { block: PromoBoxBlockType }) {
   const layout = block.layout ?? "image-left";
@@ -10,7 +11,7 @@ export default function PromoBoxBlock({ block }: { block: PromoBoxBlockType }) {
         {block.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={block.imageUrl}
+            src={resolveMediaUrl(block.imageUrl)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -54,7 +55,7 @@ export default function PromoBoxBlock({ block }: { block: PromoBoxBlockType }) {
         {block.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={block.imageUrl}
+            src={resolveMediaUrl(block.imageUrl)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
           />

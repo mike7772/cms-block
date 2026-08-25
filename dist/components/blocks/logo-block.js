@@ -3,6 +3,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { defaultLocale, isLocale, } from "../../i18n/config.js";
+import { resolveMediaUrl } from "../../puck/media.js";
 const alignClass = {
     left: "justify-start",
     center: "justify-center",
@@ -38,6 +39,6 @@ export default function LogoBlock({ block }) {
     const width = Math.min(480, Math.max(40, (_a = block.widthPx) !== null && _a !== void 0 ? _a : 160));
     const img = (
     // eslint-disable-next-line @next/next/no-img-element
-    _jsx("img", { src: block.imageUrl, alt: block.alt || "Logo", style: { width, maxWidth: "100%", height: "auto" }, className: "object-contain" }));
+    _jsx("img", { src: resolveMediaUrl(block.imageUrl), alt: block.alt || "Logo", style: { width, maxWidth: "100%", height: "auto" }, className: "object-contain" }));
     return (_jsx("div", { className: `flex ${alignClass[(_b = block.align) !== null && _b !== void 0 ? _b : "left"]}`, children: block.url ? (_jsx(Link, { href: resolveHref(block.url, locale), className: "inline-block", children: img })) : (img) }));
 }

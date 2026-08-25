@@ -6,6 +6,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { resolveMediaUrl } from "@/puck/media";
 
 export type AboutHeroProps = {
   title: string;
@@ -101,7 +102,7 @@ export function AboutBodySection(props: AboutBodyProps) {
             </div>
             <div className="order-1 md:order-2">
               <div className="relative h-[300px] overflow-hidden rounded-xl shadow-2xl md:h-[400px]">
-                <Image src={p.imageUrl} alt="Supreme Court Building" fill className="object-cover" />
+                <Image src={resolveMediaUrl(p.imageUrl)} alt="Supreme Court Building" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
               </div>
             </div>

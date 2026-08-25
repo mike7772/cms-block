@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { FilterablePortfolioBlock as FilterablePortfolioBlockType } from "@/lib/types";
+import { resolveMediaUrl } from "@/puck/media";
 
 const columnClass: Record<string, string> = {
   "2": "sm:grid-cols-2",
@@ -125,7 +126,7 @@ export default function FilterablePortfolioBlock({
               <>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={item.imageUrl}
+                  src={resolveMediaUrl(item.imageUrl)}
                   alt={item.title}
                   className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                 />

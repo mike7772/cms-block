@@ -1,5 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import Link from "next/link";
+import { resolveMediaUrl } from "../../puck/media.js";
 const sizeClass = {
     small: "h-8 w-8",
     medium: "h-12 w-12",
@@ -29,7 +30,7 @@ export default function IconBlock({ block }) {
     const name = (_c = block.iconName) !== null && _c !== void 0 ? _c : "star";
     const glyph = block.imageUrl ? (
     // eslint-disable-next-line @next/next/no-img-element
-    _jsx("img", { src: block.imageUrl, alt: "", className: `${size} object-contain` })) : (_jsx("svg", { viewBox: "0 0 24 24", fill: "none", stroke: color, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", className: size, "aria-hidden": true, children: _jsx("path", { d: (_d = PATHS[name]) !== null && _d !== void 0 ? _d : PATHS.star }) }));
+    _jsx("img", { src: resolveMediaUrl(block.imageUrl), alt: "", className: `${size} object-contain` })) : (_jsx("svg", { viewBox: "0 0 24 24", fill: "none", stroke: color, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", className: size, "aria-hidden": true, children: _jsx("path", { d: (_d = PATHS[name]) !== null && _d !== void 0 ? _d : PATHS.star }) }));
     const wrapped = block.linkUrl ? (_jsx(Link, { href: block.linkUrl, className: "inline-flex", children: glyph })) : (glyph);
     return (_jsx("div", { className: `flex ${alignClass[(_e = block.align) !== null && _e !== void 0 ? _e : "center"]}`, children: wrapped }));
 }

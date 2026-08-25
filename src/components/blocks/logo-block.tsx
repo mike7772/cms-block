@@ -8,6 +8,7 @@ import {
   type Locale,
 } from "@/i18n/config";
 import type { LogoBlock as LogoBlockType } from "@/lib/types";
+import { resolveMediaUrl } from "@/puck/media";
 
 const alignClass: Record<string, string> = {
   left: "justify-start",
@@ -41,7 +42,7 @@ export default function LogoBlock({ block }: { block: LogoBlockType }) {
   const img = (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={block.imageUrl}
+      src={resolveMediaUrl(block.imageUrl)}
       alt={block.alt || "Logo"}
       style={{ width, maxWidth: "100%", height: "auto" }}
       className="object-contain"

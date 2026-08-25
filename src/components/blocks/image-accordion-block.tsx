@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { ImageAccordionBlock as ImageAccordionBlockType } from "@/lib/types";
+import { resolveMediaUrl } from "@/puck/media";
 
 const heightClass: Record<string, string> = {
   small: "h-48 sm:h-56",
@@ -39,7 +40,7 @@ export default function ImageAccordionBlock({
             <>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={item.imageUrl}
+                src={resolveMediaUrl(item.imageUrl)}
                 alt={item.title}
                 className="absolute inset-0 h-full w-full object-cover transition duration-500"
               />

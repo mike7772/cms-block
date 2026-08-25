@@ -25,6 +25,7 @@ import {
   CheckCircle,
   Search,
 } from "lucide-react";
+import { resolveMediaUrl } from "@/puck/media";
 
 export type HomeHeroProps = {
   badge: string;
@@ -77,7 +78,7 @@ export function HomeHeroSection(props: HomeHeroProps) {
           </div>
         </div>
         <div className="relative h-[250px] transform overflow-hidden rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02] sm:h-[300px] md:h-[350px] lg:h-[400px]">
-          <Image src={p.imageUrl} alt="Supreme Court Building" fill className="object-cover" priority />
+          <Image src={resolveMediaUrl(p.imageUrl)} alt="Supreme Court Building" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent"></div>
           <div className="absolute bottom-0 left-0 p-6">
             <span className="font-medium text-white">{p.buildingCaption}</span>

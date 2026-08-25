@@ -2,18 +2,20 @@
 
 import { useRef, useState } from "react";
 import { ImageUp, Loader2 } from "lucide-react";
+import { resolveMediaUrl } from "@/puck/media";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:1212/api/v1";
-
-type MinioUploadResponse = {
-  file?: { filePath?: string };
+type UploadResponse = {
+  url?: string;
+  error?: string;
 };
 
 /** Puck "custom" field for imageUrl props: a plain text input for pasting a
- * direct link, plus an "Upload" button that sends the file to OCCMS-Backend's
- * MinIO endpoint (POST /minio/upload) and fills the field with the resulting
- * public URL — so editors can either paste a link or upload straight from
- * their machine, and the result is a plain URL string like before. */
+ * direct link, plus an "Upload" button that sends the file to the editor
+ * app's own /api/admin/upload route — which forwards it to Strapi's media
+ * library server-side (never exposing the Strapi API token to the browser)
+ * and returns Strapi's public URL, so uploaded images resolve identically
+ * in the Puck editor and on PUBLIC_PORTAL. A relative path, matching the
+ * placeholder hint below, resolves via resolveMediaUrl instead. */
 export function ImageUrlField({
   value,
   onChange,
@@ -33,16 +35,16 @@ export function ImageUrlField({
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await fetch(`${API_BASE}/minio/upload`, {
+      const res = await fetch("/api/admin/upload", {
         method: "POST",
         credentials: "include",
         body: formData,
       });
-      const data = (await res.json().catch(() => ({}))) as MinioUploadResponse;
-      if (!res.ok || !data.file?.filePath) {
-        throw new Error("message" in data ? String((data as { message?: unknown }).message) : "Upload failed");
+      const data = (await res.json().catch(() => ({}))) as UploadResponse;
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Upload failed");
       }
-      onChange(data.file.filePath);
+      onChange(data.url);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
@@ -86,7 +88,7 @@ export function ImageUrlField({
       {value && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={value}
+          src={resolveMediaUrl(value)}
           alt=""
           className="h-16 w-auto max-w-full rounded border border-input object-contain"
           onError={(e) => {

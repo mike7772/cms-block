@@ -1,35 +1,35 @@
 "use client";
-var _a;
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useRef, useState } from "react";
 import { ImageUp, Loader2 } from "lucide-react";
-const API_BASE = (_a = process.env.NEXT_PUBLIC_API_URL) !== null && _a !== void 0 ? _a : "http://localhost:1212/api/v1";
+import { resolveMediaUrl } from "../../puck/media.js";
 /** Puck "custom" field for imageUrl props: a plain text input for pasting a
- * direct link, plus an "Upload" button that sends the file to OCCMS-Backend's
- * MinIO endpoint (POST /minio/upload) and fills the field with the resulting
- * public URL — so editors can either paste a link or upload straight from
- * their machine, and the result is a plain URL string like before. */
+ * direct link, plus an "Upload" button that sends the file to the editor
+ * app's own /api/admin/upload route — which forwards it to Strapi's media
+ * library server-side (never exposing the Strapi API token to the browser)
+ * and returns Strapi's public URL, so uploaded images resolve identically
+ * in the Puck editor and on PUBLIC_PORTAL. A relative path, matching the
+ * placeholder hint below, resolves via resolveMediaUrl instead. */
 export function ImageUrlField({ value, onChange, readOnly, }) {
     const [uploading, setUploading] = useState(false);
     const [error, setError] = useState(null);
     const inputRef = useRef(null);
     async function handleFile(file) {
-        var _a;
         setError(null);
         setUploading(true);
         try {
             const formData = new FormData();
             formData.append("file", file);
-            const res = await fetch(`${API_BASE}/minio/upload`, {
+            const res = await fetch("/api/admin/upload", {
                 method: "POST",
                 credentials: "include",
                 body: formData,
             });
             const data = (await res.json().catch(() => ({})));
-            if (!res.ok || !((_a = data.file) === null || _a === void 0 ? void 0 : _a.filePath)) {
-                throw new Error("message" in data ? String(data.message) : "Upload failed");
+            if (!res.ok || !data.url) {
+                throw new Error(data.error || "Upload failed");
             }
-            onChange(data.file.filePath);
+            onChange(data.url);
         }
         catch (err) {
             setError(err instanceof Error ? err.message : "Upload failed");
@@ -46,7 +46,7 @@ export function ImageUrlField({ value, onChange, readOnly, }) {
                                 void handleFile(file);
                         } })] }), error && _jsx("p", { className: "text-xs text-destructive", children: error }), value && (
             // eslint-disable-next-line @next/next/no-img-element
-            _jsx("img", { src: value, alt: "", className: "h-16 w-auto max-w-full rounded border border-input object-contain", onError: (e) => {
+            _jsx("img", { src: resolveMediaUrl(value), alt: "", className: "h-16 w-auto max-w-full rounded border border-input object-contain", onError: (e) => {
                     e.target.style.display = "none";
                 } }))] }));
 }

@@ -6,6 +6,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { resolveMediaUrl } from "../../puck/media.js";
 export function AboutHeroSection(props) {
     const p = props;
     return (_jsx("section", { className: "bg-gradient-to-br from-blue-50 to-blue-100 py-16 md:py-24", children: _jsx("div", { className: "container mx-auto px-4", children: _jsxs("div", { className: "mx-auto max-w-4xl text-center", children: [_jsx("h1", { className: "mb-6 font-serif text-4xl font-bold text-blue-900 md:text-5xl", children: p.title }), _jsx("p", { className: "mx-auto max-w-2xl text-lg text-gray-700 md:text-xl", children: p.description })] }) }) }));
@@ -20,5 +21,5 @@ export function AboutQuickLinksSection(props) {
 }
 export function AboutBodySection(props) {
     const p = props;
-    return (_jsx("section", { className: "bg-gray-50 py-16", children: _jsx("div", { className: "container mx-auto px-4", children: _jsx("div", { className: "mx-auto max-w-6xl", children: _jsxs("div", { className: "grid items-center gap-12 md:grid-cols-2", children: [_jsxs("div", { className: "order-2 md:order-1", children: [_jsx("h2", { className: "mb-6 font-serif text-3xl font-bold text-blue-900 md:text-4xl", children: p.heading }), _jsxs("div", { className: "space-y-4 text-gray-700", children: [_jsx("p", { children: p.paragraph1 }), _jsx("p", { children: p.paragraph2 }), _jsx("p", { children: p.paragraph3 })] })] }), _jsx("div", { className: "order-1 md:order-2", children: _jsxs("div", { className: "relative h-[300px] overflow-hidden rounded-xl shadow-2xl md:h-[400px]", children: [_jsx(Image, { src: p.imageUrl, alt: "Supreme Court Building", fill: true, className: "object-cover" }), _jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent" })] }) })] }) }) }) }));
+    return (_jsx("section", { className: "bg-gray-50 py-16", children: _jsx("div", { className: "container mx-auto px-4", children: _jsx("div", { className: "mx-auto max-w-6xl", children: _jsxs("div", { className: "grid items-center gap-12 md:grid-cols-2", children: [_jsxs("div", { className: "order-2 md:order-1", children: [_jsx("h2", { className: "mb-6 font-serif text-3xl font-bold text-blue-900 md:text-4xl", children: p.heading }), _jsxs("div", { className: "space-y-4 text-gray-700", children: [_jsx("p", { children: p.paragraph1 }), _jsx("p", { children: p.paragraph2 }), _jsx("p", { children: p.paragraph3 })] })] }), _jsx("div", { className: "order-1 md:order-2", children: _jsxs("div", { className: "relative h-[300px] overflow-hidden rounded-xl shadow-2xl md:h-[400px]", children: [_jsx(Image, { src: resolveMediaUrl(p.imageUrl), alt: "Supreme Court Building", fill: true, className: "object-cover" }), _jsx("div", { className: "absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent" })] }) })] }) }) }) }));
 }

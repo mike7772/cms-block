@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { IconBlock as IconBlockType } from "@/lib/types";
+import { resolveMediaUrl } from "@/puck/media";
 
 const sizeClass: Record<string, string> = {
   small: "h-8 w-8",
@@ -34,7 +35,7 @@ export default function IconBlock({ block }: { block: IconBlockType }) {
 
   const glyph = block.imageUrl ? (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={block.imageUrl} alt="" className={`${size} object-contain`} />
+    <img src={resolveMediaUrl(block.imageUrl)} alt="" className={`${size} object-contain`} />
   ) : (
     <svg
       viewBox="0 0 24 24"

@@ -6,6 +6,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Quote, Eye, Target, Shield, Clock, Users, Globe } from "lucide-react";
+import { resolveMediaUrl } from "@/puck/media";
 
 export type AboutSubpageHeroProps = {
   backLabel: string;
@@ -72,7 +73,7 @@ export function AboutPresidentMessageSection(props: AboutPresidentMessageProps) 
             <div className="md:col-span-1">
               <div className="relative h-[300px] overflow-hidden rounded-xl shadow-xl md:h-[400px]">
                 <Image
-                  src={p.imageUrl}
+                  src={resolveMediaUrl(p.imageUrl)}
                   alt="President of Supreme Court of Oromia"
                   fill
                   className="object-cover"
@@ -270,7 +271,7 @@ export function AboutImageBannerSection(props: AboutImageBannerProps) {
         <div className="mx-auto max-w-4xl">
           <div className="relative h-[300px] overflow-hidden rounded-xl shadow-2xl md:h-[400px]">
             <Image
-              src={p.imageUrl}
+              src={resolveMediaUrl(p.imageUrl)}
               alt="Supreme Court of Oromia Vision and Mission"
               fill
               className="object-cover"
