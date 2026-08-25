@@ -28,8 +28,9 @@ const feeCategoriesField = {
     defaultItemProps: { title: "", items: [] },
     getItemSummary: (item) => item.title || "Category",
 };
-import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeFaqSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
+import { HomeHeroSection, HomeAboutUsSection, HomeFeaturesSection, HomeCoreFeaturesSection, HomeStatsSection, HomeCtaSection, HomeContactInfoSection, } from "../../components/site-sections/home.js";
 import { HomeUpdatesWidgetSection } from "../../components/site-sections/home-updates-widget.js";
+import { HomeFaqWidgetSection } from "../../components/site-sections/home-faq-widget.js";
 import { AboutHeroSection, AboutQuickLinksSection, AboutBodySection, } from "../../components/site-sections/about.js";
 import { ContactHeroSection, ContactInfoAndFormSection, ContactMapSection, } from "../../components/site-sections/contact.js";
 import { ServicesHeroSection, ServicesGridSection, ServicesAdditionalSection, } from "../../components/site-sections/services.js";
@@ -224,16 +225,28 @@ export const siteSectionsRegistry = [
         stat4Value: "24/7",
         stat4Label: "Online Access",
     }, (props) => createElement(HomeStatsSection, props)),
-    siteEntry("HomeFaq", "site.home-faq", "Home: FAQ", "Home", ["title", "description", "viewAllLabel", "faq1", "faq2", "faq3", "faq4", "faq5"], {
+    siteEntry("HomeFaq", "site.home-faq", "Home: FAQ", "Home", [
+        "title", "description", "viewAllLabel",
+        "faq1", "faq1Answer",
+        "faq2", "faq2Answer",
+        "faq3", "faq3Answer",
+        "faq4", "faq4Answer",
+        "faq5", "faq5Answer",
+    ], {
         title: "Frequently Asked Questions",
         description: "Find answers to common questions about court procedures, case filing, and using our portal.",
         viewAllLabel: "View All FAQs",
         faq1: "How do I file a new case?",
+        faq1Answer: "Visit the Public Portal's case filing section, fill in the required case details, attach supporting documents, and submit. You'll receive a case number to track its progress.",
         faq2: "How can I track my case status?",
+        faq2Answer: "Use the case number provided at filing to search your case status from the home page's case lookup, or sign in to your account to view all your cases in one place.",
         faq3: "What documents are required for filing a case?",
+        faq3Answer: "Requirements vary by case type, but generally include identification, a written statement of the claim, and any supporting evidence or contracts relevant to the case.",
         faq4: "How do I request a hearing date?",
+        faq4Answer: "A hearing date is scheduled automatically once your case is filed and assigned to a court. You'll be notified of the date through the portal and, where applicable, by phone or email.",
         faq5: "What payment methods are accepted for court fees?",
-    }, (props) => createElement(HomeFaqSection, props), ["description"]),
+        faq5Answer: "Court fees can be calculated using the fee calculator on this site and paid through the payment options provided during the case filing process.",
+    }, (props) => createElement(HomeFaqWidgetSection, props), ["description", "faq1Answer", "faq2Answer", "faq3Answer", "faq4Answer", "faq5Answer"]),
     siteEntry("HomeCta", "site.home-cta", "Home: CTA + Newsletter", "Home", ["heading", "description", "primaryButtonLabel", "secondaryButtonLabel", "newsletterHeading", "newsletterDescription", "emailPlaceholder", "subscribeButtonLabel", "disclaimerText"], {
         heading: "Experience the workflow the best judicial teams love",
         description: "Let our digital tools and resources guide you through the judicial process with ease and confidence.",

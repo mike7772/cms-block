@@ -10,7 +10,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
  */
 import Image from "next/image";
 import Link from "next/link";
-import { FileText, Users, ArrowRight, Gavel, ExternalLink, Clock, MapPin, Phone, Mail, ChevronDown, Shield, CheckCircle, Search, } from "lucide-react";
+import { FileText, Users, ArrowRight, Gavel, ExternalLink, Clock, MapPin, Phone, Mail, Shield, CheckCircle, Search, } from "lucide-react";
 import { resolveMediaUrl } from "../../puck/media.js";
 export function HomeHeroSection(props) {
     const p = props;
@@ -56,11 +56,6 @@ export function HomeStatsSection(props) {
         { value: p.stat4Value, label: p.stat4Label },
     ];
     return (_jsx("section", { className: "bg-white py-8 sm:py-12 md:py-16", children: _jsx("div", { className: "container mx-auto px-4 sm:px-6", children: _jsx("div", { className: "grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:grid-cols-4", children: stats.map((s, i) => (_jsxs("div", { className: "group text-center", children: [_jsx("div", { className: "mb-2 text-4xl font-bold text-blue-900 transition-colors duration-300 group-hover:text-blue-600 md:text-5xl", children: s.value }), _jsx("div", { className: "text-xs text-gray-600 sm:text-sm md:text-base", children: s.label }), _jsx("div", { className: "mx-auto mt-4 h-1 w-16 bg-blue-600 transition-all duration-500 group-hover:w-24" })] }, i))) }) }) }));
-}
-export function HomeFaqSection(props) {
-    const p = props;
-    const questions = [p.faq1, p.faq2, p.faq3, p.faq4, p.faq5];
-    return (_jsx("section", { className: "bg-gray-50 py-8 sm:py-12 md:py-16 lg:py-24", children: _jsxs("div", { className: "container mx-auto px-4 sm:px-6", children: [_jsxs("div", { className: "mb-8 text-center sm:mb-12 md:mb-16", children: [_jsx("h2", { className: "mb-4 font-serif text-2xl font-bold text-blue-900 sm:mb-6 sm:text-3xl md:text-4xl", children: p.title }), _jsx("p", { className: "mx-auto max-w-2xl px-4 text-sm text-gray-700 sm:text-base md:text-lg", children: p.description })] }), _jsxs("div", { className: "mx-auto max-w-3xl", children: [_jsx("div", { className: "space-y-4", children: questions.map((q, i) => (_jsx("div", { className: "overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-md", children: _jsxs("button", { className: "flex w-full items-center justify-between p-6 text-left", children: [_jsx("span", { className: "text-lg font-medium text-gray-900", children: q }), _jsx(ChevronDown, { className: "h-5 w-5 text-blue-600" })] }) }, i))) }), _jsx("div", { className: "mt-10 text-center", children: _jsxs(Link, { href: "#", className: "group inline-flex items-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-blue-700", children: [_jsx("span", { children: p.viewAllLabel }), _jsx(ArrowRight, { className: "h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" })] }) })] })] }) }));
 }
 export function HomeCtaSection(props) {
     const p = props;

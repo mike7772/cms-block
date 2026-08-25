@@ -1534,10 +1534,15 @@ export interface SiteHomeFaqBlock {
   description?: string | null;
   viewAllLabel?: string | null;
   faq1?: string | null;
+  faq1Answer?: string | null;
   faq2?: string | null;
+  faq2Answer?: string | null;
   faq3?: string | null;
+  faq3Answer?: string | null;
   faq4?: string | null;
+  faq4Answer?: string | null;
   faq5?: string | null;
+  faq5Answer?: string | null;
 }
 
 export interface SiteHomeCtaBlock {

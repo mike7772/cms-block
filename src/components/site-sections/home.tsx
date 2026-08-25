@@ -20,7 +20,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  ChevronDown,
   Shield,
   CheckCircle,
   Search,
@@ -292,55 +291,6 @@ export function HomeStatsSection(props: HomeStatsProps) {
               <div className="mx-auto mt-4 h-1 w-16 bg-blue-600 transition-all duration-500 group-hover:w-24"></div>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export type HomeFaqProps = {
-  title: string;
-  description: string;
-  viewAllLabel: string;
-  faq1: string;
-  faq2: string;
-  faq3: string;
-  faq4: string;
-  faq5: string;
-};
-
-export function HomeFaqSection(props: HomeFaqProps) {
-  const p = props;
-  const questions = [p.faq1, p.faq2, p.faq3, p.faq4, p.faq5];
-  return (
-    <section className="bg-gray-50 py-8 sm:py-12 md:py-16 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="mb-8 text-center sm:mb-12 md:mb-16">
-          <h2 className="mb-4 font-serif text-2xl font-bold text-blue-900 sm:mb-6 sm:text-3xl md:text-4xl">{p.title}</h2>
-          <p className="mx-auto max-w-2xl px-4 text-sm text-gray-700 sm:text-base md:text-lg">{p.description}</p>
-        </div>
-
-        <div className="mx-auto max-w-3xl">
-          <div className="space-y-4">
-            {questions.map((q, i) => (
-              <div key={i} className="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
-                <button className="flex w-full items-center justify-between p-6 text-left">
-                  <span className="text-lg font-medium text-gray-900">{q}</span>
-                  <ChevronDown className="h-5 w-5 text-blue-600" />
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="#"
-              className="group inline-flex items-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-blue-700"
-            >
-              <span>{p.viewAllLabel}</span>
-              <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </div>
         </div>
       </div>
     </section>

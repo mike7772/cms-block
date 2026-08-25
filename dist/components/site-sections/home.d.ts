@@ -66,17 +66,6 @@ export type HomeStatsProps = {
     stat4Label: string;
 };
 export declare function HomeStatsSection(props: HomeStatsProps): import("react").JSX.Element;
-export type HomeFaqProps = {
-    title: string;
-    description: string;
-    viewAllLabel: string;
-    faq1: string;
-    faq2: string;
-    faq3: string;
-    faq4: string;
-    faq5: string;
-};
-export declare function HomeFaqSection(props: HomeFaqProps): import("react").JSX.Element;
 export type HomeCtaProps = {
     heading: string;
     description: string;
